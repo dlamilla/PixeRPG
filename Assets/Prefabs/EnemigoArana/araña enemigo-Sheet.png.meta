@@ -1,0 +1,973 @@
+fileFormatVersion: 2
+guid: 440a91dd1343dc34d8e1947fb9f5de32
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_0"
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 244
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0420914b99b27848b6cac9ad903b69f
+      internalID: 485601175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_1"
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 244
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c78cf0d2c697bce40b682b1484b331c3
+      internalID: 1959476120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_2"
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 244
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e2f104a4b228534f902d0910c4d7e72
+      internalID: 286956908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_3"
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 244
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a4d8937bf537844ab2213c675f5c101
+      internalID: -1022079451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_4"
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 244
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26845f75b5878d648beb2139f136558a
+      internalID: -390028914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_5"
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 244
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe972941722e53b47801143e146ca28a
+      internalID: -2018681258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_6"
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 244
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eaa309332d34174b9236fa256774333
+      internalID: 1860863212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_7"
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 195
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 522cde3a12cd7524bada1e710196a059
+      internalID: -1355459969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_8"
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 195
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be5dc31b76738684abd0b0f7db06dbd7
+      internalID: -903705577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_9"
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 195
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70c95d50549107d4eaaf62290edaf197
+      internalID: -1339534488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_10"
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 195
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e1c14f7d0a74f7408166b3e88d2eaf7
+      internalID: 2059083752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_11"
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 195
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fe100fd8f23b3a4cabdf32c30c99105
+      internalID: 1327619833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_12"
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 195
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21ed3923dcba0eb4fa57cf7856135ca9
+      internalID: -2127075679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_13"
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 195
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9c099c6e29ba22439a9bb1d4ce544ff
+      internalID: 1760793286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_14"
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 149
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb353b19db3ed814e8d3fe24a85eed7d
+      internalID: -1334329635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_15"
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 149
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74c0c1b757659c84e81f1c2faf9a9af1
+      internalID: -1640592958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_16"
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 149
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d992b0c0b0b00c7439a76d28e4e1aeb8
+      internalID: 1752091979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_17"
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 149
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3656df27d04b42c4ba165c89ba73ef3a
+      internalID: 150616254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_18"
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 149
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f539b3e6a9179c747ba7c9676f157936
+      internalID: 279039724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_19"
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 149
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52ce15f5086c552468a6379bbc4f0d58
+      internalID: 1685151268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_20"
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 149
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2a068574863fd048bfff6b20becfde2
+      internalID: 905771098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_21"
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 100
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7076bb6a3a2670540b23e7f4b9db61aa
+      internalID: -1366892013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_22"
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 101
+        width: 27
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcf27896bd822ac42aad0c8afcde006e
+      internalID: 1462209735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_23"
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 101
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c16347562a1ae04190372047f9076e1
+      internalID: -2054549615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_24"
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 98
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dc628f88b9ba0f4bbc0343ba51fb509
+      internalID: -39076277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_25"
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 98
+        width: 28
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6573224990fcb9640a48ab201033c8fd
+      internalID: 2020564558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_26"
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 97
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef6517a17bc429f41b7d0ba1e972b989
+      internalID: 541467810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_27"
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 97
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f97fadb8aafdaeb4b816d6bc1fc7d3de
+      internalID: -524773145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_28"
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 58
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81679c086e3b13a4b9feb302f0060859
+      internalID: -509013578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_29"
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 58
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05e7ce24296d8a04d888e3e0ad050ed4
+      internalID: -1562569615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_30"
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 56
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c656301421cb6a4991bc6cb2fa399bf
+      internalID: 1821903667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_31"
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 57
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee7abeeafe7170f44937afe16cc974c6
+      internalID: -464322373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_32"
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 55
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b3b65b2bc05e424cb159f43c74d11e2
+      internalID: 1585509292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_33"
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 55
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d674def06dfd6654c9475b5fa4377d8d
+      internalID: 844637641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_34"
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 57
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4515b416a030e774bbc1815c6ec501c4
+      internalID: -1383902321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_36"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 9
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a67e6b42fc677c48b67a434dce38af3
+      internalID: 51445226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_37"
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 7
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cd3e10e930fc5641a9fb55cc6157d83
+      internalID: 21707460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ara\xF1a enemigo-Sheet_39"
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 8
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f77a275a90396864c858cb288931f74e
+      internalID: 1411203518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      "ara\xF1a enemigo-Sheet_0": 485601175
+      "ara\xF1a enemigo-Sheet_1": 1959476120
+      "ara\xF1a enemigo-Sheet_10": 2059083752
+      "ara\xF1a enemigo-Sheet_11": 1327619833
+      "ara\xF1a enemigo-Sheet_12": -2127075679
+      "ara\xF1a enemigo-Sheet_13": 1760793286
+      "ara\xF1a enemigo-Sheet_14": -1334329635
+      "ara\xF1a enemigo-Sheet_15": -1640592958
+      "ara\xF1a enemigo-Sheet_16": 1752091979
+      "ara\xF1a enemigo-Sheet_17": 150616254
+      "ara\xF1a enemigo-Sheet_18": 279039724
+      "ara\xF1a enemigo-Sheet_19": 1685151268
+      "ara\xF1a enemigo-Sheet_2": 286956908
+      "ara\xF1a enemigo-Sheet_20": 905771098
+      "ara\xF1a enemigo-Sheet_21": -1366892013
+      "ara\xF1a enemigo-Sheet_22": 1462209735
+      "ara\xF1a enemigo-Sheet_23": -2054549615
+      "ara\xF1a enemigo-Sheet_24": -39076277
+      "ara\xF1a enemigo-Sheet_25": 2020564558
+      "ara\xF1a enemigo-Sheet_26": 541467810
+      "ara\xF1a enemigo-Sheet_27": -524773145
+      "ara\xF1a enemigo-Sheet_28": -509013578
+      "ara\xF1a enemigo-Sheet_29": -1562569615
+      "ara\xF1a enemigo-Sheet_3": -1022079451
+      "ara\xF1a enemigo-Sheet_30": 1821903667
+      "ara\xF1a enemigo-Sheet_31": -464322373
+      "ara\xF1a enemigo-Sheet_32": 1585509292
+      "ara\xF1a enemigo-Sheet_33": 844637641
+      "ara\xF1a enemigo-Sheet_34": -1383902321
+      "ara\xF1a enemigo-Sheet_35": 787674334
+      "ara\xF1a enemigo-Sheet_36": 51445226
+      "ara\xF1a enemigo-Sheet_37": 21707460
+      "ara\xF1a enemigo-Sheet_38": 828055861
+      "ara\xF1a enemigo-Sheet_39": 1411203518
+      "ara\xF1a enemigo-Sheet_4": -390028914
+      "ara\xF1a enemigo-Sheet_5": -2018681258
+      "ara\xF1a enemigo-Sheet_6": 1860863212
+      "ara\xF1a enemigo-Sheet_7": -1355459969
+      "ara\xF1a enemigo-Sheet_8": -903705577
+      "ara\xF1a enemigo-Sheet_9": -1339534488
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
