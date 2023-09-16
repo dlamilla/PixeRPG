@@ -476,7 +476,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 666525343}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.86, y: -1.23, z: 0}
+  m_LocalPosition: {x: -13.91, y: -1.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -818,7 +818,7 @@ GameObject:
   - component: {fileID: 1730608474}
   m_Layer: 6
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -960,16 +960,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af780c1177a2c54418f23d26f56da9db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 10
+  hpEnemy: 10
   speed: 2
-  hitDamage: 0
+  hitDamage: 5
+  timeForHit: 0.8
   waypoints:
   - {fileID: 666525344}
   - {fileID: 1996909541}
   - {fileID: 1173397005}
   category: 0
   radiusAttack: 1.2
-  radiusSearch: 2.5
+  radiusSearch: 3
 --- !u!1 &1774637279
 GameObject:
   m_ObjectHideFlags: 0
@@ -7490,9 +7491,9 @@ GameObject:
   - component: {fileID: 2027792812}
   - component: {fileID: 2027792811}
   - component: {fileID: 2027792813}
+  - component: {fileID: 2027792814}
   - component: {fileID: 2027792815}
   - component: {fileID: 2027792816}
-  - component: {fileID: 2027792814}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -7649,7 +7650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 200
-  life: 20
+  hpPlayer: 20
   exp: 0
   level: 0
   controladorGolpe: {fileID: 221091110}

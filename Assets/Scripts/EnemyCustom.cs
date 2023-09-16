@@ -16,9 +16,10 @@ public enum EnemyState{
 public class EnemyCustom : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float life;
+    [SerializeField] private float hpEnemy;
     [SerializeField] private float speed;
     [SerializeField] private float hitDamage;
+    [SerializeField] private float timeForHit;
 
     [Header("Patrol")]
     [SerializeField] private Transform[] waypoints;
@@ -41,77 +42,69 @@ public class EnemyCustom : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform;
 
         currentState = EnemyState.IDLE;
-        //anim.SetBool("isRunning", true);
+        anim.SetBool("isRunning", true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (category)
+        if (hpEnemy > 0)
         {
-            case TypeEnemys.ENEMY_SPIDER:
-                if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch && Vector2.Distance(transform.position, player.transform.position) > radiusAttack)
-                {
-                    if (currentState == EnemyState.IDLE || currentState == EnemyState.WALK && currentState != EnemyState.STAGGER)
+            switch (category)
+            {
+                case TypeEnemys.ENEMY_SPIDER:
+                    if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch && Vector2.Distance(transform.position, player.transform.position) > radiusAttack)
                     {
-                        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-                        Vector2 temp = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-                        changeAnim(temp - new Vector2(transform.position.x,transform.position.y));
-                        ChangeState(EnemyState.WALK);
-                        Debug.Log("Condicional 1");
-                        //anim.SetBool("isRunning", true);
+                        if (currentState == EnemyState.IDLE || currentState == EnemyState.WALK && currentState != EnemyState.STAGGER)
+                        {
+                            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                            Vector2 temp = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                            changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
+                            ChangeState(EnemyState.WALK);
+                            Debug.Log("Condicional 1");
+                            anim.SetBool("isRunning", true);
+                        }
                     }
-                }
-                else if (Vector2.Distance(transform.position, player.transform.position) > radiusSearch)
-                {
-                    Debug.Log("Condicional 2");
-                    //anim.SetBool("isRunning", false);
+                    else if (Vector2.Distance(transform.position, player.transform.position) > radiusSearch)
+                    {
+                        Debug.Log("Condicional 2");
+                        anim.SetBool("isRunning", true);
 
-                    if (Vector2.Distance(transform.position, waypoints[currentPoint].transform.position) > radiusSearch)
-                    {
-                        transform.position = Vector2.MoveTowards(transform.position, waypoints[currentPoint].transform.position, speed * Time.deltaTime);
-                        Vector2 temp = Vector2.MoveTowards(transform.position,waypoints[currentPoint].transform.position,speed * Time.deltaTime);
-                        changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
+                        if (transform.position != waypoints[currentPoint].transform.position)
+                        {
+                            transform.position = Vector2.MoveTowards(transform.position, waypoints[currentPoint].transform.position, speed * Time.deltaTime);
+                            Vector2 temp = Vector2.MoveTowards(transform.position, waypoints[currentPoint].transform.position, speed * Time.deltaTime);
+                            changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
+                        }
+                        else
+                        {
+                            ChangeGoal();
+                        }
                     }
-                    else
+                    else if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch && Vector2.Distance(transform.position, player.transform.position) <= radiusAttack)
                     {
-                        ChangeGoal();
+                        Debug.Log("Condicional 3");
+                        if (currentState == EnemyState.WALK && currentState != EnemyState.ATTACK)
+                        {
+                            StartCoroutine(Attack());
+                        }
                     }
-                }
-                else if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch && Vector2.Distance(transform.position, player.transform.position) <= radiusAttack)
-                {
-                    Debug.Log("Condicional 3");
-                    if (currentState == EnemyState.WALK && currentState != EnemyState.ATTACK)
-                    {
-                        StartCoroutine(Attack());
-                    }
-                }
 
-                break;
-            case TypeEnemys.ENEMY_EXTRA: 
-                //Seguir al jugador
-                //Atacar
-                //Vida en la mitad ataque 2
-                //Spawnea
-                //Muere dar exp
-                //Random monedas
-                break;
+                    break;
+                case TypeEnemys.ENEMY_EXTRA:
+                    //Seguir al jugador
+                    //Atacar
+                    //Vida en la mitad ataque 2
+                    //Spawnea
+                    //Muere dar exp
+                    //Random monedas
+                    break;
+            }
         }
     }
 
     private void ChangeGoal()
     {
-        //if (currentPoint == waypoints.Length - 1)
-        //{
-        //    currentPoint = 0;
-        //    startPosition = waypoints[0];
-        //}
-        //else
-        //{
-        //    currentPoint++;
-        //    startPosition = waypoints[currentPoint];
-        //}
-
         currentPoint++;
         if (currentPoint >= waypoints.Length)
         {
@@ -121,8 +114,8 @@ public class EnemyCustom : MonoBehaviour
 
     private void SetAnimFloat(Vector2 setVector)
     {
-        //anim.SetFloat("X", setVector.x);
-        //anim.SetFloat("Y", setVector.y);
+        anim.SetFloat("X", setVector.x);
+        anim.SetFloat("Y", setVector.y);
     }
 
     public void changeAnim(Vector2 direction)
@@ -160,13 +153,34 @@ public class EnemyCustom : MonoBehaviour
 
     IEnumerator Attack()
     {
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(transform.position, radiusAttack);
+
+        foreach (Collider2D collision in objetos)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                collision.GetComponent<Player>().ReceiveDamage(hitDamage);
+            }
+        }
+
         currentState = EnemyState.ATTACK;
-        //anim.SetBool("AtaqueArana", true);
-        yield return new WaitForSeconds(1f);
-        Debug.Log("Ataque");
+        anim.SetBool("AtaqueArana", true);
+        yield return new WaitForSeconds(timeForHit);
         currentState = EnemyState.WALK;
-        //anim.SetBool("AtaqueArana", false);
+        anim.SetBool("AtaqueArana", false);
     }
+
+    public void ReceiveDamage(float damage)
+    {
+        hpEnemy -= damage;
+
+        if (hpEnemy <= 0)
+        {
+            Debug.Log("Muerto");
+        }
+    }
+
+   
 
     private void OnDrawGizmos()
     {
@@ -174,5 +188,5 @@ public class EnemyCustom : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radiusSearch);
         Gizmos.DrawWireSphere(transform.position, radiusAttack);
     }
-    
+
 }

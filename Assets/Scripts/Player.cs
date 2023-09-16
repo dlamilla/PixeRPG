@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float life;
+    [SerializeField] private float hpPlayer;
     [SerializeField] private float exp;
     [SerializeField] private float level;
 
@@ -65,23 +65,26 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = moveDir * moveSpeed * Time.deltaTime;
-        //Hit 
-        if (x == 1) //Hit Right 
+        if (hpPlayer > 0)
         {
-            controladorGolpe.transform.position = new Vector2(transform.position.x + 0.955f, transform.position.y - 0.041f);
-        }
-        if (x == -1) //Hit Left
-        {
-            controladorGolpe.transform.position = new Vector2(transform.position.x - 0.969f, transform.position.y - 0.09f);
-        }
-        if (y == 1) //Hit Up
-        {
-            controladorGolpe.transform.position = new Vector2(transform.position.x - 0.032f, transform.position.y + 1.239f);
-        }
-        if (y == -1) //Hit Down
-        {
-            controladorGolpe.transform.position = new Vector2(transform.position.x - 0.013f, transform.position.y - 0.924f);
+            rb.velocity = moveDir * moveSpeed * Time.deltaTime;
+            //Hit 
+            if (x == 1) //Hit Right 
+            {
+                controladorGolpe.transform.position = new Vector2(transform.position.x + 0.955f, transform.position.y - 0.041f);
+            }
+            if (x == -1) //Hit Left
+            {
+                controladorGolpe.transform.position = new Vector2(transform.position.x - 0.969f, transform.position.y - 0.09f);
+            }
+            if (y == 1) //Hit Up
+            {
+                controladorGolpe.transform.position = new Vector2(transform.position.x - 0.032f, transform.position.y + 1.239f);
+            }
+            if (y == -1) //Hit Down
+            {
+                controladorGolpe.transform.position = new Vector2(transform.position.x - 0.013f, transform.position.y - 0.924f);
+            }
         }
     }
     private void StopMoving()
@@ -95,9 +98,22 @@ public class Player : MonoBehaviour
         StopMoving();
         Collider2D[] objetos = Physics2D.OverlapCircleAll(controladorGolpe.position, radioGolpe);
 
-        foreach (Collider2D colisionador in objetos)
+        foreach (Collider2D collision in objetos)
         {
-            //Dañar enemigo
+            if (collision.CompareTag("Enemy"))
+            {
+                collision.GetComponent<EnemyCustom>().ReceiveDamage(dañoGolpe);
+            }
+        }
+    }
+
+    public void ReceiveDamage(float damage)
+    {
+        hpPlayer -= damage;
+
+        if (hpPlayer <= 0)
+        {
+            Debug.Log("Muerto PLayer");
         }
     }
 
