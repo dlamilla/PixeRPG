@@ -7,12 +7,13 @@ public enum TypeEnemys{
     ENEMY_EXTRA
 }
 
-public enum EnemyState{
-    IDLE,
-    WALK,
-    ATTACK,
-    STAGGER
-}
+//public enum EnemyState{
+//    IDLE,
+//    WALK,
+//    ATTACK,
+//    STAGGER
+//}
+[RequireComponent(typeof(ChangeAnimation))]
 public class EnemyCustom : MonoBehaviour
 {
     [Header("Movement")]
@@ -23,14 +24,15 @@ public class EnemyCustom : MonoBehaviour
 
     [Header("Patrol")]
     [SerializeField] private Transform[] waypoints;
-    private Transform startPosition;
+    //private Transform startPosition;
     private int currentPoint;
 
-    private EnemyState currentState;
+    //[SerializeField] private EnemyState currentState;
     [SerializeField] private TypeEnemys category;
     [SerializeField] private float radiusAttack; //Attack
     [SerializeField] private float radiusSearch; //Find Player
 
+    private ChangeAnimation changeDirections;
     private Animator anim;
     private Rigidbody2D rb;
     private Transform player;
@@ -40,8 +42,9 @@ public class EnemyCustom : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player").transform;
+        changeDirections = GetComponent<ChangeAnimation>();
 
-        currentState = EnemyState.IDLE;
+        //currentState = EnemyState.IDLE;
         anim.SetBool("isRunning", true);
     }
 
@@ -55,15 +58,15 @@ public class EnemyCustom : MonoBehaviour
                 case TypeEnemys.ENEMY_SPIDER:
                     if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch && Vector2.Distance(transform.position, player.transform.position) > radiusAttack)
                     {
-                        if (currentState == EnemyState.IDLE || currentState == EnemyState.WALK && currentState != EnemyState.STAGGER)
-                        {
+                       // if (currentState == EnemyState.IDLE || currentState == EnemyState.WALK && currentState != EnemyState.STAGGER)
+                       // {
                             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
                             Vector2 temp = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-                            changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
-                            ChangeState(EnemyState.WALK);
+                            changeDirections.changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
+                            //ChangeState(EnemyState.WALK);
                             Debug.Log("Condicional 1");
                             anim.SetBool("isRunning", true);
-                        }
+                       // }
                     }
                     else if (Vector2.Distance(transform.position, player.transform.position) > radiusSearch)
                     {
@@ -74,7 +77,7 @@ public class EnemyCustom : MonoBehaviour
                         {
                             transform.position = Vector2.MoveTowards(transform.position, waypoints[currentPoint].transform.position, speed * Time.deltaTime);
                             Vector2 temp = Vector2.MoveTowards(transform.position, waypoints[currentPoint].transform.position, speed * Time.deltaTime);
-                            changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
+                            changeDirections.changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
                         }
                         else
                         {
@@ -84,10 +87,10 @@ public class EnemyCustom : MonoBehaviour
                     else if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch && Vector2.Distance(transform.position, player.transform.position) <= radiusAttack)
                     {
                         Debug.Log("Condicional 3");
-                        if (currentState == EnemyState.WALK && currentState != EnemyState.ATTACK)
-                        {
+                       // if (currentState == EnemyState.WALK && currentState != EnemyState.ATTACK)
+                        //{
                             StartCoroutine(Attack());
-                        }
+                       //}
                     }
 
                     break;
@@ -112,44 +115,44 @@ public class EnemyCustom : MonoBehaviour
         }
     }
 
-    private void SetAnimFloat(Vector2 setVector)
-    {
-        anim.SetFloat("X", setVector.x);
-        anim.SetFloat("Y", setVector.y);
-    }
+    //private void SetAnimFloat(Vector2 setVector)
+    //{
+    //    anim.SetFloat("X", setVector.x);
+    //    anim.SetFloat("Y", setVector.y);
+    //}
 
-    public void changeAnim(Vector2 direction)
-    {
-        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
-        {
-            if (direction.x > 0)
-            {
-                SetAnimFloat(Vector2.right);
-            }
-            else if (direction.x < 0)
-            {
-                SetAnimFloat(Vector2.left);
-            }
-        }
-        else if (Mathf.Abs(direction.x) < Mathf.Abs(direction.y))
-        {
-            if (direction.y > 0)
-            {
-                SetAnimFloat(Vector2.up);
-            }
-            else if (direction.y < 0)
-            {
-                SetAnimFloat(Vector2.down);
-            }
-        }
-    }
-    public void ChangeState(EnemyState newState)
-    {
-        if (currentState != newState)
-        {
-            currentState = newState;
-        }
-    }
+    //public void changeAnim(Vector2 direction)
+    //{
+    //    if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+    //    {
+    //        if (direction.x > 0)
+    //        {
+    //            SetAnimFloat(Vector2.right);
+    //        }
+    //        else if (direction.x < 0)
+    //        {
+    //            SetAnimFloat(Vector2.left);
+    //        }
+    //    }
+    //    else if (Mathf.Abs(direction.x) < Mathf.Abs(direction.y))
+    //    {
+    //        if (direction.y > 0)
+    //        {
+    //            SetAnimFloat(Vector2.up);
+    //        }
+    //        else if (direction.y < 0)
+    //        {
+    //            SetAnimFloat(Vector2.down);
+    //        }
+    //    }
+    //}
+    //public void ChangeState(EnemyState newState)
+    //{
+    //    if (currentState != newState)
+    //    {
+    //        currentState = newState;
+    //    }
+    //}
 
     IEnumerator Attack()
     {
@@ -163,10 +166,10 @@ public class EnemyCustom : MonoBehaviour
             }
         }
 
-        currentState = EnemyState.ATTACK;
+        //currentState = EnemyState.ATTACK;
         anim.SetBool("AtaqueArana", true);
         yield return new WaitForSeconds(timeForHit);
-        currentState = EnemyState.WALK;
+        //currentState = EnemyState.WALK;
         anim.SetBool("AtaqueArana", false);
     }
 
