@@ -5,32 +5,50 @@ using static UnityEngine.GraphicsBuffer;
 
 public class TestPeroBola : MonoBehaviour
 {
-    public float speed;
-    public float stoppingDistance;
-    public float retreatDistance;
+    public Transform[] teleportPoints;
+    public float teleportTime = 45f;
+    private Transform target;
+    private Animator animator;
+    private bool isFollowingPlayer = true;
 
-    public Transform player;
-
-    // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        animator = GetComponent<Animator>();
+        InvokeRepeating("Teleport", teleportTime, teleportTime);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
+        if (isFollowingPlayer && !animator.GetBool("isTeleport"))
         {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            Vector2 directionToPlayer = (target.position - transform.position).normalized;
+            float distanceToPlayer = Vector2.Distance(transform.position, target.position);
+
+            // Aquí puedes implementar tu lógica de seguimiento o retroceso si es necesario
         }
-        else if (Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance)
-        {
-            transform.position = this.transform.position;
-        }
-        else if (Vector2.Distance(transform.position, player.position) < retreatDistance)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
-        }
+    }
+
+    void Teleport()
+    {
+        animator.SetBool("isTeleport", true);
+        StartCoroutine(CompleteTeleportAnimation());
+    }
+
+    IEnumerator CompleteTeleportAnimation()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        int randomIndex = Random.Range(0, teleportPoints.Length);
+        Vector3 teleportPosition = teleportPoints[randomIndex].position;
+
+        transform.position = teleportPosition;
+
+        animator.SetBool("isTeleport", false);
+        isFollowingPlayer = false;
+
+        yield return new WaitForSeconds(1.15f);
+
+        isFollowingPlayer = true;
     }
 }
