@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     [SerializeField] private HealthBar healthBar;
 
     [SerializeField] private float health;
+
+    [SerializeField] private Vector2 test;
     private float x, y;
     private bool isWalking;
     private Vector2 moveDir;
@@ -76,7 +78,9 @@ public class Player : MonoBehaviour
     {
         if (health > 0)
         {
-            rb.velocity = moveDir * moveSpeed * Time.deltaTime;
+            //rb.velocity = moveDir * moveSpeed * Time.deltaTime;
+            rb.MovePosition(rb.position + moveDir * moveSpeed * Time.fixedDeltaTime);
+            test = rb.velocity;
             //Hit 
             if (x == 1) //Hit Right 
             {
@@ -98,7 +102,7 @@ public class Player : MonoBehaviour
     }
     private void StopMoving()
     {
-        rb.velocity = Vector2.zero;
+        //moveSpeed = 0f;
     }
 
     private void Golpe()
@@ -112,6 +116,14 @@ public class Player : MonoBehaviour
             if (collision.gameObject.tag == "Enemy")
             {
                 collision.GetComponent<EnemyCustom>().ReceiveDamage(dañoGolpe);
+            }
+            if (collision.gameObject.tag == "Boss1")
+            {
+                //collision.GetComponent<EnemyCustom>().ReceiveDamage(dañoGolpe);
+            }
+            if (collision.gameObject.tag == "Boss2")
+            {
+                collision.GetComponent<FuncaBoss>().ReceiveDamage(dañoGolpe);
             }
         }
     }

@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
 
     private Transform player;
     private Vector2 target;
+    [SerializeField] private float hitDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class Projectile : MonoBehaviour
         {
             DestroyProjectile();
             Debug.Log("Pega");
+            other.gameObject.GetComponent<Player>().ReceiveDamage(hitDamage);
         }
     }
 
