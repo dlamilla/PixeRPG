@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Live")]
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float hpPlayer;
+    [SerializeField] private float hpPlayerMax;
     [SerializeField] private float exp;
     [SerializeField] private float level;
 
+    [Header("Hit")]
     [SerializeField] private Transform controladorGolpe;
     [SerializeField] private float radioGolpe;
     [SerializeField] private float dañoGolpe;
     [SerializeField] private float tiempoEntreAtaques;
     [SerializeField] private float tiempoSiguienteAtaque;
 
+    [Header("HealthBar")]
+    [SerializeField] private HealthBar healthBar;
+
+    [SerializeField] private float health;
     private float x, y;
     private bool isWalking;
     private Vector2 moveDir;
@@ -25,6 +31,9 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        
+        health = hpPlayerMax;
+        healthBar.UpdateHealthBar(hpPlayerMax, health);
     }
 
     // Update is called once per frame
@@ -65,7 +74,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (hpPlayer > 0)
+        if (health > 0)
         {
             rb.velocity = moveDir * moveSpeed * Time.deltaTime;
             //Hit 
@@ -100,7 +109,7 @@ public class Player : MonoBehaviour
 
         foreach (Collider2D collision in objetos)
         {
-            if (collision.CompareTag("Enemy"))
+            if (collision.gameObject.tag == "Enemy")
             {
                 collision.GetComponent<EnemyCustom>().ReceiveDamage(dañoGolpe);
             }
@@ -109,9 +118,10 @@ public class Player : MonoBehaviour
 
     public void ReceiveDamage(float damage)
     {
-        hpPlayer -= damage;
-
-        if (hpPlayer <= 0)
+        health -= damage;
+        Debug.Log(hpPlayerMax + " : " + health);
+        healthBar.UpdateHealthBar(hpPlayerMax, health);
+        if (health <= 0)
         {
             Debug.Log("Muerto PLayer");
         }
@@ -122,4 +132,6 @@ public class Player : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(controladorGolpe.position, radioGolpe);
     }
+
+    
 }
