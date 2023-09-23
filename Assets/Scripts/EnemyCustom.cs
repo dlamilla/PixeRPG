@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum TypeEnemys{
     ENEMY_SPIDER,
@@ -32,6 +33,7 @@ public class EnemyCustom : MonoBehaviour
     [SerializeField] private float radiusAttack; //Attack
     [SerializeField] private float radiusSearch; //Find Player
 
+    private NavMeshAgent navMeshAgent;
     private ChangeAnimation changeDirections;
     private Animator anim;
     private Rigidbody2D rb;
@@ -43,6 +45,10 @@ public class EnemyCustom : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player").transform;
         changeDirections = GetComponent<ChangeAnimation>();
+
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.updateRotation = false;
+        navMeshAgent.updateUpAxis = false;
 
         //currentState = EnemyState.IDLE;
         anim.SetBool("isRunning", true);
@@ -58,19 +64,19 @@ public class EnemyCustom : MonoBehaviour
                 case TypeEnemys.ENEMY_SPIDER:
                     if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch && Vector2.Distance(transform.position, player.transform.position) > radiusAttack)
                     {
-                       // if (currentState == EnemyState.IDLE || currentState == EnemyState.WALK && currentState != EnemyState.STAGGER)
-                       // {
-                            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-                            Vector2 temp = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-                            changeDirections.changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
-                            //ChangeState(EnemyState.WALK);
-                            Debug.Log("Condicional 1");
-                            anim.SetBool("isRunning", true);
-                       // }
+                        // if (currentState == EnemyState.IDLE || currentState == EnemyState.WALK && currentState != EnemyState.STAGGER)
+                        // {
+                        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                        Vector2 temp = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                        changeDirections.changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
+                        //ChangeState(EnemyState.WALK);
+                        //Debug.Log("Condicional 1");
+                        anim.SetBool("isRunning", true);
+                        // }
                     }
                     else if (Vector2.Distance(transform.position, player.transform.position) > radiusSearch)
                     {
-                        Debug.Log("Condicional 2");
+                        //Debug.Log("Condicional 2");
                         anim.SetBool("isRunning", true);
 
                         if (transform.position != waypoints[currentPoint].transform.position)
@@ -86,11 +92,11 @@ public class EnemyCustom : MonoBehaviour
                     }
                     else if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch && Vector2.Distance(transform.position, player.transform.position) <= radiusAttack)
                     {
-                        Debug.Log("Condicional 3");
-                       // if (currentState == EnemyState.WALK && currentState != EnemyState.ATTACK)
+                        //Debug.Log("Condicional 3");
+                        // if (currentState == EnemyState.WALK && currentState != EnemyState.ATTACK)
                         //{
-                            StartCoroutine(Attack());
-                       //}
+                        StartCoroutine(Attack());
+                        //}
                     }
 
                     break;
@@ -101,6 +107,7 @@ public class EnemyCustom : MonoBehaviour
                     //Spawnea
                     //Muere dar exp
                     //Random monedas
+                    navMeshAgent.SetDestination(player.position);
                     break;
             }
         }
@@ -156,19 +163,21 @@ public class EnemyCustom : MonoBehaviour
 
     IEnumerator Attack()
     {
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(transform.position, radiusAttack);
+        //Collider2D[] objetos = Physics2D.OverlapCircleAll(transform.position, radiusAttack);
 
-        foreach (Collider2D collision in objetos)
-        {
-            if (collision.CompareTag("Player"))
-            {
-                collision.GetComponent<Player>().ReceiveDamage(hitDamage);
-            }
-        }
+        //foreach (Collider2D collision in objetos)
+        //{
+        //    if (collision.gameObject.tag == "Player")
+        //    {
+        //        Debug.Log("Golpe");
+        //        collision.GetComponent<Player>().ReceiveDamage(hitDamage);
+        //    }
+        //}
 
         //currentState = EnemyState.ATTACK;
         anim.SetBool("AtaqueArana", true);
         yield return new WaitForSeconds(timeForHit);
+
         //currentState = EnemyState.WALK;
         anim.SetBool("AtaqueArana", false);
     }
@@ -183,7 +192,7 @@ public class EnemyCustom : MonoBehaviour
         }
     }
 
-   
+
 
     private void OnDrawGizmos()
     {
@@ -192,4 +201,27 @@ public class EnemyCustom : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radiusAttack);
     }
 
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //        Debug.Log("Golpe");
+    //        collision.GetComponent<Player>().ReceiveDamage(hitDamage);
+    //    }
+    //}
+
+    public void AttackSpider()
+    {
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(transform.position, radiusAttack);
+
+        foreach (Collider2D collision in objetos)
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                Debug.Log("Golpe");
+                collision.GetComponent<Player>().ReceiveDamage(hitDamage);
+            }
+        }
+
+    }
 }
