@@ -33,7 +33,7 @@ public class EnemyCustom : MonoBehaviour
     [SerializeField] private float radiusAttack; //Attack
     [SerializeField] private float radiusSearch; //Find Player
 
-    private NavMeshAgent navMeshAgent;
+    //private NavMeshAgent navMeshAgent;
     private ChangeAnimation changeDirections;
     private Animator anim;
     private Rigidbody2D rb;
@@ -46,9 +46,9 @@ public class EnemyCustom : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform;
         changeDirections = GetComponent<ChangeAnimation>();
 
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        navMeshAgent.updateRotation = false;
-        navMeshAgent.updateUpAxis = false;
+        //navMeshAgent = GetComponent<NavMeshAgent>();
+        //navMeshAgent.updateRotation = false;
+        //navMeshAgent.updateUpAxis = false;
 
         //currentState = EnemyState.IDLE;
         anim.SetBool("isRunning", true);
@@ -107,7 +107,7 @@ public class EnemyCustom : MonoBehaviour
                     //Spawnea
                     //Muere dar exp
                     //Random monedas
-                    navMeshAgent.SetDestination(player.position);
+                    ///*navMes*/hAgent.SetDestination(player.position);
                     break;
             }
         }
