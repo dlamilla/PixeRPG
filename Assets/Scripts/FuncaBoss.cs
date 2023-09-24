@@ -5,6 +5,7 @@ using UnityEngine;
 public class FuncaBoss : MonoBehaviour
 {
     [Header("DatosJefe")]
+    [SerializeField] private float hpEnemyInicial;
     [SerializeField] private float hpEnemy;
     [SerializeField] private float hitDamage;
     [SerializeField] public float moveSpeed;
@@ -28,12 +29,24 @@ public class FuncaBoss : MonoBehaviour
     private bool isBacking = false;
     private bool isFollowingPlayer = true;
 
+    [SerializeField] private GameObject enemyGameObject;
+
+    private bool hasReachedHalfHP = false;
+    private bool isAttacking = false;
+    private float attackDuration = 1.3f;
+    private float currentAttackTime = 0.0f;
+
+    [SerializeField] private GameObject[] attackObjects; // Debe contener los 4 gameObjects que se activaran cuando el enemigo tenga la mitad de la vida
+
+    private bool hasActivatedObjects = false; // Para rastrear si los objetos ya se han activado
+
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         animator = GetComponent<Animator>();
         InvokeRepeating("Teleport", teleportTime, teleportTime);
         tiempoPorDisparo = tiempoEntreDisparo;
+        hpEnemyInicial = hpEnemy;
     }
 
     void Update()
@@ -43,7 +56,16 @@ public class FuncaBoss : MonoBehaviour
             Vector2 directionToPlayer = (target.position - transform.position).normalized;
             float distanceToPlayer = Vector2.Distance(transform.position, target.position);
 
-            if (isFollowingPlayer && !animator.GetBool("isTeleport") && !isBacking)
+            if (directionToPlayer.x < 0)
+            {
+                transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x) * 1, transform.localScale.y);
+            }
+            else if (directionToPlayer.x > 0)
+            {
+                transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y);
+            }
+
+            if (!isAttacking && isFollowingPlayer && !animator.GetBool("isTeleport") && !isBacking)
             {
                 if (distanceToPlayer > stoppingDistance)
                 {
@@ -52,7 +74,7 @@ public class FuncaBoss : MonoBehaviour
                 }
                 else if (distanceToPlayer < stoppingDistance && distanceToPlayer > retreatDistance)
                 {
-                    // Guardado por si tengo que recurrir a otra linea de codigo XD
+                    // Guardado por si tengo que recurrir a otra línea de código XD
                 }
                 else if (distanceToPlayer < retreatDistance)
                 {
@@ -60,6 +82,7 @@ public class FuncaBoss : MonoBehaviour
                     transform.position = new Vector2(newPosition.x, newPosition.y);
                 }
             }
+
             if (tiempoPorDisparo <= 0)
             {
                 Instantiate(projectile, transform.position, Quaternion.identity);
@@ -69,6 +92,26 @@ public class FuncaBoss : MonoBehaviour
             {
                 tiempoPorDisparo -= Time.deltaTime;
             }
+
+            if (hpEnemy <= (hpEnemyInicial / 2) && !hasReachedHalfHP)
+            {
+                hasReachedHalfHP = true;
+                StartAttackAnimation();
+            }
+
+            if (isAttacking)
+            {
+                currentAttackTime += Time.deltaTime;
+                if (currentAttackTime >= attackDuration)
+                {
+                    EndAttackAnimation();
+                }
+            }
+        }
+
+        if (hpEnemy <= 0)
+        {
+            enemyGameObject.SetActive(false);
         }
     }
 
@@ -77,6 +120,7 @@ public class FuncaBoss : MonoBehaviour
         animator.SetBool("isTeleport", true);
         StartCoroutine(CompleteTeleportAnimation());
     }
+
     public void ReceiveDamage(float damage)
     {
         hpEnemy -= damage;
@@ -85,6 +129,31 @@ public class FuncaBoss : MonoBehaviour
         {
             Debug.Log("Muerto");
         }
+    }
+
+    void StartAttackAnimation()
+    {
+        animator.SetBool("isAttackFour", true);
+        isAttacking = true;
+        currentAttackTime = 0.0f;
+
+        if (!hasActivatedObjects)      // Cree esto para que activar un objeto
+        {
+            for (int i = 0; i < attackObjects.Length; i++)
+            {
+                attackObjects[i].SetActive(true);
+            }
+            hasActivatedObjects = true;
+        }
+    }
+
+    void EndAttackAnimation()
+    {
+        animator.SetBool("isAttackFour", false);
+        isAttacking = false;
+        currentAttackTime = 0.0f;
+
+        isFollowingPlayer = true;
     }
 
     IEnumerator CompleteTeleportAnimation()
