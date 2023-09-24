@@ -8,6 +8,7 @@ TagManager:
   - Box1
   - Boss1
   - Boss2
+  - BabyRat
   layers:
   - Default
   - TransparentFX
