@@ -80,7 +80,8 @@ public class BossRat : MonoBehaviour
         healthBar.UpdateHealthBar(hpBoss, hpCurrent);
         if (hpCurrent <= 0)
         {
-            player.GetComponent<Player>().ExpUp(exp);
+            //player.GetComponent<Player>().ExpUp(exp);
+            player.GetComponent<Player>().LevelUp(1);
             healthBarBoss.SetActive(false);
             gameObject.SetActive(false);          
         }

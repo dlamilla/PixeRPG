@@ -8,6 +8,11 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float hpPlayerMax;
 
+    [Header("Give Health")]
+    [SerializeField] private float timeNextHealth;
+    [SerializeField] private float giveHealth;
+    [SerializeField] private float timeCurrent;
+
     [Header("Exp and Level")]
     [SerializeField] private float exp;
     [SerializeField] private float expMax;
@@ -24,7 +29,10 @@ public class Player : MonoBehaviour
     [Header("HealthBar")]
     [SerializeField] private HealthBar healthBar;
     private float health;
-    
+
+    [Header("Doors Bosses")]
+    [SerializeField] private GameObject doorBoss1;
+    [SerializeField] private GameObject doorBoss2;
 
     private float resetSpeed;
     private float x, y;
@@ -76,6 +84,20 @@ public class Player : MonoBehaviour
         {
             Golpe();
             tiempoSiguienteAtaque = tiempoEntreAtaques;
+        }
+
+        if (level == 1)
+        {
+            doorBoss1.SetActive(false);
+        }
+        if (level == 2)
+        {
+            doorBoss2.SetActive(false);
+        }
+        if (Input.GetKey(KeyCode.J) && level >= 0)
+        {
+            GiveHeath(giveHealth);
+
         }
     }
 
@@ -137,6 +159,24 @@ public class Player : MonoBehaviour
             }
         }
     }
+    public void GiveHeath(float life)
+    {
+        StartCoroutine(StopMoving());
+        if (hpPlayerMax >= 15)
+        {
+            timeCurrent += Time.deltaTime;
+            if (timeCurrent >= timeNextHealth)
+            {
+                timeCurrent = 0;
+                health += life;
+
+            }
+
+            healthBar.UpdateHealthBar(hpPlayerMax, health);
+        }
+        
+    }
+
 
     public void ReceiveDamage(float damage)
     {

@@ -86,6 +86,15 @@ public class SpawnCustom : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            DestroyProjectile();
+            other.gameObject.GetComponent<Player>().ReceiveDamage(damage);
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

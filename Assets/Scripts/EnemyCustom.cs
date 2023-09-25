@@ -224,6 +224,7 @@ public class EnemyCustom : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radiusSearch);
         Gizmos.DrawWireSphere(transform.position, radiusAttack);
+        Gizmos.DrawWireSphere(transform.position, radiusShoot);
     }
 
     //private void OnTriggerEnter2D(Collider2D collision)
