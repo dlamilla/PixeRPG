@@ -9,6 +9,7 @@ TagManager:
   - Boss1
   - Boss2
   - BabyRat
+  - Door
   layers:
   - Default
   - TransparentFX

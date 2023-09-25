@@ -54,7 +54,6 @@ public class SpawnCustom : MonoBehaviour
         {
             if (collision.gameObject.tag == "Player")
             {
-                Debug.Log("Golpe");
                 collision.GetComponent<Player>().ReceiveDamage(damage);
             }
         }
@@ -67,7 +66,6 @@ public class SpawnCustom : MonoBehaviour
 
         if (hpEnemy <= 0)
         {
-            Debug.Log("Muerto");
             Destroy(gameObject);
         }
     }

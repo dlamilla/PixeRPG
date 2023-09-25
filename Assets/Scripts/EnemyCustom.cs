@@ -188,7 +188,7 @@ public class EnemyCustom : MonoBehaviour
 
         if (hpEnemy <= 0)
         {
-            Debug.Log("Muerto");
+            Destroy(gameObject);
         }
     }
 
@@ -218,7 +218,6 @@ public class EnemyCustom : MonoBehaviour
         {
             if (collision.gameObject.tag == "Player")
             {
-                Debug.Log("Golpe");
                 collision.GetComponent<Player>().ReceiveDamage(hitDamage);
             }
         }

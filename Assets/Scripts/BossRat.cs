@@ -61,13 +61,11 @@ public class BossRat : MonoBehaviour
             timeCurrent += Time.deltaTime;
             if (timeCurrent >= 0 && timeCurrent <= timeFinalAttack)
             {
-                Debug.Log("Ataque1");
                 Attack2();
             }
             
             if (timeCurrent >= timeFinalAttack)
             {
-                Debug.Log("Ataque2");
                 bx.enabled = true;
                 anim.SetBool("attack2", false);
                 Attack1();
@@ -154,7 +152,6 @@ public class BossRat : MonoBehaviour
         {
             if (collision.gameObject.tag == "Player")
             {
-                Debug.Log("Golpe");
                 collision.GetComponent<Player>().ReceiveDamage(hitDamage);
             }
         }

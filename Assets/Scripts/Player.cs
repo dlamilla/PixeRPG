@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
         {
             tiempoSiguienteAtaque -= Time.deltaTime;
         }
-        if (Input.GetButtonDown("Fire1") && tiempoSiguienteAtaque <= 0 && level >= 0)
+        if (Input.GetKey(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0)
         {
             Golpe();
             tiempoSiguienteAtaque = tiempoEntreAtaques;
@@ -170,5 +170,13 @@ public class Player : MonoBehaviour
         Gizmos.DrawWireSphere(controladorGolpe.position, radioGolpe);
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Door")
+        {
+            LevelUp(1);
+        }
+    }
+
+
 }

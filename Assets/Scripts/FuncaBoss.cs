@@ -19,6 +19,10 @@ public class FuncaBoss : MonoBehaviour
     public float stoppingDistance;
     public float retreatDistance;
 
+    [Header("HealthBar")]
+    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private GameObject healthBarBoss;
+
     private float tiempoPorDisparo;
     public float tiempoEntreDisparo;
 
@@ -47,10 +51,12 @@ public class FuncaBoss : MonoBehaviour
         InvokeRepeating("Teleport", teleportTime, teleportTime);
         tiempoPorDisparo = tiempoEntreDisparo;
         hpEnemyInicial = hpEnemy;
+        healthBar.UpdateHealthBar(hpEnemyInicial, hpEnemy);
     }
 
     void Update()
     {
+        healthBarBoss.SetActive(true);
         if (hpEnemy > 0)
         {
             Vector2 directionToPlayer = (target.position - transform.position).normalized;
@@ -124,7 +130,7 @@ public class FuncaBoss : MonoBehaviour
     public void ReceiveDamage(float damage)
     {
         hpEnemy -= damage;
-
+        healthBar.UpdateHealthBar(hpEnemyInicial, hpEnemy);
         if (hpEnemy <= 0)
         {
             Debug.Log("Muerto");

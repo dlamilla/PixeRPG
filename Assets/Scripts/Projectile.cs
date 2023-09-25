@@ -35,7 +35,6 @@ public class Projectile : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             DestroyProjectile();
-            Debug.Log("Pega");
             other.gameObject.GetComponent<Player>().ReceiveDamage(hitDamage);
         }
     }
