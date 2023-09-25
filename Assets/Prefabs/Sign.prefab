@@ -165,7 +165,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -730,7 +730,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[E]'
+  m_text: '[F]'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 63db7a8306c141145b3640a2f4f991e3, type: 2}
   m_sharedMaterial: {fileID: -5072321454975952693, guid: 63db7a8306c141145b3640a2f4f991e3, type: 2}
