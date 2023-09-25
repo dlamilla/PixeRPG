@@ -13,10 +13,11 @@ public class Player : MonoBehaviour
     [SerializeField] private float giveHealth;
     [SerializeField] private float timeCurrent;
 
-    [Header("Exp and Level")]
+    [Header("Statistics")]
     [SerializeField] private float exp;
     [SerializeField] private float expMax;
     [SerializeField] private float level;
+    [SerializeField] private float damageExtra;
 
     [Header("Hit")]
     [SerializeField] private Transform controladorGolpe;
@@ -89,6 +90,7 @@ public class Player : MonoBehaviour
         if (level == 1)
         {
             doorBoss1.SetActive(false);
+            //GiveMoreDamage(damageExtra);
         }
         if (level == 2)
         {
@@ -175,6 +177,11 @@ public class Player : MonoBehaviour
             healthBar.UpdateHealthBar(hpPlayerMax, health);
         }
         
+    }
+
+    public void GiveMoreDamage(float moreDamage)
+    {
+        dañoGolpe += moreDamage;
     }
 
 

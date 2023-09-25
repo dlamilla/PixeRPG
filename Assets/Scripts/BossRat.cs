@@ -15,6 +15,7 @@ public class BossRat : MonoBehaviour
     [SerializeField] private float radiusAttack;
     [SerializeField] private float timeFinalAttack;
     [SerializeField] private float timeCurrent;
+    [SerializeField] private float changeAttack;
 
     [Header("Exp")]
     [SerializeField] private float exp;
@@ -51,27 +52,7 @@ public class BossRat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthBarBoss.SetActive(true);
-        if (hpCurrent > 25)
-        {
-            Attack1();
-        }
-        else
-        {
-            timeCurrent += Time.deltaTime;
-            if (timeCurrent >= 0 && timeCurrent <= timeFinalAttack)
-            {
-                Attack2();
-            }
-            
-            if (timeCurrent >= timeFinalAttack)
-            {
-                bx.enabled = true;
-                anim.SetBool("attack2", false);
-                Attack1();
-            }
-            
-        }
+        StartCoroutine(WaitTime());
     }
 
     public void ReceiveDamage(float damage)
@@ -157,5 +138,36 @@ public class BossRat : MonoBehaviour
             }
         }
 
+    }
+
+    IEnumerator WaitTime()
+    {
+        yield return new WaitForSeconds(2.5f);
+        MechanicsBoss();
+    }
+
+    private void MechanicsBoss()
+    {
+        healthBarBoss.SetActive(true);
+        if (hpCurrent > changeAttack)
+        {
+            Attack1();
+        }
+        else
+        {
+            timeCurrent += Time.deltaTime;
+            if (timeCurrent >= 0 && timeCurrent <= timeFinalAttack)
+            {
+                Attack2();
+            }
+
+            if (timeCurrent >= timeFinalAttack)
+            {
+                bx.enabled = true;
+                anim.SetBool("attack2", false);
+                Attack1();
+            }
+
+        }
     }
 }
