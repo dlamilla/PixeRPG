@@ -81,26 +81,13 @@ public class Player : MonoBehaviour
         {
             tiempoSiguienteAtaque -= Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0)
+        if (Input.GetKeyDown(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0)
         {
             Golpe();
             tiempoSiguienteAtaque = tiempoEntreAtaques;
         }
 
-        if (level == 1)
-        {
-            doorBoss1.SetActive(false);
-            //GiveMoreDamage(damageExtra);
-        }
-        if (level == 2)
-        {
-            doorBoss2.SetActive(false);
-        }
-        if (Input.GetKey(KeyCode.J) && level >= 0)
-        {
-            GiveHeath(giveHealth);
-
-        }
+        
     }
 
     private void FixedUpdate()
@@ -126,7 +113,23 @@ public class Player : MonoBehaviour
             {
                 controladorGolpe.transform.position = new Vector2(transform.position.x - 0.013f, transform.position.y - 0.924f);
             }
+
+            if (level == 1)
+            {
+                doorBoss1.SetActive(false);
+                //GiveMoreDamage(damageExtra);
+            }
+            if (level == 2)
+            {
+                doorBoss2.SetActive(false);
+            }
+            if (Input.GetKey(KeyCode.E) && level >= 0 && health <= 10)
+            {
+                GiveHeath(giveHealth);
+
+            }
         }
+        
     }
     IEnumerator StopMoving()
     {
@@ -163,19 +166,26 @@ public class Player : MonoBehaviour
     }
     public void GiveHeath(float life)
     {
-        StartCoroutine(StopMoving());
-        if (hpPlayerMax >= 15)
+        //StartCoroutine(StopMoving());
+        //if (health <= 15)
+        //{
+        moveSpeed = 0;
+        timeCurrent += Time.deltaTime;
+        if (timeCurrent >= timeNextHealth)
         {
-            timeCurrent += Time.deltaTime;
-            if (timeCurrent >= timeNextHealth)
-            {
-                timeCurrent = 0;
-                health += life;
+            
+            timeCurrent = 0;
+            health = life;
 
-            }
-
-            healthBar.UpdateHealthBar(hpPlayerMax, health);
         }
+        if (health >= 10)
+        {
+            moveSpeed = resetSpeed;
+        }
+        
+        Debug.Log(hpPlayerMax + " : " + health);
+        healthBar.UpdateHealthBar(hpPlayerMax, health);
+        //}
         
     }
 
