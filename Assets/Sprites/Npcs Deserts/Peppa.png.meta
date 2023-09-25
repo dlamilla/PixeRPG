@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,7 +115,1015 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Peppa_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ada56ea2fb9269848a3c8caad744312e
+      internalID: 1137467024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 144
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ca6cfaa623e82f4083e88cac46491a6
+      internalID: 904142323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 144
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39b5e51a6e02fc548b1af98d049b6443
+      internalID: -250319519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 144
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b2f2dfda230310488150015ef6924b2
+      internalID: -1635320094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 144
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c382b93b29eb6d44bd7a547402bb4a0
+      internalID: 830828017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 144
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a15328491faa831479f4f4144593f932
+      internalID: -1893510844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 144
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52b6bac8fcdd16f43ad2aaf2f77a4469
+      internalID: 2005748494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 144
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa36daf4a0fe95641985ed86b8b987d0
+      internalID: 387508223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 144
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08c7b8f48b6b68a43b4d6abf3e88296d
+      internalID: 828670732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 144
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf75375ea0c8f864fa89723a5faf846a
+      internalID: 1233979224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_10
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 144
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52484cc44d38b9c41bb83350013a43ec
+      internalID: 1684718096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_11
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 144
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3f0e38f9d37fac4dbba50f085abf99a
+      internalID: 673991681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a9a12e76758620488cf8a18312b3764
+      internalID: 1494287959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_13
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0506a22fb1378b64597134e718e0215d
+      internalID: 1218116435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_14
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76c7d1ade45d57543ad3863070f9651f
+      internalID: -1525287891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_15
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83c521dad4c5dde40aee8342392b1d6d
+      internalID: 461327342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_16
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 96
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e70efb83decbbc4fab4dd2484c33116
+      internalID: 1756460605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_17
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f723b7552ef655478ae530e6b4d62bc
+      internalID: -631035041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_18
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b58b404b172b7644b96e4811cce4e006
+      internalID: 972105189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_19
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 96
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03021fa506c15c846bcb3eded5b157ca
+      internalID: -818816141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_20
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 96
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b105c6805561d4542a7917ce7369542f
+      internalID: 1737676823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_21
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 96
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89d561183f8a0154ab6ed91689acb922
+      internalID: -519130263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_22
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 96
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49a072b596243534194b520cc49501f8
+      internalID: -1336516492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_23
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 96
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dc081bbc75e7ba4687bc492b8f1fc9e
+      internalID: -546653695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6e13a12eb834b6418031637bcaaeab7
+      internalID: -1348934270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_25
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc3213552a61d834da0b2f8d8bc9d815
+      internalID: -2045829192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_26
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 48
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75181474947c90c4d8689f1a9da144d4
+      internalID: -1040573934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_27
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b52622fa7a3b9cf4983aa4375777edeb
+      internalID: 848644456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_28
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 48
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 892bfbe3e25ba424ebed9b8c0f06d3f4
+      internalID: 203214672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_29
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 48
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b779670ab2c0cf48899fbf952662ef6
+      internalID: -906437101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_30
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 48
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13ab8f1e3df6fcb4eaf54f85da046745
+      internalID: -963307979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_31
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 48
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 071d92f6f16c5c547a883d0f13ea39fd
+      internalID: -2141136699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_32
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 48
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b0cb01a5eee85e4eb5f8c8eb6e885ab
+      internalID: -1358129220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_33
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 48
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98f31bdd70a41a545ad2611533a03b28
+      internalID: -963454448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_34
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 48
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baa0d6cfa9de3b149aa0a3c6e98bffce
+      internalID: -1815430746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_35
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 48
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d53d8ac1530c19a4cb904386ff90ac70
+      internalID: 2101333087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d48abaf90bec7574f90ff07d3c8f197d
+      internalID: 170572177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_37
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44e181e172cbb89478f4956b0efaaf1a
+      internalID: -1936994928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_38
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fa92d65dcd005944865e5f0893910fc
+      internalID: -1352055989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_39
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 294972f1fadfd274388bcaad9fadb7c0
+      internalID: -640626205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_40
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4cbef7aef4fd3b4bbf668970fe51722
+      internalID: -605162230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_41
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f50e264fdb103394b89fc647fc910122
+      internalID: 649680054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_42
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6cc4adbc235b5844a58e32fb2ec5bc0
+      internalID: -2066419967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_43
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1b96c5a8fb76094cb362858c17c35b2
+      internalID: 569779079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_44
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 558a0f3b79a73ec4dab43ab52c735294
+      internalID: -91125883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_45
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffdf5347d50932c48a808c09b251ccd0
+      internalID: 1442366925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_46
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e749fb6a8aced4a48b22f2cd0b875d16
+      internalID: -1758370874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peppa_47
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 32.083332
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14bb2ae9096f119439894bb5e45c157a
+      internalID: -356734484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -126,7 +1134,55 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Peppa_0: 1137467024
+      Peppa_1: 904142323
+      Peppa_10: 1684718096
+      Peppa_11: 673991681
+      Peppa_12: 1494287959
+      Peppa_13: 1218116435
+      Peppa_14: -1525287891
+      Peppa_15: 461327342
+      Peppa_16: 1756460605
+      Peppa_17: -631035041
+      Peppa_18: 972105189
+      Peppa_19: -818816141
+      Peppa_2: -250319519
+      Peppa_20: 1737676823
+      Peppa_21: -519130263
+      Peppa_22: -1336516492
+      Peppa_23: -546653695
+      Peppa_24: -1348934270
+      Peppa_25: -2045829192
+      Peppa_26: -1040573934
+      Peppa_27: 848644456
+      Peppa_28: 203214672
+      Peppa_29: -906437101
+      Peppa_3: -1635320094
+      Peppa_30: -963307979
+      Peppa_31: -2141136699
+      Peppa_32: -1358129220
+      Peppa_33: -963454448
+      Peppa_34: -1815430746
+      Peppa_35: 2101333087
+      Peppa_36: 170572177
+      Peppa_37: -1936994928
+      Peppa_38: -1352055989
+      Peppa_39: -640626205
+      Peppa_4: 830828017
+      Peppa_40: -605162230
+      Peppa_41: 649680054
+      Peppa_42: -2066419967
+      Peppa_43: 569779079
+      Peppa_44: -91125883
+      Peppa_45: 1442366925
+      Peppa_46: -1758370874
+      Peppa_47: -356734484
+      Peppa_5: -1893510844
+      Peppa_6: 2005748494
+      Peppa_7: 387508223
+      Peppa_8: 828670732
+      Peppa_9: 1233979224
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
