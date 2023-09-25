@@ -8,10 +8,16 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float hpPlayerMax;
 
-    [Header("Exp and Level")]
+    [Header("Give Health")]
+    [SerializeField] private float timeNextHealth;
+    [SerializeField] private float giveHealth;
+    [SerializeField] private float timeCurrent;
+
+    [Header("Statistics")]
     [SerializeField] private float exp;
     [SerializeField] private float expMax;
     [SerializeField] private float level;
+    [SerializeField] private float damageExtra;
 
     [Header("Hit")]
     [SerializeField] private Transform controladorGolpe;
@@ -24,7 +30,10 @@ public class Player : MonoBehaviour
     [Header("HealthBar")]
     [SerializeField] private HealthBar healthBar;
     private float health;
-    
+
+    [Header("Doors Bosses")]
+    [SerializeField] private GameObject doorBoss1;
+    [SerializeField] private GameObject doorBoss2;
 
     private float resetSpeed;
     private float x, y;
@@ -72,11 +81,13 @@ public class Player : MonoBehaviour
         {
             tiempoSiguienteAtaque -= Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0)
+        if (Input.GetKeyDown(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0)
         {
             Golpe();
             tiempoSiguienteAtaque = tiempoEntreAtaques;
         }
+
+        
     }
 
     private void FixedUpdate()
@@ -102,7 +113,23 @@ public class Player : MonoBehaviour
             {
                 controladorGolpe.transform.position = new Vector2(transform.position.x - 0.013f, transform.position.y - 0.924f);
             }
+
+            if (level == 1)
+            {
+                doorBoss1.SetActive(false);
+                //GiveMoreDamage(damageExtra);
+            }
+            if (level == 2)
+            {
+                doorBoss2.SetActive(false);
+            }
+            if (Input.GetKey(KeyCode.E) && level >= 0 && health <= 10)
+            {
+                GiveHeath(giveHealth);
+
+            }
         }
+        
     }
     IEnumerator StopMoving()
     {
@@ -137,6 +164,36 @@ public class Player : MonoBehaviour
             }
         }
     }
+    public void GiveHeath(float life)
+    {
+        //StartCoroutine(StopMoving());
+        //if (health <= 15)
+        //{
+        moveSpeed = 0;
+        timeCurrent += Time.deltaTime;
+        if (timeCurrent >= timeNextHealth)
+        {
+            
+            timeCurrent = 0;
+            health = life;
+
+        }
+        if (health >= 10)
+        {
+            moveSpeed = resetSpeed;
+        }
+        
+        Debug.Log(hpPlayerMax + " : " + health);
+        healthBar.UpdateHealthBar(hpPlayerMax, health);
+        //}
+        
+    }
+
+    public void GiveMoreDamage(float moreDamage)
+    {
+        dañoGolpe += moreDamage;
+    }
+
 
     public void ReceiveDamage(float damage)
     {

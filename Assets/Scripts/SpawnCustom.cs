@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum TypeSpawn
 {
-    BABYRAT
+    BABYRAT,
+    PLANT_SHOOT
 }
 
 [RequireComponent(typeof(ChangeAnimation))]
@@ -16,6 +17,8 @@ public class SpawnCustom : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] private float radiusAttack;
 
+    private Vector2 target;
+
     private Transform player;
     private ChangeAnimation changeDirections;
     // Start is called before the first frame update
@@ -23,6 +26,7 @@ public class SpawnCustom : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player").transform;
         changeDirections = GetComponent<ChangeAnimation>();
+        target = new Vector2(player.position.x, player.position.y);
     }
 
     // Update is called once per frame
@@ -37,8 +41,15 @@ public class SpawnCustom : MonoBehaviour
                     transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
                     Vector2 temp = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
                     changeDirections.changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
-                    
+                    break;
 
+                case TypeSpawn.PLANT_SHOOT:
+                    transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+
+                    if (transform.position.x == target.x && transform.position.y == target.y)
+                    {
+                        DestroyProjectile();
+                    }
 
                     break;
             }
@@ -60,6 +71,11 @@ public class SpawnCustom : MonoBehaviour
 
     }
 
+    void DestroyProjectile()
+    {
+        Destroy(gameObject);
+    }
+
     public void ReceiveDamage(float damage)
     {
         hpEnemy -= damage;
@@ -67,6 +83,15 @@ public class SpawnCustom : MonoBehaviour
         if (hpEnemy <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            DestroyProjectile();
+            other.gameObject.GetComponent<Player>().ReceiveDamage(damage);
         }
     }
 

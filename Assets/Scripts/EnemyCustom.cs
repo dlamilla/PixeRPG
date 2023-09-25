@@ -5,7 +5,8 @@ using UnityEngine.AI;
 
 public enum TypeEnemys{
     ENEMY_SPIDER,
-    ENEMY_EXTRA
+    ENEMY_PLANT,
+    ENEMY_BAT
 }
 
 //public enum EnemyState{
@@ -28,10 +29,17 @@ public class EnemyCustom : MonoBehaviour
     //private Transform startPosition;
     private int currentPoint;
 
+    [Header("Plant")]
+    [SerializeField] private float radiusShoot;
+
     //[SerializeField] private EnemyState currentState;
     [SerializeField] private TypeEnemys category;
     [SerializeField] private float radiusAttack; //Attack
     [SerializeField] private float radiusSearch; //Find Player
+
+    [SerializeField] private float timeSpwan;
+    [SerializeField] private GameObject plantShoot;
+    [SerializeField] private float timeNext;
 
     //private NavMeshAgent navMeshAgent;
     private ChangeAnimation changeDirections;
@@ -100,14 +108,31 @@ public class EnemyCustom : MonoBehaviour
                     }
 
                     break;
-                case TypeEnemys.ENEMY_EXTRA:
-                    //Seguir al jugador
-                    //Atacar
-                    //Vida en la mitad ataque 2
-                    //Spawnea
-                    //Muere dar exp
-                    //Random monedas
-                    ///*navMes*/hAgent.SetDestination(player.position);
+                case TypeEnemys.ENEMY_PLANT:
+                    
+                    if (Vector2.Distance(transform.position, player.transform.position) <= radiusShoot)
+                    {
+                        anim.SetBool("Attack", true);
+                        timeNext += Time.deltaTime;
+                        if (timeNext >= timeSpwan)
+                        {
+                            timeNext = 0;
+                            Instantiate(plantShoot, transform.position, Quaternion.identity);
+                        }
+                    }
+                    else
+                    {
+                        anim.SetBool("Attack", false);
+                    }
+                    break;
+                case TypeEnemys.ENEMY_BAT:
+                    if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch)
+                    {
+                        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                        Vector2 temp = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                        changeDirections.changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
+                    }
+                    
                     break;
             }
         }
@@ -199,6 +224,7 @@ public class EnemyCustom : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radiusSearch);
         Gizmos.DrawWireSphere(transform.position, radiusAttack);
+        Gizmos.DrawWireSphere(transform.position, radiusShoot);
     }
 
     //private void OnTriggerEnter2D(Collider2D collision)
