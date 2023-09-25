@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Box1
+  - Boss1
+  - Boss2
+  - BabyRat
+  - Door
   layers:
   - Default
   - TransparentFX

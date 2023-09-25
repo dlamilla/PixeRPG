@@ -7,7 +7,10 @@ public class Player : MonoBehaviour
     [Header("Live")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float hpPlayerMax;
+
+    [Header("Exp and Level")]
     [SerializeField] private float exp;
+    [SerializeField] private float expMax;
     [SerializeField] private float level;
 
     [Header("Hit")]
@@ -16,11 +19,14 @@ public class Player : MonoBehaviour
     [SerializeField] private float dañoGolpe;
     [SerializeField] private float tiempoEntreAtaques;
     [SerializeField] private float tiempoSiguienteAtaque;
+    [SerializeField] private float timeForAttack;
 
     [Header("HealthBar")]
     [SerializeField] private HealthBar healthBar;
+    private float health;
+    
 
-    [SerializeField] private float health;
+    private float resetSpeed;
     private float x, y;
     private bool isWalking;
     private Vector2 moveDir;
@@ -34,6 +40,7 @@ public class Player : MonoBehaviour
         
         health = hpPlayerMax;
         healthBar.UpdateHealthBar(hpPlayerMax, health);
+        resetSpeed = moveSpeed;
     }
 
     // Update is called once per frame
@@ -65,7 +72,7 @@ public class Player : MonoBehaviour
         {
             tiempoSiguienteAtaque -= Time.deltaTime;
         }
-        if (Input.GetButtonDown("Fire1") && tiempoSiguienteAtaque <= 0)
+        if (Input.GetKey(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0)
         {
             Golpe();
             tiempoSiguienteAtaque = tiempoEntreAtaques;
@@ -76,7 +83,8 @@ public class Player : MonoBehaviour
     {
         if (health > 0)
         {
-            rb.velocity = moveDir * moveSpeed * Time.deltaTime;
+            //rb.velocity = moveDir * moveSpeed * Time.deltaTime;
+            rb.MovePosition(rb.position + moveDir * moveSpeed * Time.fixedDeltaTime);
             //Hit 
             if (x == 1) //Hit Right 
             {
@@ -96,15 +104,17 @@ public class Player : MonoBehaviour
             }
         }
     }
-    private void StopMoving()
+    IEnumerator StopMoving()
     {
-        rb.velocity = Vector2.zero;
+        moveSpeed = 0f;
+        yield return new WaitForSeconds(timeForAttack);
+        moveSpeed = resetSpeed;
     }
 
     private void Golpe()
     {
         animator.SetTrigger("Golpe");
-        StopMoving();
+        StartCoroutine(StopMoving());
         Collider2D[] objetos = Physics2D.OverlapCircleAll(controladorGolpe.position, radioGolpe);
 
         foreach (Collider2D collision in objetos)
@@ -112,6 +122,18 @@ public class Player : MonoBehaviour
             if (collision.gameObject.tag == "Enemy")
             {
                 collision.GetComponent<EnemyCustom>().ReceiveDamage(dañoGolpe);
+            }
+            if (collision.gameObject.tag == "Boss1")
+            {
+                collision.GetComponent<BossRat>().ReceiveDamage(dañoGolpe);
+            }
+            if (collision.gameObject.tag == "Boss2")
+            {
+                collision.GetComponent<FuncaBoss>().ReceiveDamage(dañoGolpe);
+            }
+            if (collision.gameObject.tag == "BabyRat")
+            {
+                collision.GetComponent<SpawnCustom>().ReceiveDamage(dañoGolpe);
             }
         }
     }
@@ -127,11 +149,34 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void LevelUp(float levelUp)
+    {
+        level += levelUp;
+    }
+
+    public void ExpUp(float expEnemy)
+    {
+        exp += expEnemy;
+        if (exp >= expMax)
+        {
+            level++;
+            expMax = Mathf.Round(expMax * 1.3f);
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(controladorGolpe.position, radioGolpe);
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Door")
+        {
+            LevelUp(1);
+        }
+    }
+
+
 }
