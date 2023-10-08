@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoomsManager : MonoBehaviour
 {
-    [SerializeField] private int currentRoom = 0;
+    [SerializeField] public int currentRoom = 0;
     [SerializeField] private List<GameObject> Rooms;
     [SerializeField] private Transform cameraGlobal;
 

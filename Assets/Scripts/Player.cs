@@ -14,9 +14,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float timeCurrent;
 
     [Header("Statistics")]
-    [SerializeField] private float exp;
+    [SerializeField] public float exp;
     [SerializeField] private float expMax;
-    [SerializeField] private float level;
+    [SerializeField] public float level;
     [SerializeField] private float damageExtra;
 
     [Header("Hit")]
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
 
     [Header("HealthBar")]
     [SerializeField] private HealthBar healthBar;
-    private float health;
+    [SerializeField] public float health;
 
     [Header("Doors Bosses")]
     [SerializeField] private GameObject doorBoss1;
