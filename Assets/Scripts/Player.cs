@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     [Header("Live")]
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float hpPlayerMax;
+    [SerializeField] public float hpPlayerMax;
 
     [Header("Give Health")]
     [SerializeField] private float timeNextHealth;
@@ -38,14 +38,17 @@ public class Player : MonoBehaviour
     private float resetSpeed;
     private float x, y;
     private bool isWalking;
+    private bool isReceiveDamage;
     private Vector2 moveDir;
     private Rigidbody2D rb;
     private Animator animator;
+    private BoxCollider2D bx;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        bx = GetComponent<BoxCollider2D>();
         
         health = hpPlayerMax;
         healthBar.UpdateHealthBar(hpPlayerMax, health);
@@ -55,44 +58,47 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        x = Input.GetAxisRaw("Horizontal");
-        y = Input.GetAxisRaw("Vertical");
-
-        if (x != 0 || y != 0)
+        if (health > 0.22f && !isReceiveDamage)
         {
-            animator.SetFloat("X",x);
-            animator.SetFloat("Y",y);
-            if (!isWalking)
+            x = Input.GetAxisRaw("Horizontal");
+            y = Input.GetAxisRaw("Vertical");
+
+            if (x != 0 || y != 0)
             {
-                isWalking = true;
-                animator.SetBool("IsMoving", isWalking);
-            }
-        }else
-        {
-            if (isWalking)
+                animator.SetFloat("X",x);
+                animator.SetFloat("Y",y);
+                if (!isWalking)
+                {
+                    isWalking = true;
+                    animator.SetBool("IsMoving", isWalking);
+                }
+            }else
             {
-                isWalking = false;
-                animator.SetBool("IsMoving", isWalking);
+                if (isWalking)
+                {
+                    isWalking = false;
+                    animator.SetBool("IsMoving", isWalking);
+                }
+            }
+            moveDir = new Vector2(x, y).normalized;
+
+            if (tiempoEntreAtaques > 0)
+            {
+                tiempoSiguienteAtaque -= Time.deltaTime;
+            }
+            if (Input.GetKeyDown(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0)
+            {
+                Golpe();
+                tiempoSiguienteAtaque = tiempoEntreAtaques;
             }
         }
-        moveDir = new Vector2(x, y).normalized;
 
-        if (tiempoEntreAtaques > 0)
-        {
-            tiempoSiguienteAtaque -= Time.deltaTime;
-        }
-        if (Input.GetKeyDown(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0)
-        {
-            Golpe();
-            tiempoSiguienteAtaque = tiempoEntreAtaques;
-        }
 
-        
     }
 
     private void FixedUpdate()
     {
-        if (health > 0)
+        if (health > 0.22f && !isReceiveDamage)
         {
             //rb.velocity = moveDir * moveSpeed * Time.deltaTime;
             rb.MovePosition(rb.position + moveDir * moveSpeed * Time.fixedDeltaTime);
@@ -169,13 +175,16 @@ public class Player : MonoBehaviour
         //StartCoroutine(StopMoving());
         //if (health <= 15)
         //{
+        
         moveSpeed = 0;
         timeCurrent += Time.deltaTime;
         if (timeCurrent >= timeNextHealth)
         {
             
             timeCurrent = 0;
+            animator.SetTrigger("Health");
             health = life;
+            StartCoroutine(StopMoving());
 
         }
         if (health >= 10)
@@ -198,11 +207,14 @@ public class Player : MonoBehaviour
     public void ReceiveDamage(float damage)
     {
         health -= damage;
+        StartCoroutine(StopMoving());
+        animator.SetTrigger("Hit");
         Debug.Log(hpPlayerMax + " : " + health);
         healthBar.UpdateHealthBar(hpPlayerMax, health);
-        if (health <= 0)
+        if (health <= 0.22f)
         {
-            Debug.Log("Muerto PLayer");
+            animator.SetTrigger("Died");
+            bx.enabled = false;
         }
     }
 
@@ -233,6 +245,7 @@ public class Player : MonoBehaviour
         {
             LevelUp(1);
         }
+        
     }
 
 
