@@ -5,6 +5,7 @@ using UnityEngine;
 public class DataPlayer 
 {
     public float healthPlayer;
+    public float healthMaxPlayer;
     public float levelPlayer;
     public float expPlayer;
     public int roomCurrent;

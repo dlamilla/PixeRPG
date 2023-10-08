@@ -7,33 +7,35 @@ public class ControllerDataGame : MonoBehaviour
 {
     private GameObject player;
     private GameObject room;
+    private GameObject bar;
     public string saveFile;
     public DataPlayer dataPlayer = new DataPlayer();
     [SerializeField] private float timeCurrent;
-    private bool isPlayerInRange;
+    //private bool isPlayerInRange;
 
     private void Awake()
     {
         saveFile = Application.dataPath + "/dataGameRPG.json";
         player = GameObject.FindGameObjectWithTag("Player");
         room = GameObject.Find("RoomsManager");
-        LoadData();
+        bar = GameObject.Find("HealthBar");
+        //LoadData();
     }
 
     private void Update()
     {
-        //if (Input.GetKey(KeyCode.F))
-        //{
-        //    timeCurrent += Time.deltaTime;
-        //    if (timeCurrent >= 5)
-        //    {
-        //        Debug.Log("Estas tocandooooo");
-        //        LoadData();
-        //        timeCurrent = 0;
-        //    }
-            
-        //}
-        if (Input.GetKey(KeyCode.F) && isPlayerInRange)
+        if (Input.GetKey(KeyCode.C))
+        {
+            //timeCurrent += Time.deltaTime;
+            //if (timeCurrent >= 5)
+            //{
+                Debug.Log("Estas tocandooooo");
+                LoadData();
+            //    timeCurrent = 0;
+            //}
+
+        }
+        if (Input.GetKey(KeyCode.F))
         {
             Debug.Log("Esta tocando 1 vez");
             SaveData();
@@ -52,7 +54,8 @@ public class ControllerDataGame : MonoBehaviour
             player.GetComponent<Player>().health = dataPlayer.healthPlayer;
             player.GetComponent<Player>().exp = dataPlayer.expPlayer;
             player.GetComponent<Player>().level = dataPlayer.levelPlayer;
-            room.GetComponent<RoomsManager>().OnRoom(dataPlayer.roomCurrent);
+            room.GetComponent<RoomsManager>().OnRoom2(dataPlayer.roomCurrent);
+            bar.GetComponent<HealthBar>().UpdateHealthBar(dataPlayer.healthMaxPlayer,dataPlayer.healthPlayer);
 
         }
         else
@@ -69,6 +72,7 @@ public class ControllerDataGame : MonoBehaviour
             posicionPlayer = player.transform.position,
             expPlayer = player.GetComponent<Player>().exp,
             healthPlayer = player.GetComponent<Player>().health,
+            healthMaxPlayer = player.GetComponent<Player>().hpPlayerMax,
             levelPlayer = player.GetComponent<Player>().level,
             roomCurrent = room.GetComponent<RoomsManager>().currentRoom
         };
@@ -82,7 +86,7 @@ public class ControllerDataGame : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            isPlayerInRange = true;
+            //isPlayerInRange = true;
             //dialogueMark.SetActive(true);
         }
     }
@@ -91,7 +95,7 @@ public class ControllerDataGame : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            isPlayerInRange = false;
+            //isPlayerInRange = false;
             //dialogueMark.SetActive(false);
         }
     }
