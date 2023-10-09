@@ -223,6 +223,7 @@ public class EnemyCustom : MonoBehaviour
 
         if (hpEnemy <= 0)
         {
+            GetComponent<LootBag>().InstantiateLoot(transform.position);
             Destroy(gameObject);
         }
     }
