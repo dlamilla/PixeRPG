@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -58,7 +59,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health > 0.22f && !isReceiveDamage)
+        if (health > 0 && !isReceiveDamage)
         {
             x = Input.GetAxisRaw("Horizontal");
             y = Input.GetAxisRaw("Vertical");
@@ -98,9 +99,8 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (health > 0.22f && !isReceiveDamage)
+        if (health > 0 && !isReceiveDamage)
         {
-            //rb.velocity = moveDir * moveSpeed * Time.deltaTime;
             rb.MovePosition(rb.position + moveDir * moveSpeed * Time.fixedDeltaTime);
             //Hit 
             if (x == 1) //Hit Right 
@@ -172,10 +172,6 @@ public class Player : MonoBehaviour
     }
     public void GiveHeath(float life)
     {
-        //StartCoroutine(StopMoving());
-        //if (health <= 15)
-        //{
-        
         moveSpeed = 0;
         timeCurrent += Time.deltaTime;
         if (timeCurrent >= timeNextHealth)
@@ -184,7 +180,6 @@ public class Player : MonoBehaviour
             timeCurrent = 0;
             animator.SetTrigger("Health");
             health = life;
-            StartCoroutine(StopMoving());
 
         }
         if (health >= 10)
@@ -193,9 +188,7 @@ public class Player : MonoBehaviour
         }
         
         Debug.Log(hpPlayerMax + " : " + health);
-        healthBar.UpdateHealthBar(hpPlayerMax, health);
-        //}
-        
+        healthBar.UpdateHealthBar(hpPlayerMax, health);        
     }
 
     public void GiveMoreDamage(float moreDamage)
@@ -211,11 +204,26 @@ public class Player : MonoBehaviour
         animator.SetTrigger("Hit");
         Debug.Log(hpPlayerMax + " : " + health);
         healthBar.UpdateHealthBar(hpPlayerMax, health);
-        if (health <= 0.22f)
+        isReceiveDamage = true;
+        if (health <= 0)
         {
-            animator.SetTrigger("Died");
-            bx.enabled = false;
+            StartCoroutine(ReloadGame());
         }
+    }
+
+    public void ResetDamage()
+    {
+        isReceiveDamage = false;
+    }
+
+    private IEnumerator ReloadGame()
+    {
+        animator.SetBool("Died",true);
+        yield return new WaitForSeconds(1.5f);
+        GameObject.Find("PruebaCheckPoint").GetComponent<ControllerDataGame>().LoadData();
+        animator.SetBool("Died", false);
+        isReceiveDamage = false;
+        Debug.Log("Murio y renaciste");
     }
 
     public void LevelUp(float levelUp)

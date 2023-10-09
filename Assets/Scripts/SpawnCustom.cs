@@ -65,7 +65,11 @@ public class SpawnCustom : MonoBehaviour
         {
             if (collision.gameObject.tag == "Player")
             {
-                collision.GetComponent<Player>().ReceiveDamage(damage);
+                float playerLife = collision.GetComponent<Player>().health;
+                if (playerLife > 0)
+                {
+                    collision.GetComponent<Player>().ReceiveDamage(damage);
+                }
             }
         }
 

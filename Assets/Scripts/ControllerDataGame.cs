@@ -10,7 +10,7 @@ public class ControllerDataGame : MonoBehaviour
     private GameObject bar;
     public string saveFile;
     public DataPlayer dataPlayer = new DataPlayer();
-    [SerializeField] private float timeCurrent;
+    [SerializeField] private Transform cameraGlobal;
     //private bool isPlayerInRange;
 
     private void Awake()
@@ -26,24 +26,19 @@ public class ControllerDataGame : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.C))
         {
-            //timeCurrent += Time.deltaTime;
-            //if (timeCurrent >= 5)
-            //{
-                Debug.Log("Estas tocandooooo");
-                LoadData();
-            //    timeCurrent = 0;
-            //}
+            Debug.Log("Cargar datos");
+            LoadData();
 
         }
         if (Input.GetKey(KeyCode.F))
         {
-            Debug.Log("Esta tocando 1 vez");
+            Debug.Log("Guardar datos");
             SaveData();
         }
     }
 
     //Metodo para cargar los datos del Player
-    private void LoadData()
+    public void LoadData()
     {
         if (File.Exists(saveFile))
         {
@@ -54,7 +49,8 @@ public class ControllerDataGame : MonoBehaviour
             player.GetComponent<Player>().health = dataPlayer.healthPlayer;
             player.GetComponent<Player>().exp = dataPlayer.expPlayer;
             player.GetComponent<Player>().level = dataPlayer.levelPlayer;
-            room.GetComponent<RoomsManager>().OnRoom2(dataPlayer.roomCurrent);
+            cameraGlobal.transform.position = dataPlayer.posicionCamera;
+            ChangeRoom(dataPlayer.roomCurrent);
             bar.GetComponent<HealthBar>().UpdateHealthBar(dataPlayer.healthMaxPlayer,dataPlayer.healthPlayer);
 
         }
@@ -65,7 +61,7 @@ public class ControllerDataGame : MonoBehaviour
     }
 
     //Metodo para guardar datos
-    private void SaveData()
+    public void SaveData()
     {
         DataPlayer newData = new DataPlayer()
         {
@@ -74,7 +70,8 @@ public class ControllerDataGame : MonoBehaviour
             healthPlayer = player.GetComponent<Player>().health,
             healthMaxPlayer = player.GetComponent<Player>().hpPlayerMax,
             levelPlayer = player.GetComponent<Player>().level,
-            roomCurrent = room.GetComponent<RoomsManager>().currentRoom
+            roomCurrent = room.GetComponent<RoomsManager>().currentRoom,
+            posicionCamera = cameraGlobal.transform.position
         };
 
         string charJSON = JsonUtility.ToJson(newData);
@@ -98,5 +95,10 @@ public class ControllerDataGame : MonoBehaviour
             //isPlayerInRange = false;
             //dialogueMark.SetActive(false);
         }
+    }
+
+    public void ChangeRoom(int roomNew)
+    {
+        Debug.Log(roomNew);
     }
 }

@@ -10,5 +10,5 @@ public class DataPlayer
     public float expPlayer;
     public int roomCurrent;
     public Vector3 posicionPlayer;
-
+    public Vector3 posicionCamera;
 }
