@@ -46,7 +46,7 @@ public class SpawnCustom : MonoBehaviour
                     break;
 
                 case TypeSpawn.PLANT_SHOOT:
-                    Debug.Log(player1.enabled + "Planta");
+                    Debug.Log(player1.enabled + "-Planta");
                     if (player1.enabled)
                     {
                         
@@ -101,8 +101,14 @@ public class SpawnCustom : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            DestroyProjectile();
-            other.gameObject.GetComponent<Player>().ReceiveDamage(damage);
+            
+            float playerLife = other.GetComponent<Player>().health;
+            if (playerLife > 0)
+            {
+                Debug.Log("Daño planta");
+                other.gameObject.GetComponent<Player>().ReceiveDamage(damage);
+                DestroyProjectile();
+            }
         }
     }
 

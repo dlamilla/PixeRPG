@@ -224,10 +224,11 @@ public class Player : MonoBehaviour
         animator.SetBool("Died",true);
         
         yield return new WaitForSeconds(1.5f);
+        //bx.enabled = false;
         GameObject.Find("PruebaCheckPoint").GetComponent<ControllerDataGame>().LoadData();
         animator.SetBool("Died", false);
         isReceiveDamage = false;
-        //bx.enabled = true;
+        
         Debug.Log("Murio y renaciste");
     }
 

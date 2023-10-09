@@ -137,7 +137,7 @@ MonoBehaviour:
   hpEnemy: 1
   speed: 10
   damage: 5
-  radiusAttack: 0.1
+  radiusAttack: 0.48
 --- !u!58 &3838012448203033701
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -153,4 +153,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.68
+  m_Radius: 0.86
