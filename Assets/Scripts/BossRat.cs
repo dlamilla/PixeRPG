@@ -134,7 +134,11 @@ public class BossRat : MonoBehaviour
         {
             if (collision.gameObject.tag == "Player")
             {
-                collision.GetComponent<Player>().ReceiveDamage(hitDamage);
+                float playerLife = collision.GetComponent<Player>().health;
+                if (playerLife > 0)
+                {
+                    collision.GetComponent<Player>().ReceiveDamage(hitDamage);
+                }
             }
         }
 

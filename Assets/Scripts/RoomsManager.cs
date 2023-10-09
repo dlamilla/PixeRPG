@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoomsManager : MonoBehaviour
 {
-    [SerializeField] private int currentRoom = 0;
+    [SerializeField] public int currentRoom = 0;
     [SerializeField] private List<GameObject> Rooms;
     [SerializeField] private Transform cameraGlobal;
 
@@ -12,7 +12,7 @@ public class RoomsManager : MonoBehaviour
     {
         StartCoroutine(WaitRoom(newRoom));   
     }
-    
+
     public IEnumerator WaitRoom(int newRoom)
     {
         float t = 0;

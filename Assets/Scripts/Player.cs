@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     [Header("Live")]
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float hpPlayerMax;
+    [SerializeField] public float hpPlayerMax;
 
     [Header("Give Health")]
     [SerializeField] private float timeNextHealth;
@@ -14,9 +15,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float timeCurrent;
 
     [Header("Statistics")]
-    [SerializeField] private float exp;
+    [SerializeField] public float exp;
     [SerializeField] private float expMax;
-    [SerializeField] private float level;
+    [SerializeField] public float level;
     [SerializeField] private float damageExtra;
 
     [Header("Hit")]
@@ -29,7 +30,7 @@ public class Player : MonoBehaviour
 
     [Header("HealthBar")]
     [SerializeField] private HealthBar healthBar;
-    private float health;
+    [SerializeField] public float health;
 
     [Header("Doors Bosses")]
     [SerializeField] private GameObject doorBoss1;
@@ -38,14 +39,17 @@ public class Player : MonoBehaviour
     private float resetSpeed;
     private float x, y;
     private bool isWalking;
+    private bool isReceiveDamage;
     private Vector2 moveDir;
     private Rigidbody2D rb;
     private Animator animator;
+    private BoxCollider2D bx;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        bx = GetComponent<BoxCollider2D>();
         
         health = hpPlayerMax;
         healthBar.UpdateHealthBar(hpPlayerMax, health);
@@ -55,46 +59,48 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        x = Input.GetAxisRaw("Horizontal");
-        y = Input.GetAxisRaw("Vertical");
-
-        if (x != 0 || y != 0)
+        if (health > 0 && !isReceiveDamage)
         {
-            animator.SetFloat("X",x);
-            animator.SetFloat("Y",y);
-            if (!isWalking)
+            x = Input.GetAxisRaw("Horizontal");
+            y = Input.GetAxisRaw("Vertical");
+
+            if (x != 0 || y != 0)
             {
-                isWalking = true;
-                animator.SetBool("IsMoving", isWalking);
-            }
-        }else
-        {
-            if (isWalking)
+                animator.SetFloat("X",x);
+                animator.SetFloat("Y",y);
+                if (!isWalking)
+                {
+                    isWalking = true;
+                    animator.SetBool("IsMoving", isWalking);
+                }
+            }else
             {
-                isWalking = false;
-                animator.SetBool("IsMoving", isWalking);
+                if (isWalking)
+                {
+                    isWalking = false;
+                    animator.SetBool("IsMoving", isWalking);
+                }
+            }
+            moveDir = new Vector2(x, y).normalized;
+
+            if (tiempoEntreAtaques > 0)
+            {
+                tiempoSiguienteAtaque -= Time.deltaTime;
+            }
+            if (Input.GetKeyDown(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0)
+            {
+                Golpe();
+                tiempoSiguienteAtaque = tiempoEntreAtaques;
             }
         }
-        moveDir = new Vector2(x, y).normalized;
 
-        if (tiempoEntreAtaques > 0)
-        {
-            tiempoSiguienteAtaque -= Time.deltaTime;
-        }
-        if (Input.GetKeyDown(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0)
-        {
-            Golpe();
-            tiempoSiguienteAtaque = tiempoEntreAtaques;
-        }
 
-        
     }
 
     private void FixedUpdate()
     {
-        if (health > 0)
+        if (health > 0 && !isReceiveDamage)
         {
-            //rb.velocity = moveDir * moveSpeed * Time.deltaTime;
             rb.MovePosition(rb.position + moveDir * moveSpeed * Time.fixedDeltaTime);
             //Hit 
             if (x == 1) //Hit Right 
@@ -166,15 +172,13 @@ public class Player : MonoBehaviour
     }
     public void GiveHeath(float life)
     {
-        //StartCoroutine(StopMoving());
-        //if (health <= 15)
-        //{
         moveSpeed = 0;
         timeCurrent += Time.deltaTime;
         if (timeCurrent >= timeNextHealth)
         {
             
             timeCurrent = 0;
+            animator.SetTrigger("Health");
             health = life;
 
         }
@@ -184,9 +188,7 @@ public class Player : MonoBehaviour
         }
         
         Debug.Log(hpPlayerMax + " : " + health);
-        healthBar.UpdateHealthBar(hpPlayerMax, health);
-        //}
-        
+        healthBar.UpdateHealthBar(hpPlayerMax, health);        
     }
 
     public void GiveMoreDamage(float moreDamage)
@@ -198,12 +200,35 @@ public class Player : MonoBehaviour
     public void ReceiveDamage(float damage)
     {
         health -= damage;
+        StartCoroutine(StopMoving());
+        animator.SetTrigger("Hit");
         Debug.Log(hpPlayerMax + " : " + health);
         healthBar.UpdateHealthBar(hpPlayerMax, health);
+        isReceiveDamage = true;
         if (health <= 0)
         {
-            Debug.Log("Muerto PLayer");
+            bx.enabled = false;
+            Debug.Log(bx.enabled + "Muerto");
+            StartCoroutine(ReloadGame());
         }
+    }
+
+    public void ResetDamage()
+    {
+        isReceiveDamage = false;
+        bx.enabled = true;
+    }
+
+    private IEnumerator ReloadGame()
+    {
+        animator.SetBool("Died",true);
+        
+        yield return new WaitForSeconds(1.5f);
+        GameObject.Find("PruebaCheckPoint").GetComponent<ControllerDataGame>().LoadData();
+        animator.SetBool("Died", false);
+        isReceiveDamage = false;
+        //bx.enabled = true;
+        Debug.Log("Murio y renaciste");
     }
 
     public void LevelUp(float levelUp)
@@ -233,6 +258,7 @@ public class Player : MonoBehaviour
         {
             LevelUp(1);
         }
+        
     }
 
 

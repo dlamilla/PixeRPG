@@ -46,12 +46,14 @@ public class EnemyCustom : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
     private Transform player;
+    private BoxCollider2D player1;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player").transform;
+        player1 = GameObject.FindWithTag("Player").GetComponent<BoxCollider2D>();
         changeDirections = GetComponent<ChangeAnimation>();
 
         //navMeshAgent = GetComponent<NavMeshAgent>();
@@ -70,6 +72,7 @@ public class EnemyCustom : MonoBehaviour
             switch (category)
             {
                 case TypeEnemys.ENEMY_SPIDER:
+                    
                     if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch && Vector2.Distance(transform.position, player.transform.position) > radiusAttack)
                     {
                         // if (currentState == EnemyState.IDLE || currentState == EnemyState.WALK && currentState != EnemyState.STAGGER)
@@ -103,7 +106,11 @@ public class EnemyCustom : MonoBehaviour
                         //Debug.Log("Condicional 3");
                         // if (currentState == EnemyState.WALK && currentState != EnemyState.ATTACK)
                         //{
-                        StartCoroutine(Attack());
+                        if (player1.enabled)
+                        {
+                            StartCoroutine(Attack());
+                        }
+                        
                         //}
                     }
 
@@ -112,12 +119,15 @@ public class EnemyCustom : MonoBehaviour
                     
                     if (Vector2.Distance(transform.position, player.transform.position) <= radiusShoot)
                     {
-                        anim.SetBool("Attack", true);
-                        timeNext += Time.deltaTime;
-                        if (timeNext >= timeSpwan)
+                        if (player1.enabled)
                         {
-                            timeNext = 0;
-                            Instantiate(plantShoot, transform.position, Quaternion.identity);
+                            anim.SetBool("Attack", true);
+                            timeNext += Time.deltaTime;
+                            if (timeNext >= timeSpwan)
+                            {
+                                timeNext = 0;
+                                Instantiate(plantShoot, transform.position, Quaternion.identity);
+                            }
                         }
                     }
                     else
@@ -244,7 +254,12 @@ public class EnemyCustom : MonoBehaviour
         {
             if (collision.gameObject.tag == "Player")
             {
-                collision.GetComponent<Player>().ReceiveDamage(hitDamage);
+                float playerLife = collision.GetComponent<Player>().health;
+                if (playerLife > 0)
+                {
+                    collision.GetComponent<Player>().ReceiveDamage(hitDamage);
+                }
+                
             }
         }
 
