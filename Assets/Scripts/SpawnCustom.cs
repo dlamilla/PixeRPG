@@ -21,12 +21,14 @@ public class SpawnCustom : MonoBehaviour
 
     private Transform player;
     private ChangeAnimation changeDirections;
+    private BoxCollider2D player1;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
         changeDirections = GetComponent<ChangeAnimation>();
         target = new Vector2(player.position.x, player.position.y);
+        player1 = GameObject.FindWithTag("Player").GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -44,11 +46,16 @@ public class SpawnCustom : MonoBehaviour
                     break;
 
                 case TypeSpawn.PLANT_SHOOT:
-                    transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
-
-                    if (transform.position.x == target.x && transform.position.y == target.y)
+                    Debug.Log(player1.enabled + "Planta");
+                    if (player1.enabled)
                     {
-                        DestroyProjectile();
+                        
+                        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+
+                        if (transform.position.x == target.x && transform.position.y == target.y)
+                        {
+                            DestroyProjectile();
+                        }
                     }
 
                     break;

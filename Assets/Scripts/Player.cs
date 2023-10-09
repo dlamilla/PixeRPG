@@ -207,6 +207,8 @@ public class Player : MonoBehaviour
         isReceiveDamage = true;
         if (health <= 0)
         {
+            bx.enabled = false;
+            Debug.Log(bx.enabled + "Muerto");
             StartCoroutine(ReloadGame());
         }
     }
@@ -214,15 +216,18 @@ public class Player : MonoBehaviour
     public void ResetDamage()
     {
         isReceiveDamage = false;
+        bx.enabled = true;
     }
 
     private IEnumerator ReloadGame()
     {
         animator.SetBool("Died",true);
+        
         yield return new WaitForSeconds(1.5f);
         GameObject.Find("PruebaCheckPoint").GetComponent<ControllerDataGame>().LoadData();
         animator.SetBool("Died", false);
         isReceiveDamage = false;
+        //bx.enabled = true;
         Debug.Log("Murio y renaciste");
     }
 

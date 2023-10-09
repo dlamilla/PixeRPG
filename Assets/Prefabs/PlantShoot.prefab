@@ -136,7 +136,7 @@ MonoBehaviour:
   category: 1
   hpEnemy: 1
   speed: 10
-  damage: 0.5
+  damage: 5
   radiusAttack: 0.1
 --- !u!58 &3838012448203033701
 CircleCollider2D:

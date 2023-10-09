@@ -100,5 +100,6 @@ public class ControllerDataGame : MonoBehaviour
     public void ChangeRoom(int roomNew)
     {
         Debug.Log(roomNew);
+        GameObject.Find("RoomsManager").GetComponent<RoomsManager>().OnRoom(roomNew);
     }
 }

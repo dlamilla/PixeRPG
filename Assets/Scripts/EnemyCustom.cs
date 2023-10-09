@@ -119,12 +119,15 @@ public class EnemyCustom : MonoBehaviour
                     
                     if (Vector2.Distance(transform.position, player.transform.position) <= radiusShoot)
                     {
-                        anim.SetBool("Attack", true);
-                        timeNext += Time.deltaTime;
-                        if (timeNext >= timeSpwan)
+                        if (player1.enabled)
                         {
-                            timeNext = 0;
-                            Instantiate(plantShoot, transform.position, Quaternion.identity);
+                            anim.SetBool("Attack", true);
+                            timeNext += Time.deltaTime;
+                            if (timeNext >= timeSpwan)
+                            {
+                                timeNext = 0;
+                                Instantiate(plantShoot, transform.position, Quaternion.identity);
+                            }
                         }
                     }
                     else
