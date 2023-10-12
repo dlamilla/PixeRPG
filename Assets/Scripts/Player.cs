@@ -225,7 +225,7 @@ public class Player : MonoBehaviour
         
         yield return new WaitForSeconds(1.5f);
         //bx.enabled = false;
-        GameObject.Find("PruebaCheckPoint").GetComponent<ControllerDataGame>().LoadData();
+        GameObject.Find("CheckPoint").GetComponent<ControllerDataGame>().LoadData();
         animator.SetBool("Died", false);
         isReceiveDamage = false;
         
