@@ -1,0 +1,575 @@
+fileFormatVersion: 2
+guid: 803a381b10ae9a047b0160311b85ea50
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 342
+        width: 78
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9143b9dc4e8762d4e8fd3b1a9c4cb78f
+      internalID: 187347470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 342
+        width: 77
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 177aaf68dca66334298c53f1b4f52442
+      internalID: 2063636593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 342
+        width: 77
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70207c7188f894f4891f5881ae78f8ab
+      internalID: -20936439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 342
+        width: 79
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f52be9ee35811b54d91e825cf0373b0d
+      internalID: 1526292598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 342
+        width: 78
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e86a687f3c6655b4d987fc3d0a448be3
+      internalID: 1708060380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 230
+        width: 78
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4eb01b371d0fa342be524ec2c8b523f
+      internalID: 1840940177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 234
+        width: 76
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fe32e536d8e5b449b7a4ee79e3a4755
+      internalID: 1556225663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 234
+        width: 79
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96e4776c6f5aabc4f96015052e9bab56
+      internalID: 1454422554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 233
+        width: 78
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ab15959e9d5b614aafa10e7639524fa
+      internalID: 451666007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 234
+        width: 76
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 090c4d5bb0abe694a9b216b9b1b592f8
+      internalID: -788327334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 121
+        width: 76
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd094c545db7b804b91a9f099a0d8e9a
+      internalID: -418684014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 121
+        width: 75
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c60daad04967ac242b18775dc4efb4ec
+      internalID: 477401214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 119
+        width: 95
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc6e97de818ed6c4f8306c5fa6810c17
+      internalID: -261337090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 119
+        width: 89
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6ef04930c127bf4c90c9f179b3d3d9f
+      internalID: -304794294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 119
+        width: 92
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07e27235fa75cee4c9e1129847bd871d
+      internalID: 140633271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 7
+        width: 90
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8fe3a1fbcbc9d14e8e2e3879e94991d
+      internalID: -167823466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 7
+        width: 92
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8603c48c46a8fd84da13ff0b0a4f8cc6
+      internalID: 816234109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 7
+        width: 95
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1ef299912049a9489465f22b5abe135
+      internalID: 393538012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 7
+        width: 89
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a724b4f92e4a2f4191cf2da969a306b
+      internalID: 1895010923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion caminando-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 7
+        width: 90
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dd0e006d4e5d3a4898eb444b1758b0d
+      internalID: -1869147719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      escorpion caminando-Sheet_0: 187347470
+      escorpion caminando-Sheet_1: 2063636593
+      escorpion caminando-Sheet_10: -418684014
+      escorpion caminando-Sheet_11: 477401214
+      escorpion caminando-Sheet_12: -261337090
+      escorpion caminando-Sheet_13: -304794294
+      escorpion caminando-Sheet_14: 140633271
+      escorpion caminando-Sheet_15: -167823466
+      escorpion caminando-Sheet_16: 816234109
+      escorpion caminando-Sheet_17: 393538012
+      escorpion caminando-Sheet_18: 1895010923
+      escorpion caminando-Sheet_19: -1869147719
+      escorpion caminando-Sheet_2: -20936439
+      escorpion caminando-Sheet_3: 1526292598
+      escorpion caminando-Sheet_4: 1708060380
+      escorpion caminando-Sheet_5: 1840940177
+      escorpion caminando-Sheet_6: 1556225663
+      escorpion caminando-Sheet_7: 1454422554
+      escorpion caminando-Sheet_8: 451666007
+      escorpion caminando-Sheet_9: -788327334
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

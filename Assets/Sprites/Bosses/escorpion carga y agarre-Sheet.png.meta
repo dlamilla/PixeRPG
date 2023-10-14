@@ -1,0 +1,1477 @@
+fileFormatVersion: 2
+guid: 7fc344bfa57fb02479f08fdc60ff44a1
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 1159
+        width: 78
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77f1f37a8a928b64bbca38557c200ec6
+      internalID: 1475538955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 1157
+        width: 79
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 477c226e4b689b941badf2603ab9e2c8
+      internalID: -185744370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1156
+        width: 79
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1433ed179c8d40d4eb4859e1b21e7ec4
+      internalID: 1571416617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 1155
+        width: 80
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22865a76bc258b34fa7c96ba8cf79996
+      internalID: -276970590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 1154
+        width: 83
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf99f91e0a2110f418b132890e287686
+      internalID: 1707561401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 1159
+        width: 78
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e135295bd98aaaa41b3420399ff6ce97
+      internalID: -1592154001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 897
+        y: 1172
+        width: 78
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b9074742111a5b40a471bbd0bc9e819
+      internalID: -926676132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 1164
+        width: 78
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c9866dc103f36b4981ba9d6dddd817e
+      internalID: -2077613812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 999
+        width: 83
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b50c982ce4c944342a0ccde913d1cedc
+      internalID: 366145154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 1012
+        width: 78
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66ce5ecb26712074aab8eed5317e15a7
+      internalID: -1642585875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 1004
+        width: 78
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 136f7aa86d0071c4bbb4b5f74b240169
+      internalID: 1151396272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 1004
+        width: 77
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adddcf3bd9edcd246963a664eb1803f6
+      internalID: -810927505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 1004
+        width: 77
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 441c8e25260181e4d945c1fa7754eb2b
+      internalID: -736953776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 1004
+        width: 77
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 554ae3334c7cdfb42a590a5b6b3f1762
+      internalID: 792986529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1003
+        width: 77
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35933b00c5cbbd84d99f44faddf703f3
+      internalID: 955457687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 1004
+        width: 77
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4452681380fd6a148b9d74b0745c9ef7
+      internalID: 614508323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 843
+        width: 76
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da243c5f3c037b946a3801270bce462d
+      internalID: 1996432868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 845
+        width: 76
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9596b70f0e4917245b361d1148c9dd60
+      internalID: -1868227072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 847
+        width: 77
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 741e2adb75c22ca49877e3c747dfda09
+      internalID: -697240667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 847
+        width: 78
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03fc056151648d94b9ce55d3db5a0c32
+      internalID: 224776527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 847
+        width: 79
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e8b217c36c4c964bbca2d2a5ee06131
+      internalID: 1746584713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 847
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4348beb37a33c6c45a13073bdea62a9c
+      internalID: -839515145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 831
+        width: 76
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 207e61a052a24ad4786f3e6a7f6b5b96
+      internalID: -1960447661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 818
+        width: 75
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0da9ad23c427a4d44be1db7437a455a0
+      internalID: -705483061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 672
+        width: 76
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adf75b6648e2d924083c62916a043513
+      internalID: 262566432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 641
+        width: 75
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7903c5deb6f4f6419e1c592520ff9ba
+      internalID: 580773053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 664
+        width: 76
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5923c735446680d4e8de50e36606e6c1
+      internalID: -1496081867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 664
+        width: 75
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3246e788960b6fe408efd1787c0cb1b4
+      internalID: -166140391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 664
+        width: 75
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa56677a5c7b41b4dabcc8752b73e9a4
+      internalID: -600772436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 664
+        width: 75
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc541ba793133b64abc27f03f69d9eca
+      internalID: 988856219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 669
+        width: 75
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f33552caf5b5934eb5df8a8fedc8bdd
+      internalID: -1755742194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 662
+        width: 76
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 644dc8a1872ba5d428e7df8a9c08fb14
+      internalID: -948643067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 505
+        width: 76
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 561ba0e7bd78dc94ca92e6bbde9a9cb9
+      internalID: -86278421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 516
+        width: 92
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2799428bf8d71a246912442b5892cfcd
+      internalID: -197091922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 516
+        width: 88
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee45cf917da788c44b150dfd841ed440
+      internalID: -224226195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 520
+        width: 86
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9860b934e72d57e4593056e509b2a926
+      internalID: -751672510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 520
+        width: 81
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e43036c87a687c448a463a08c2b50878
+      internalID: -2045469923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 520
+        width: 81
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da9b565cb12d7134587e53aea3495352
+      internalID: 1150134361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 520
+        width: 95
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9198a02ec76a834f93a990c7dc8edc9
+      internalID: -1090318445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 1046
+        y: 516
+        width: 106
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 192360967afd2854495de637ef057c34
+      internalID: -1943580528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 355
+        width: 106
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ef010bcc6796664aa1fe93d27eafce4
+      internalID: -757589612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 356
+        width: 95
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e5a021dc1e2ac64f90492c2b5f3d6f7
+      internalID: -2102514138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 356
+        width: 106
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 614e6a20519e6594d8d6658eea32eebd
+      internalID: -508912332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 355
+        width: 109
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad84c16c536e8c04ea9f3c614223aaca
+      internalID: -1261382283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 355
+        width: 108
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dd8502a1ea634a4ab6b936f902c97e0
+      internalID: 360245500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 355
+        width: 109
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dab2ab159117a643bd74673e2482aa1
+      internalID: 1340274993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 355
+        width: 108
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a96e25a06dc454a42a6244da3f100659
+      internalID: 951179629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 356
+        width: 92
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c24b22dde88eafa48a93328e62cb0b3e
+      internalID: -1804666852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 196
+        width: 88
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f65be1734906615488e83642cec6d055
+      internalID: -1238878965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_49
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 200
+        width: 86
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13a9a53a237bc3e419d321803bd4f3b5
+      internalID: -1605409319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_50
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 200
+        width: 81
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd765e9d3afb0ca45bc60cf93e6ad199
+      internalID: -2126818275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_51
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 200
+        width: 81
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bd22084e06492547a262cd690effa45
+      internalID: -234140531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_52
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 200
+        width: 95
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce0b4ba4726835648a0532060b7b4ff2
+      internalID: -1909638917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_53
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 196
+        width: 106
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5edf526ed19c2847924b8ac1e79110d
+      internalID: 883026094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_54
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 195
+        width: 106
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8661265c14f691e47a643410a908f412
+      internalID: 1960550064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_55
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 196
+        width: 95
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1408f388641d7c4e8f19fda237a9daa
+      internalID: -632148017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 36
+        width: 106
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e6f6100630140a4789c9404f4c754cc
+      internalID: -1840614065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_57
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 35
+        width: 109
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2cbf5cf0209c244b96c28e67e5f0ec8
+      internalID: 1306685227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_58
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 35
+        width: 108
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 959f227048d86764eb1334c9ed3a6d93
+      internalID: 1558974281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_59
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 35
+        width: 109
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d57156ac70b6b1b4a9255be1ddee0027
+      internalID: 834679633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion carga y agarre-Sheet_60
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 35
+        width: 108
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52fa3c01a857f0e41ae712084fd89da6
+      internalID: -794361982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      escorpion carga y agarre-Sheet_0: 1475538955
+      escorpion carga y agarre-Sheet_1: -185744370
+      escorpion carga y agarre-Sheet_10: 1151396272
+      escorpion carga y agarre-Sheet_11: -810927505
+      escorpion carga y agarre-Sheet_12: -736953776
+      escorpion carga y agarre-Sheet_13: 792986529
+      escorpion carga y agarre-Sheet_14: 955457687
+      escorpion carga y agarre-Sheet_15: 614508323
+      escorpion carga y agarre-Sheet_16: 1996432868
+      escorpion carga y agarre-Sheet_17: -1868227072
+      escorpion carga y agarre-Sheet_18: -697240667
+      escorpion carga y agarre-Sheet_19: 224776527
+      escorpion carga y agarre-Sheet_2: 1571416617
+      escorpion carga y agarre-Sheet_20: 1746584713
+      escorpion carga y agarre-Sheet_21: -839515145
+      escorpion carga y agarre-Sheet_22: -1960447661
+      escorpion carga y agarre-Sheet_23: -705483061
+      escorpion carga y agarre-Sheet_24: 262566432
+      escorpion carga y agarre-Sheet_25: 580773053
+      escorpion carga y agarre-Sheet_26: -1496081867
+      escorpion carga y agarre-Sheet_27: -166140391
+      escorpion carga y agarre-Sheet_28: -600772436
+      escorpion carga y agarre-Sheet_29: 988856219
+      escorpion carga y agarre-Sheet_3: -276970590
+      escorpion carga y agarre-Sheet_30: -1755742194
+      escorpion carga y agarre-Sheet_31: -948643067
+      escorpion carga y agarre-Sheet_32: -86278421
+      escorpion carga y agarre-Sheet_33: -197091922
+      escorpion carga y agarre-Sheet_34: -224226195
+      escorpion carga y agarre-Sheet_35: -751672510
+      escorpion carga y agarre-Sheet_36: -2045469923
+      escorpion carga y agarre-Sheet_37: 1150134361
+      escorpion carga y agarre-Sheet_38: -1090318445
+      escorpion carga y agarre-Sheet_39: -1943580528
+      escorpion carga y agarre-Sheet_4: 1707561401
+      escorpion carga y agarre-Sheet_40: -757589612
+      escorpion carga y agarre-Sheet_41: -2102514138
+      escorpion carga y agarre-Sheet_42: -508912332
+      escorpion carga y agarre-Sheet_43: -1261382283
+      escorpion carga y agarre-Sheet_44: 360245500
+      escorpion carga y agarre-Sheet_45: 1340274993
+      escorpion carga y agarre-Sheet_46: 951179629
+      escorpion carga y agarre-Sheet_47: -1804666852
+      escorpion carga y agarre-Sheet_48: -1238878965
+      escorpion carga y agarre-Sheet_49: -1605409319
+      escorpion carga y agarre-Sheet_5: -1592154001
+      escorpion carga y agarre-Sheet_50: -2126818275
+      escorpion carga y agarre-Sheet_51: -234140531
+      escorpion carga y agarre-Sheet_52: -1909638917
+      escorpion carga y agarre-Sheet_53: 883026094
+      escorpion carga y agarre-Sheet_54: 1960550064
+      escorpion carga y agarre-Sheet_55: -632148017
+      escorpion carga y agarre-Sheet_56: -1840614065
+      escorpion carga y agarre-Sheet_57: 1306685227
+      escorpion carga y agarre-Sheet_58: 1558974281
+      escorpion carga y agarre-Sheet_59: 834679633
+      escorpion carga y agarre-Sheet_6: -926676132
+      escorpion carga y agarre-Sheet_60: -794361982
+      escorpion carga y agarre-Sheet_7: -2077613812
+      escorpion carga y agarre-Sheet_8: 366145154
+      escorpion carga y agarre-Sheet_9: -1642585875
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
