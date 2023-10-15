@@ -11,6 +11,7 @@ public class ControllerDataGame : MonoBehaviour
     public string saveFile;
     public DataPlayer dataPlayer = new DataPlayer();
     [SerializeField] private Transform cameraGlobal;
+    [SerializeField] private float timeCurrent;
     //private bool isPlayerInRange;
 
     private void Awake()
@@ -97,9 +98,26 @@ public class ControllerDataGame : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        timeCurrent = Time.deltaTime;
+        if (timeCurrent >= 0.02f)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+             {
+            
+            
+                SaveData();
+                timeCurrent = 0;
+                Debug.Log("Partida guardada backup");
+            }
+        }
+    }
+
     public void ChangeRoom(int roomNew)
     {
         Debug.Log(roomNew);
         GameObject.Find("RoomsManager").GetComponent<RoomsManager>().OnRoom(roomNew);
     }
+
 }

@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health > 0 && !isReceiveDamage)
+        if (health > 0 && !isReceiveDamage && moveSpeed > 0)
         {
             x = Input.GetAxisRaw("Horizontal");
             y = Input.GetAxisRaw("Vertical");
@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (health > 0 && !isReceiveDamage)
+        if (health > 0 && !isReceiveDamage && moveSpeed > 0)
         {
             rb.MovePosition(rb.position + moveDir * moveSpeed * Time.fixedDeltaTime);
             //Hit 
@@ -142,6 +142,13 @@ public class Player : MonoBehaviour
     {
         moveSpeed = 0f;
         yield return new WaitForSeconds(timeForAttack);
+        moveSpeed = resetSpeed;
+    }
+
+    IEnumerator StopMovingAfterDied()
+    {
+        moveSpeed = 0f;
+        yield return new WaitForSeconds(1f);
         moveSpeed = resetSpeed;
     }
 
@@ -188,7 +195,6 @@ public class Player : MonoBehaviour
             moveSpeed = resetSpeed;
         }
         
-        Debug.Log(hpPlayerMax + " : " + health);
         healthBar.UpdateHealthBar(hpPlayerMax, health);        
     }
 
@@ -203,13 +209,11 @@ public class Player : MonoBehaviour
         health -= damage;
         StartCoroutine(StopMoving());
         animator.SetTrigger("Hit");
-        Debug.Log(hpPlayerMax + " : " + health);
         healthBar.UpdateHealthBar(hpPlayerMax, health);
         isReceiveDamage = true;
         if (health <= 0)
         {
             bx.enabled = false;
-            Debug.Log(bx.enabled + "Muerto");
             StartCoroutine(ReloadGame());
         }
     }
@@ -227,10 +231,9 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         //bx.enabled = false;
         GameObject.FindWithTag("CheckPoint").GetComponent<ControllerDataGame>().LoadData();
+        StartCoroutine(StopMovingAfterDied());
         animator.SetBool("Died", false);
         isReceiveDamage = false;
-        
-        Debug.Log("Murio y renaciste");
     }
 
     public void LevelUp(float levelUp)
