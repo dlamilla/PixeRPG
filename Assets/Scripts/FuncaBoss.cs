@@ -134,6 +134,7 @@ public class FuncaBoss : MonoBehaviour
         if (hpEnemy <= 0)
         {
             target.GetComponent<Player>().LevelUp(1);
+            healthBarBoss.SetActive(false);
             Debug.Log("Muerto");
         }
     }

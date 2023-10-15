@@ -89,7 +89,8 @@ public class Player : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0)
             {
-                Golpe();
+                animator.SetTrigger("Golpe");
+                StartCoroutine(StopMoving());
                 tiempoSiguienteAtaque = tiempoEntreAtaques;
             }
         }
@@ -146,8 +147,8 @@ public class Player : MonoBehaviour
 
     private void Golpe()
     {
-        animator.SetTrigger("Golpe");
-        StartCoroutine(StopMoving());
+        //animator.SetTrigger("Golpe");
+        //StartCoroutine(StopMoving());
         Collider2D[] objetos = Physics2D.OverlapCircleAll(controladorGolpe.position, radioGolpe);
 
         foreach (Collider2D collision in objetos)
@@ -172,11 +173,11 @@ public class Player : MonoBehaviour
     }
     public void GiveHeath(float life)
     {
-        moveSpeed = 0;
+        
         timeCurrent += Time.deltaTime;
         if (timeCurrent >= timeNextHealth)
         {
-            
+            moveSpeed = 0;
             timeCurrent = 0;
             animator.SetTrigger("Health");
             health = life;
@@ -225,7 +226,7 @@ public class Player : MonoBehaviour
         
         yield return new WaitForSeconds(1.5f);
         //bx.enabled = false;
-        GameObject.Find("CheckPoint").GetComponent<ControllerDataGame>().LoadData();
+        GameObject.FindWithTag("CheckPoint").GetComponent<ControllerDataGame>().LoadData();
         animator.SetBool("Died", false);
         isReceiveDamage = false;
         

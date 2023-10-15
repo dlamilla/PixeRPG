@@ -24,17 +24,17 @@ public class ControllerDataGame : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.C))
-        {
-            Debug.Log("Cargar datos");
-            LoadData();
+        //if (Input.GetKey(KeyCode.C))
+        //{
+        //    Debug.Log("Cargar datos");
+        //    LoadData();
 
-        }
-        if (Input.GetKey(KeyCode.F))
-        {
-            Debug.Log("Guardar datos");
-            SaveData();
-        }
+        //}
+        //if (Input.GetKey(KeyCode.F))
+        //{
+        //    Debug.Log("Guardar datos");
+        //    SaveData();
+        //}
     }
 
     //Metodo para cargar los datos del Player
@@ -83,8 +83,8 @@ public class ControllerDataGame : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //isPlayerInRange = true;
-            //dialogueMark.SetActive(true);
+            SaveData();
+            Debug.Log("Partida guardada");
         }
     }
 
@@ -92,8 +92,8 @@ public class ControllerDataGame : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //isPlayerInRange = false;
-            //dialogueMark.SetActive(false);
+            //SaveData();
+            //Debug.Log("Partida guardada 2");
         }
     }
 
