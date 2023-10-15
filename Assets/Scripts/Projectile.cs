@@ -34,12 +34,13 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            DestroyProjectile();
+            
             //other.gameObject.GetComponent<Player>().ReceiveDamage(hitDamage);
             float playerLife = other.GetComponent<Player>().health;
             if (playerLife > 0)
             {
                 other.GetComponent<Player>().ReceiveDamage(hitDamage);
+                DestroyProjectile();
             }
         }
     }

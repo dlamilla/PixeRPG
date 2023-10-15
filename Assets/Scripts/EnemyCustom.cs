@@ -9,12 +9,6 @@ public enum TypeEnemys{
     ENEMY_BAT
 }
 
-//public enum EnemyState{
-//    IDLE,
-//    WALK,
-//    ATTACK,
-//    STAGGER
-//}
 [RequireComponent(typeof(ChangeAnimation))]
 public class EnemyCustom : MonoBehaviour
 {
@@ -60,7 +54,7 @@ public class EnemyCustom : MonoBehaviour
         //navMeshAgent.updateRotation = false;
         //navMeshAgent.updateUpAxis = false;
 
-        //currentState = EnemyState.IDLE;
+        
         anim.SetBool("isRunning", true);
     }
 
@@ -75,19 +69,16 @@ public class EnemyCustom : MonoBehaviour
                     
                     if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch && Vector2.Distance(transform.position, player.transform.position) > radiusAttack)
                     {
-                        // if (currentState == EnemyState.IDLE || currentState == EnemyState.WALK && currentState != EnemyState.STAGGER)
-                        // {
+                        
                         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
                         Vector2 temp = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
                         changeDirections.changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
-                        //ChangeState(EnemyState.WALK);
-                        //Debug.Log("Condicional 1");
+                        
                         anim.SetBool("isRunning", true);
-                        // }
+                        
                     }
                     else if (Vector2.Distance(transform.position, player.transform.position) > radiusSearch)
                     {
-                        //Debug.Log("Condicional 2");
                         anim.SetBool("isRunning", true);
 
                         if (transform.position != waypoints[currentPoint].transform.position)
@@ -103,15 +94,11 @@ public class EnemyCustom : MonoBehaviour
                     }
                     else if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch && Vector2.Distance(transform.position, player.transform.position) <= radiusAttack)
                     {
-                        //Debug.Log("Condicional 3");
-                        // if (currentState == EnemyState.WALK && currentState != EnemyState.ATTACK)
-                        //{
+                        
                         if (player1.enabled)
                         {
                             StartCoroutine(Attack());
                         }
-                        
-                        //}
                     }
 
                     break;
@@ -157,63 +144,13 @@ public class EnemyCustom : MonoBehaviour
         }
     }
 
-    //private void SetAnimFloat(Vector2 setVector)
-    //{
-    //    anim.SetFloat("X", setVector.x);
-    //    anim.SetFloat("Y", setVector.y);
-    //}
-
-    //public void changeAnim(Vector2 direction)
-    //{
-    //    if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
-    //    {
-    //        if (direction.x > 0)
-    //        {
-    //            SetAnimFloat(Vector2.right);
-    //        }
-    //        else if (direction.x < 0)
-    //        {
-    //            SetAnimFloat(Vector2.left);
-    //        }
-    //    }
-    //    else if (Mathf.Abs(direction.x) < Mathf.Abs(direction.y))
-    //    {
-    //        if (direction.y > 0)
-    //        {
-    //            SetAnimFloat(Vector2.up);
-    //        }
-    //        else if (direction.y < 0)
-    //        {
-    //            SetAnimFloat(Vector2.down);
-    //        }
-    //    }
-    //}
-    //public void ChangeState(EnemyState newState)
-    //{
-    //    if (currentState != newState)
-    //    {
-    //        currentState = newState;
-    //    }
-    //}
 
     IEnumerator Attack()
     {
-        //Collider2D[] objetos = Physics2D.OverlapCircleAll(transform.position, radiusAttack);
-
-        //foreach (Collider2D collision in objetos)
-        //{
-        //    if (collision.gameObject.tag == "Player")
-        //    {
-        //        Debug.Log("Golpe");
-        //        collision.GetComponent<Player>().ReceiveDamage(hitDamage);
-        //    }
-        //}
-
-        //currentState = EnemyState.ATTACK;
+        
         anim.SetBool("AtaqueArana", true);
         yield return new WaitForSeconds(timeForHit);
 
-        //currentState = EnemyState.WALK;
         anim.SetBool("AtaqueArana", false);
     }
 
@@ -223,6 +160,7 @@ public class EnemyCustom : MonoBehaviour
 
         if (hpEnemy <= 0)
         {
+            //GetComponent<LootBag>().InstantiateLoot(transform.position);
             Destroy(gameObject);
         }
     }
@@ -236,15 +174,6 @@ public class EnemyCustom : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radiusAttack);
         Gizmos.DrawWireSphere(transform.position, radiusShoot);
     }
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-    //        Debug.Log("Golpe");
-    //        collision.GetComponent<Player>().ReceiveDamage(hitDamage);
-    //    }
-    //}
 
     public void AttackSpider()
     {

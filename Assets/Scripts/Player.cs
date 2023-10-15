@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health > 0 && !isReceiveDamage)
+        if (health > 0 && !isReceiveDamage && moveSpeed > 0)
         {
             x = Input.GetAxisRaw("Horizontal");
             y = Input.GetAxisRaw("Vertical");
@@ -89,7 +89,8 @@ public class Player : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0)
             {
-                Golpe();
+                animator.SetTrigger("Golpe");
+                StartCoroutine(StopMoving());
                 tiempoSiguienteAtaque = tiempoEntreAtaques;
             }
         }
@@ -99,7 +100,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (health > 0 && !isReceiveDamage)
+        if (health > 0 && !isReceiveDamage && moveSpeed > 0)
         {
             rb.MovePosition(rb.position + moveDir * moveSpeed * Time.fixedDeltaTime);
             //Hit 
@@ -144,10 +145,17 @@ public class Player : MonoBehaviour
         moveSpeed = resetSpeed;
     }
 
+    IEnumerator StopMovingAfterDied()
+    {
+        moveSpeed = 0f;
+        yield return new WaitForSeconds(1f);
+        moveSpeed = resetSpeed;
+    }
+
     private void Golpe()
     {
-        animator.SetTrigger("Golpe");
-        StartCoroutine(StopMoving());
+        //animator.SetTrigger("Golpe");
+        //StartCoroutine(StopMoving());
         Collider2D[] objetos = Physics2D.OverlapCircleAll(controladorGolpe.position, radioGolpe);
 
         foreach (Collider2D collision in objetos)
@@ -172,11 +180,11 @@ public class Player : MonoBehaviour
     }
     public void GiveHeath(float life)
     {
-        moveSpeed = 0;
+        
         timeCurrent += Time.deltaTime;
         if (timeCurrent >= timeNextHealth)
         {
-            
+            moveSpeed = 0;
             timeCurrent = 0;
             animator.SetTrigger("Health");
             health = life;
@@ -187,7 +195,6 @@ public class Player : MonoBehaviour
             moveSpeed = resetSpeed;
         }
         
-        Debug.Log(hpPlayerMax + " : " + health);
         healthBar.UpdateHealthBar(hpPlayerMax, health);        
     }
 
@@ -202,13 +209,11 @@ public class Player : MonoBehaviour
         health -= damage;
         StartCoroutine(StopMoving());
         animator.SetTrigger("Hit");
-        Debug.Log(hpPlayerMax + " : " + health);
         healthBar.UpdateHealthBar(hpPlayerMax, health);
         isReceiveDamage = true;
         if (health <= 0)
         {
             bx.enabled = false;
-            Debug.Log(bx.enabled + "Muerto");
             StartCoroutine(ReloadGame());
         }
     }
@@ -224,11 +229,11 @@ public class Player : MonoBehaviour
         animator.SetBool("Died",true);
         
         yield return new WaitForSeconds(1.5f);
-        GameObject.Find("PruebaCheckPoint").GetComponent<ControllerDataGame>().LoadData();
+        //bx.enabled = false;
+        GameObject.FindWithTag("CheckPoint").GetComponent<ControllerDataGame>().LoadData();
+        StartCoroutine(StopMovingAfterDied());
         animator.SetBool("Died", false);
         isReceiveDamage = false;
-        //bx.enabled = true;
-        Debug.Log("Murio y renaciste");
     }
 
     public void LevelUp(float levelUp)

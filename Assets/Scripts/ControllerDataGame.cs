@@ -11,6 +11,7 @@ public class ControllerDataGame : MonoBehaviour
     public string saveFile;
     public DataPlayer dataPlayer = new DataPlayer();
     [SerializeField] private Transform cameraGlobal;
+    [SerializeField] private float timeCurrent;
     //private bool isPlayerInRange;
 
     private void Awake()
@@ -24,17 +25,17 @@ public class ControllerDataGame : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.C))
-        {
-            Debug.Log("Cargar datos");
-            LoadData();
+        //if (Input.GetKey(KeyCode.C))
+        //{
+        //    Debug.Log("Cargar datos");
+        //    LoadData();
 
-        }
-        if (Input.GetKey(KeyCode.F))
-        {
-            Debug.Log("Guardar datos");
-            SaveData();
-        }
+        //}
+        //if (Input.GetKey(KeyCode.F))
+        //{
+        //    Debug.Log("Guardar datos");
+        //    SaveData();
+        //}
     }
 
     //Metodo para cargar los datos del Player
@@ -83,8 +84,8 @@ public class ControllerDataGame : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //isPlayerInRange = true;
-            //dialogueMark.SetActive(true);
+            SaveData();
+            Debug.Log("Partida guardada");
         }
     }
 
@@ -92,8 +93,24 @@ public class ControllerDataGame : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //isPlayerInRange = false;
-            //dialogueMark.SetActive(false);
+            //SaveData();
+            //Debug.Log("Partida guardada 2");
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        timeCurrent = Time.deltaTime;
+        if (timeCurrent >= 0.02f)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+             {
+            
+            
+                SaveData();
+                timeCurrent = 0;
+                Debug.Log("Partida guardada backup");
+            }
         }
     }
 
@@ -102,4 +119,5 @@ public class ControllerDataGame : MonoBehaviour
         Debug.Log(roomNew);
         GameObject.Find("RoomsManager").GetComponent<RoomsManager>().OnRoom(roomNew);
     }
+
 }
