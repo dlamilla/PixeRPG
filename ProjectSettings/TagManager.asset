@@ -12,6 +12,8 @@ TagManager:
   - Door
   - Detector
   - Boss3
+  - CheckPoint
+  - Rock
   layers:
   - Default
   - TransparentFX

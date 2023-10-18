@@ -36,6 +36,10 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject doorBoss1;
     [SerializeField] private GameObject doorBoss2;
 
+    [Header("Boss Info")]
+    [SerializeField] private float danoAgarre;
+    public Animator enemyAnimator;
+
     private float resetSpeed;
     private float x, y;
     private bool isWalking;
@@ -45,28 +49,26 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private BoxCollider2D bx;
-    public Animator enemyAnimator;
     private SpriteRenderer playerSpriteRenderer;
-    public float danoAgarre;
+    
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         bx = GetComponent<BoxCollider2D>();
-        
+        playerSpriteRenderer = GetComponent<SpriteRenderer>();
+
         health = hpPlayerMax;
         healthBar.UpdateHealthBar(hpPlayerMax, health);
-        resetSpeed = moveSpeed;
-        playerSpriteRenderer = GetComponent<SpriteRenderer>();
+        resetSpeed = moveSpeed;      
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (health > 0 && !isReceiveDamage)
+        if (health > 0 && !isReceiveDamage && moveSpeed > 0)
         {
-            //Supresion();
             x = Input.GetAxisRaw("Horizontal");
             y = Input.GetAxisRaw("Vertical");
 
@@ -95,8 +97,8 @@ public class Player : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0 && !isReceiveReal)
             {
-                Golpe();
-                Debug.Log(isReceiveReal);
+                animator.SetTrigger("Golpe");
+                StartCoroutine(StopMoving());
                 tiempoSiguienteAtaque = tiempoEntreAtaques;
             }
         }
@@ -106,7 +108,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (health > 0 && !isReceiveDamage)
+        if (health > 0 && !isReceiveDamage && moveSpeed > 0)
         {
             Supresion();
             rb.MovePosition(rb.position + moveDir * moveSpeed * Time.fixedDeltaTime);
@@ -137,11 +139,13 @@ public class Player : MonoBehaviour
             {
                 doorBoss2.SetActive(false);
             }
-            if (level == 3) { }
+            if (level == 3) 
+            { 
+
+            }
             if (Input.GetKey(KeyCode.E) && level >= 0 && health <= 10)
             {
                 GiveHeath(giveHealth);
-
             }
         }
         
@@ -168,10 +172,15 @@ public class Player : MonoBehaviour
         moveSpeed = resetSpeed;
     }
 
+    IEnumerator StopMovingAfterDied()
+    {
+        moveSpeed = 0f;
+        yield return new WaitForSeconds(1f);
+        moveSpeed = resetSpeed;
+    }
+
     private void Golpe()
     {
-        animator.SetTrigger("Golpe");
-        StartCoroutine(StopMoving());
         Collider2D[] objetos = Physics2D.OverlapCircleAll(controladorGolpe.position, radioGolpe);
 
         foreach (Collider2D collision in objetos)
@@ -200,22 +209,18 @@ public class Player : MonoBehaviour
     }
     public void GiveHeath(float life)
     {
-        moveSpeed = 0;
         timeCurrent += Time.deltaTime;
         if (timeCurrent >= timeNextHealth)
         {
-            
+            moveSpeed = 0;
             timeCurrent = 0;
             animator.SetTrigger("Health");
             health = life;
-
         }
         if (health >= 10)
         {
             moveSpeed = resetSpeed;
         }
-        
-        Debug.Log(hpPlayerMax + " : " + health);
         healthBar.UpdateHealthBar(hpPlayerMax, health);        
     }
 
@@ -236,28 +241,24 @@ public class Player : MonoBehaviour
         if (health <= 0)
         {
             bx.enabled = false;
-            Debug.Log(bx.enabled + "Muerto");
             StartCoroutine(ReloadGame());
         }
+    }
+
+    private IEnumerator ReloadGame()
+    {
+        animator.SetBool("Died",true);
+        yield return new WaitForSeconds(1.5f);
+        GameObject.FindWithTag("CheckPoint").GetComponent<ControllerDataGame>().LoadData();
+        StartCoroutine(StopMovingAfterDied());
+        animator.SetBool("Died", false);
+        isReceiveDamage = false;
     }
 
     public void ResetDamage()
     {
         isReceiveDamage = false;
         bx.enabled = true;
-    }
-
-    private IEnumerator ReloadGame()
-    {
-        animator.SetBool("Died",true);
-        
-        yield return new WaitForSeconds(1.5f);
-        //bx.enabled = false;
-        GameObject.Find("CheckPoint").GetComponent<ControllerDataGame>().LoadData();
-        animator.SetBool("Died", false);
-        isReceiveDamage = false;
-        
-        Debug.Log("Murio y renaciste");
     }
 
     public void LevelUp(float levelUp)
@@ -287,8 +288,5 @@ public class Player : MonoBehaviour
         {
             LevelUp(1);
         }
-        
     }
-
-
 }

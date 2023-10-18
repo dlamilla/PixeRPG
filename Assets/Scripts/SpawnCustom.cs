@@ -38,26 +38,20 @@ public class SpawnCustom : MonoBehaviour
         {
             switch (category)
             {
-                case TypeSpawn.BABYRAT:
-                    
+                case TypeSpawn.BABYRAT:                  
                     transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
                     Vector2 temp = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
                     changeDirections.changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
                     break;
-
                 case TypeSpawn.PLANT_SHOOT:
-                    Debug.Log(player1.enabled + "-Planta");
                     if (player1.enabled)
                     {
-                        
                         transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
-
                         if (transform.position.x == target.x && transform.position.y == target.y)
                         {
                             DestroyProjectile();
                         }
                     }
-
                     break;
             }
         }

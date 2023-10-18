@@ -91,15 +91,13 @@ public class BossScorpion : MonoBehaviour
     public void ReceiveDamage(float damage)
     {
         hpCurrent -= damage;
-        Debug.Log("HagoDaño");
-
-         healthBar.UpdateHealthBar(hpEnemy, hpCurrent);
+        healthBar.UpdateHealthBar(hpEnemy, hpCurrent);
         if (hpCurrent <= 0)
         {
-            player.GetComponent<Player>().ExpUp(1);
+            //player.GetComponent<Player>().ExpUp(1);
             player.GetComponent<Player>().LevelUp(1);
-              healthBarBoss.SetActive(false);
-              gameObject.SetActive(false);
+            healthBarBoss.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 }
