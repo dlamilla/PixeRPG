@@ -40,10 +40,14 @@ public class Player : MonoBehaviour
     private float x, y;
     private bool isWalking;
     private bool isReceiveDamage;
+    private bool isReceiveReal;
     private Vector2 moveDir;
     private Rigidbody2D rb;
     private Animator animator;
     private BoxCollider2D bx;
+    public Animator enemyAnimator;
+    private SpriteRenderer playerSpriteRenderer;
+    public float danoAgarre;
 
     private void Start()
     {
@@ -54,6 +58,7 @@ public class Player : MonoBehaviour
         health = hpPlayerMax;
         healthBar.UpdateHealthBar(hpPlayerMax, health);
         resetSpeed = moveSpeed;
+        playerSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -61,6 +66,7 @@ public class Player : MonoBehaviour
     {
         if (health > 0 && !isReceiveDamage)
         {
+            //Supresion();
             x = Input.GetAxisRaw("Horizontal");
             y = Input.GetAxisRaw("Vertical");
 
@@ -87,9 +93,10 @@ public class Player : MonoBehaviour
             {
                 tiempoSiguienteAtaque -= Time.deltaTime;
             }
-            if (Input.GetKeyDown(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0)
+            if (Input.GetKeyDown(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0 && !isReceiveReal)
             {
                 Golpe();
+                Debug.Log(isReceiveReal);
                 tiempoSiguienteAtaque = tiempoEntreAtaques;
             }
         }
@@ -101,6 +108,7 @@ public class Player : MonoBehaviour
     {
         if (health > 0 && !isReceiveDamage)
         {
+            Supresion();
             rb.MovePosition(rb.position + moveDir * moveSpeed * Time.fixedDeltaTime);
             //Hit 
             if (x == 1) //Hit Right 
@@ -129,6 +137,7 @@ public class Player : MonoBehaviour
             {
                 doorBoss2.SetActive(false);
             }
+            if (level == 3) { }
             if (Input.GetKey(KeyCode.E) && level >= 0 && health <= 10)
             {
                 GiveHeath(giveHealth);
@@ -136,6 +145,21 @@ public class Player : MonoBehaviour
             }
         }
         
+    }
+    private void Supresion()
+    {
+        if (enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Supression"))
+        {
+            playerSpriteRenderer.enabled = false;
+            StartCoroutine(StopMoving());
+            isReceiveReal = true;
+            ReceiveDamage(danoAgarre);
+        }
+        else
+        {
+            playerSpriteRenderer.enabled = true;
+            isReceiveReal= false;
+        }
     }
     IEnumerator StopMoving()
     {
@@ -163,6 +187,10 @@ public class Player : MonoBehaviour
             if (collision.gameObject.tag == "Boss2")
             {
                 collision.GetComponent<FuncaBoss>().ReceiveDamage(dañoGolpe);
+            }
+            if (collision.gameObject.tag == "Boss3")
+            {
+                collision.GetComponent<BossScorpion>().ReceiveDamage(dañoGolpe);
             }
             if (collision.gameObject.tag == "BabyRat")
             {

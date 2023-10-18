@@ -4,34 +4,26 @@ using UnityEngine;
 
 public class Knockback : MonoBehaviour
 {
-    public float thrust;
-
-    // Start is called before the first frame update
-    void Start()
+    public float damage;
+    public float resetDamage;
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (collision.CompareTag("Player"))
         {
-            Rigidbody2D Enemy = other.GetComponent<Rigidbody2D>();
-            if (Enemy != null)
-            {
-                Enemy.isKinematic = false;
-                Vector2 difference = Enemy.transform.position - transform.position;
-                difference = difference.normalized * thrust;
-                Enemy.AddForce(difference, ForceMode2D.Impulse);
-                Enemy.isKinematic = true;
-                Debug.Log("Hay Empuje");
-            }
+            StartCoroutine(DanoAcido(collision, damage));
         }
+    }
+    IEnumerator DanoAcido(Collider2D collision, float damage1)
+    {
+        if (damage > 0) {
+            collision.GetComponent<Player>().ReceiveDamage(damage1);
+        }
+        yield return new WaitForSeconds(0.5f);
+        damage = 0;
+        Debug.Log(damage + " " + damage1);
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        damage = resetDamage;
     }
 }

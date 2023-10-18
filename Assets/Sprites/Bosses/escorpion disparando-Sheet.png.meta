@@ -1,0 +1,1090 @@
+fileFormatVersion: 2
+guid: e63be79aeb0db9c4594624742d6b6de9
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 999
+        width: 78
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 561866817763add40a08019e11692d72
+      internalID: -1207230601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 999
+        width: 79
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b211b75ea9faad540822b233df7be2fa
+      internalID: -616512128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 999
+        width: 79
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a7818b2a23665f4ba65506a9bfdf2d0
+      internalID: -1574629882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 999
+        width: 79
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efebbc2b352b86146bd555d08a8145e1
+      internalID: 716340851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 999
+        width: 79
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22612f89ac3295b46b055d8e8731a452
+      internalID: -1407489994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1017
+        y: 999
+        width: 79
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0cd3cbf059a1f241bb73dcd08380f18
+      internalID: -1104449953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 999
+        width: 79
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d39dea143e0a80f418bcb457812fb579
+      internalID: 1556466319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 839
+        width: 79
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c42260db52c67f4b8d2414edf00841b
+      internalID: 1119847916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 843
+        width: 76
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73d6c230f864f1a468ef828cc7dee4ce
+      internalID: -514647882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1017
+        y: 845
+        width: 76
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42a0697ce7c225c41868ffe856fd55e3
+      internalID: -1306729694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 847
+        width: 76
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13fd6c2d7c903ae4c9b41a374ba40896
+      internalID: -853186782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 839
+        width: 79
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c64dc3c852c401d488fbf4d10c538f04
+      internalID: -1616479895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 839
+        width: 79
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f573b3ebc85a3bd49a71b74b32555870
+      internalID: 798840081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 839
+        width: 79
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c646a2494095f114580c40e34cb59b45
+      internalID: 2118978749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 687
+        width: 76
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b2be37b20e431e43ab449c22f1ba163
+      internalID: 1651183434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 687
+        width: 76
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8a1747a2ad5c5047892cdae1917a95c
+      internalID: -1849020996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 687
+        width: 76
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65e088efb3cf762469fa708698f60a28
+      internalID: 1751474882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 687
+        width: 76
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a3f350abf846b6458bb41cdc08ac860
+      internalID: 1594328998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 687
+        width: 76
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f56e4ad5a950a44b955f5035e4639bc
+      internalID: -1267134233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 687
+        width: 76
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1a4315d9db8df343b151e30765c0cad
+      internalID: 264072061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 660
+        width: 76
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6936bc556e3f5cc439b9a34b1627afdb
+      internalID: -451345682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 527
+        width: 76
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3b9f7868ec5c9546a88a416e5ebb9d3
+      internalID: -1857919557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 519
+        width: 88
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb14439e4e56c154c9a1c3eef5958cdd
+      internalID: 1542685524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 519
+        width: 86
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88e767e2201881641901ae88d9c00da5
+      internalID: 727452106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 519
+        width: 86
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcf35c30c9840ed418d66f80a10065aa
+      internalID: 2147177514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 519
+        width: 86
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 878c538beba14b24d9fe3c372a17eeb7
+      internalID: -1365702795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 519
+        width: 86
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b82fb0c4e3dd2b9499941ad1a36a77f5
+      internalID: -2117653842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 519
+        width: 86
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f633f6d81ef69d4c9c22b250e72f772
+      internalID: 2060661726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 359
+        width: 86
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f388a5f7d4fa3e5439f6aac08e21c709
+      internalID: 1760771993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 359
+        width: 86
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe4248908d025394a85f5becb0d0f50f
+      internalID: -1422845382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 359
+        width: 102
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed0a7e4ebf65b7142901bf4fd7ceb070
+      internalID: -2078463246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 359
+        width: 86
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1135a631b67d9a24d94c44f2588e11fd
+      internalID: 1427718082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 359
+        width: 86
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42ff74ccb014a6b4798c3f33957822e1
+      internalID: -1848578515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 359
+        width: 88
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9313c10f27d56fc4bb186c22ad97a088
+      internalID: -167124214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 1202
+        y: 359
+        width: 86
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e272637ea2fe60e418ea0fbe6f66ca15
+      internalID: 1260117535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 199
+        width: 86
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ef895908dbe59f47a2d6e0b9ac4461b
+      internalID: -1674129630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 199
+        width: 86
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf8bf09fde83334409ee8bad3ef05d80
+      internalID: -817607151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 199
+        width: 86
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac99caca9f7de194faa4a23ca62da49a
+      internalID: 34019962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 199
+        width: 86
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98c170ec1061b5341a224c2ba10d0772
+      internalID: 1002263067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 199
+        width: 86
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5df887a88543aa04b820316d6b028cde
+      internalID: 562058192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 199
+        width: 102
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdffddcb5dd959a479a687fa09baac76
+      internalID: -2136419686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 199
+        width: 86
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a78beb0b1201bc4e97e3a03976449f7
+      internalID: 380943217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: escorpion disparando-Sheet_51
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 39
+        width: 86
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afef3ebfb91cba2409f243ad73260147
+      internalID: -223302154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      escorpion disparando-Sheet_0: -1207230601
+      escorpion disparando-Sheet_1: -616512128
+      escorpion disparando-Sheet_10: -514647882
+      escorpion disparando-Sheet_11: -1306729694
+      escorpion disparando-Sheet_12: -853186782
+      escorpion disparando-Sheet_13: -1616479895
+      escorpion disparando-Sheet_14: 798840081
+      escorpion disparando-Sheet_15: 2118978749
+      escorpion disparando-Sheet_16: 1651183434
+      escorpion disparando-Sheet_17: -1849020996
+      escorpion disparando-Sheet_18: 1751474882
+      escorpion disparando-Sheet_19: 1594328998
+      escorpion disparando-Sheet_2: -1574629882
+      escorpion disparando-Sheet_20: -1267134233
+      escorpion disparando-Sheet_21: 264072061
+      escorpion disparando-Sheet_22: -451345682
+      escorpion disparando-Sheet_23: -1857919557
+      escorpion disparando-Sheet_24: 1542685524
+      escorpion disparando-Sheet_25: 727452106
+      escorpion disparando-Sheet_26: 2147177514
+      escorpion disparando-Sheet_27: -1365702795
+      escorpion disparando-Sheet_28: -2117653842
+      escorpion disparando-Sheet_29: 2060661726
+      escorpion disparando-Sheet_3: 716340851
+      escorpion disparando-Sheet_30: -1112208913
+      escorpion disparando-Sheet_31: 1760771993
+      escorpion disparando-Sheet_32: -1422845382
+      escorpion disparando-Sheet_33: -2078463246
+      escorpion disparando-Sheet_34: 1427718082
+      escorpion disparando-Sheet_35: 995731430
+      escorpion disparando-Sheet_36: -1848578515
+      escorpion disparando-Sheet_37: -167124214
+      escorpion disparando-Sheet_38: 1260117535
+      escorpion disparando-Sheet_39: -1271523340
+      escorpion disparando-Sheet_4: -1407489994
+      escorpion disparando-Sheet_40: -1537532888
+      escorpion disparando-Sheet_41: -1674129630
+      escorpion disparando-Sheet_42: -817607151
+      escorpion disparando-Sheet_43: 34019962
+      escorpion disparando-Sheet_44: 1002263067
+      escorpion disparando-Sheet_45: 562058192
+      escorpion disparando-Sheet_46: -2136419686
+      escorpion disparando-Sheet_47: 895734019
+      escorpion disparando-Sheet_48: 380943217
+      escorpion disparando-Sheet_49: 2053859858
+      escorpion disparando-Sheet_5: -1104449953
+      escorpion disparando-Sheet_50: -1135937115
+      escorpion disparando-Sheet_51: -223302154
+      escorpion disparando-Sheet_6: 1556466319
+      escorpion disparando-Sheet_7: 1119847916
+      escorpion disparando-Sheet_8: -1827819645
+      escorpion disparando-Sheet_9: 1702654691
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
