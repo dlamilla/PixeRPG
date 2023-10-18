@@ -36,24 +36,32 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject doorBoss1;
     [SerializeField] private GameObject doorBoss2;
 
+    [Header("Boss Info")]
+    [SerializeField] private float danoAgarre;
+    public Animator enemyAnimator;
+
     private float resetSpeed;
     private float x, y;
     private bool isWalking;
     private bool isReceiveDamage;
+    private bool isReceiveReal;
     private Vector2 moveDir;
     private Rigidbody2D rb;
     private Animator animator;
     private BoxCollider2D bx;
+    private SpriteRenderer playerSpriteRenderer;
+    
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         bx = GetComponent<BoxCollider2D>();
-        
+        playerSpriteRenderer = GetComponent<SpriteRenderer>();
+
         health = hpPlayerMax;
         healthBar.UpdateHealthBar(hpPlayerMax, health);
-        resetSpeed = moveSpeed;
+        resetSpeed = moveSpeed;      
     }
 
     // Update is called once per frame
@@ -87,7 +95,7 @@ public class Player : MonoBehaviour
             {
                 tiempoSiguienteAtaque -= Time.deltaTime;
             }
-            if (Input.GetKeyDown(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0)
+            if (Input.GetKeyDown(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0 && !isReceiveReal)
             {
                 animator.SetTrigger("Golpe");
                 StartCoroutine(StopMoving());
@@ -102,6 +110,7 @@ public class Player : MonoBehaviour
     {
         if (health > 0 && !isReceiveDamage && moveSpeed > 0)
         {
+            Supresion();
             rb.MovePosition(rb.position + moveDir * moveSpeed * Time.fixedDeltaTime);
             //Hit 
             if (x == 1) //Hit Right 
@@ -130,13 +139,31 @@ public class Player : MonoBehaviour
             {
                 doorBoss2.SetActive(false);
             }
+            if (level == 3) 
+            { 
+
+            }
             if (Input.GetKey(KeyCode.E) && level >= 0 && health <= 10)
             {
                 GiveHeath(giveHealth);
-
             }
         }
         
+    }
+    private void Supresion()
+    {
+        if (enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Supression"))
+        {
+            playerSpriteRenderer.enabled = false;
+            StartCoroutine(StopMoving());
+            isReceiveReal = true;
+            ReceiveDamage(danoAgarre);
+        }
+        else
+        {
+            playerSpriteRenderer.enabled = true;
+            isReceiveReal= false;
+        }
     }
     IEnumerator StopMoving()
     {
@@ -154,8 +181,6 @@ public class Player : MonoBehaviour
 
     private void Golpe()
     {
-        //animator.SetTrigger("Golpe");
-        //StartCoroutine(StopMoving());
         Collider2D[] objetos = Physics2D.OverlapCircleAll(controladorGolpe.position, radioGolpe);
 
         foreach (Collider2D collision in objetos)
@@ -172,6 +197,10 @@ public class Player : MonoBehaviour
             {
                 collision.GetComponent<FuncaBoss>().ReceiveDamage(dañoGolpe);
             }
+            if (collision.gameObject.tag == "Boss3")
+            {
+                collision.GetComponent<BossScorpion>().ReceiveDamage(dañoGolpe);
+            }
             if (collision.gameObject.tag == "BabyRat")
             {
                 collision.GetComponent<SpawnCustom>().ReceiveDamage(dañoGolpe);
@@ -180,7 +209,6 @@ public class Player : MonoBehaviour
     }
     public void GiveHeath(float life)
     {
-        
         timeCurrent += Time.deltaTime;
         if (timeCurrent >= timeNextHealth)
         {
@@ -188,13 +216,11 @@ public class Player : MonoBehaviour
             timeCurrent = 0;
             animator.SetTrigger("Health");
             health = life;
-
         }
         if (health >= 10)
         {
             moveSpeed = resetSpeed;
         }
-        
         healthBar.UpdateHealthBar(hpPlayerMax, health);        
     }
 
@@ -209,6 +235,7 @@ public class Player : MonoBehaviour
         health -= damage;
         StartCoroutine(StopMoving());
         animator.SetTrigger("Hit");
+        Debug.Log(hpPlayerMax + " : " + health);
         healthBar.UpdateHealthBar(hpPlayerMax, health);
         isReceiveDamage = true;
         if (health <= 0)
@@ -218,22 +245,20 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ResetDamage()
-    {
-        isReceiveDamage = false;
-        bx.enabled = true;
-    }
-
     private IEnumerator ReloadGame()
     {
         animator.SetBool("Died",true);
-        
         yield return new WaitForSeconds(1.5f);
-        //bx.enabled = false;
         GameObject.FindWithTag("CheckPoint").GetComponent<ControllerDataGame>().LoadData();
         StartCoroutine(StopMovingAfterDied());
         animator.SetBool("Died", false);
         isReceiveDamage = false;
+    }
+
+    public void ResetDamage()
+    {
+        isReceiveDamage = false;
+        bx.enabled = true;
     }
 
     public void LevelUp(float levelUp)
@@ -263,8 +288,5 @@ public class Player : MonoBehaviour
         {
             LevelUp(1);
         }
-        
     }
-
-
 }

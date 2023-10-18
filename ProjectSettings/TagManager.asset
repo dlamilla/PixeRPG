@@ -10,7 +10,10 @@ TagManager:
   - Boss2
   - BabyRat
   - Door
+  - Detector
+  - Boss3
   - CheckPoint
+  - Rock
   layers:
   - Default
   - TransparentFX
