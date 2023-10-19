@@ -153,8 +153,12 @@ MonoBehaviour:
   dialoguePanel: {fileID: 616646855573355178}
   dialogueText: {fileID: 616646855475558576}
   interact: {fileID: 616646856433623126}
-  dialogueLinesKeyboard: []
-  dialogueLinesGamepad: []
+  dialogueLinesKeyboard:
+  - Bienvenida aventurera
+  - Para desplazarte usa W, A, S, D.
+  dialogueLinesGamepad:
+  - Bienvenido
+  - "Para desplazarte usa botones de direcci\xF3n."
 --- !u!82 &616646855105198020
 AudioSource:
   m_ObjectHideFlags: 0

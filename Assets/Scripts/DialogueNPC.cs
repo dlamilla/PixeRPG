@@ -205,7 +205,7 @@ public class DialogueNPC : MonoBehaviour
             {
                 isPlayerInRange = true;
                 dialogueMark.SetActive(true);
-                interact.text = "[]";
+                interact.text = "[O]";
             }
         }
     }

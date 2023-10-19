@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
 
             x = inputMov.x;
             y = inputMov.y;
-            Debug.Log(inputMov + " X: " + x + " Y: " + y);
+
             if (x != 0 || y != 0)
             {
                 animator.SetFloat("X",x);
