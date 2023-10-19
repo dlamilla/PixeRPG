@@ -1,13 +1,13 @@
-using System.Collections;
+锘縰sing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ProyectilVeneno : MonoBehaviour
 {
     public float speed = 10f; // Velocidad del proyectil
-    public float hitDamage = 10f; // Da駉 del proyectil
-    public GameObject destructionEffectPrefab; // Prefab del efecto de destrucci髇
-    public float destructionDelay = 10.0f; // Tiempo de vida del efecto de destrucci髇
+    public float hitDamage = 10f; // Da帽o del proyectil
+    public GameObject destructionEffectPrefab; // Prefab del efecto de destrucci贸n
+    public float destructionDelay = 10.0f; // Tiempo de vida del efecto de destrucci贸n
 
     private Transform player;
     private Vector2 target;
@@ -45,13 +45,13 @@ public class ProyectilVeneno : MonoBehaviour
 
     void DestroyProjectile()
     {
-        // Instanciar el efecto de destrucci髇 en la posici髇 del proyectil
+        // Instanciar el efecto de destrucci贸n en la posici贸n del proyectil
         GameObject destructionEffect = Instantiate(destructionEffectPrefab, transform.position, Quaternion.identity);
 
         // Destruir el proyectil
         Destroy(gameObject);
 
-        // Destruir el efecto de destrucci髇 despu閟 del tiempo especificado en destructionDelay
+        // Destruir el efecto de destrucci贸n despu茅s del tiempo especificado en destructionDelay
         Destroy(destructionEffect, destructionDelay);
     }
 }
