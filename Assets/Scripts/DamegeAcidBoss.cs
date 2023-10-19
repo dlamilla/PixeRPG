@@ -10,16 +10,18 @@ public class DamegeAcidBoss : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            StartCoroutine(DamegeAcid(collision, damage));
+            StartCoroutine(DanoAcido(collision, damage));
         }
     }
-    IEnumerator DamegeAcid(Collider2D collision, float damage1)
+    IEnumerator DanoAcido(Collider2D collision, float damage1)
     {
-        if (damage > 0) {
+        if (damage > 0)
+        {
             collision.GetComponent<Player>().ReceiveDamage(damage1);
         }
         yield return new WaitForSeconds(0.5f);
         damage = 0;
+        Debug.Log(damage + " " + damage1);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

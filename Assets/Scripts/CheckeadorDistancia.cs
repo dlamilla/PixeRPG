@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,17 +13,17 @@ public class CheckeadorDistancia : MonoBehaviour
 
     void Update()
     {
-        // Comprobar si el jugador est· dentro del square
+        // Comprobar si el jugador est√° dentro del square
         jugadorDentroDelSquare = squareCollider.OverlapPoint(player.position);
 
-        // Si el jugador est· fuera del square y el trigger no est· activado, activamos el trigger y marcamos que est· activado.
+        // Si el jugador est√° fuera del square y el trigger no est√° activado, activamos el trigger y marcamos que est√° activado.
         if (!jugadorDentroDelSquare && !triggerActivado)
         {
             enemyAnimator.SetTrigger("Disparando");
             triggerActivado = true;
         }
 
-        // Si el jugador est· dentro del square, desactivamos el trigger y marcamos que no est· activado.
+        // Si el jugador est√° dentro del square, desactivamos el trigger y marcamos que no est√° activado.
         if (jugadorDentroDelSquare && triggerActivado)
         {
             enemyAnimator.ResetTrigger("Disparando");
