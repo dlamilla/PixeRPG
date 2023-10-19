@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
@@ -50,6 +51,8 @@ public class Player : MonoBehaviour
     private Animator animator;
     private BoxCollider2D bx;
     private SpriteRenderer playerSpriteRenderer;
+    private PlayerInput playerInput;
+    private Vector2 inputMov;
     
 
     private void Start()
@@ -58,6 +61,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         bx = GetComponent<BoxCollider2D>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
+        playerInput = GetComponent<PlayerInput>();
 
         health = hpPlayerMax;
         healthBar.UpdateHealthBar(hpPlayerMax, health);
@@ -69,8 +73,15 @@ public class Player : MonoBehaviour
     {
         if (health > 0 && !isReceiveDamage && moveSpeed > 0)
         {
-            x = Input.GetAxisRaw("Horizontal");
-            y = Input.GetAxisRaw("Vertical");
+            
+
+            inputMov = playerInput.actions["Move"].ReadValue<Vector2>();
+
+            //x = Input.GetAxisRaw("Horizontal");
+            //y = Input.GetAxisRaw("Vertical");
+
+            x = inputMov.x;
+            y = inputMov.y;
 
             if (x != 0 || y != 0)
             {
@@ -89,18 +100,18 @@ public class Player : MonoBehaviour
                     animator.SetBool("IsMoving", isWalking);
                 }
             }
-            moveDir = new Vector2(x, y).normalized;
+            //moveDir = new Vector2(x, y).normalized;
 
-            if (tiempoEntreAtaques > 0)
-            {
-                tiempoSiguienteAtaque -= Time.deltaTime;
-            }
-            if (Input.GetKeyDown(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0 && !isReceiveReal)
-            {
-                animator.SetTrigger("Golpe");
-                StartCoroutine(StopMoving());
-                tiempoSiguienteAtaque = tiempoEntreAtaques;
-            }
+            //if (tiempoEntreAtaques > 0)
+            //{
+            //    tiempoSiguienteAtaque -= Time.deltaTime;
+            //}
+            //if (Input.GetKeyDown(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0 && !isReceiveReal)
+            //{
+            //    animator.SetTrigger("Golpe");
+            //    StartCoroutine(StopMoving());
+            //    tiempoSiguienteAtaque = tiempoEntreAtaques;
+            //}
         }
 
 
@@ -111,24 +122,9 @@ public class Player : MonoBehaviour
         if (health > 0 && !isReceiveDamage && moveSpeed > 0)
         {
             Supresion();
-            rb.MovePosition(rb.position + moveDir * moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + inputMov.normalized * moveSpeed * Time.fixedDeltaTime);
             //Hit 
-            if (x == 1) //Hit Right 
-            {
-                controladorGolpe.transform.position = new Vector2(transform.position.x + 0.955f, transform.position.y - 0.041f);
-            }
-            if (x == -1) //Hit Left
-            {
-                controladorGolpe.transform.position = new Vector2(transform.position.x - 0.969f, transform.position.y - 0.09f);
-            }
-            if (y == 1) //Hit Up
-            {
-                controladorGolpe.transform.position = new Vector2(transform.position.x - 0.032f, transform.position.y + 1.239f);
-            }
-            if (y == -1) //Hit Down
-            {
-                controladorGolpe.transform.position = new Vector2(transform.position.x - 0.013f, transform.position.y - 0.924f);
-            }
+            CheckHitBox();
 
             if (level == 1)
             {
@@ -139,17 +135,38 @@ public class Player : MonoBehaviour
             {
                 doorBoss2.SetActive(false);
             }
-            if (level == 3) 
-            { 
+            if (level == 3)
+            {
 
             }
-            if (Input.GetKey(KeyCode.E) && level >= 0 && health <= 10)
-            {
-                GiveHeath(giveHealth);
-            }
+            //if (Input.GetKey(KeyCode.E) && level >= 0 && health <= 10)
+            //{
+            //    GiveHeath(giveHealth);
+            //}
         }
-        
+
     }
+
+    private void CheckHitBox()
+    {
+        if (x == 1) //Hit Right 
+        {
+            controladorGolpe.transform.position = new Vector2(transform.position.x + 0.955f, transform.position.y - 0.041f);
+        }
+        if (x == -1) //Hit Left
+        {
+            controladorGolpe.transform.position = new Vector2(transform.position.x - 0.969f, transform.position.y - 0.09f);
+        }
+        if (y == 1) //Hit Up
+        {
+            controladorGolpe.transform.position = new Vector2(transform.position.x - 0.032f, transform.position.y + 1.239f);
+        }
+        if (y == -1) //Hit Down
+        {
+            controladorGolpe.transform.position = new Vector2(transform.position.x - 0.013f, transform.position.y - 0.924f);
+        }
+    }
+
     private void Supresion()
     {
         if (enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Supression"))
@@ -207,16 +224,33 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    public void DamagePlayer(InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.performed && level >= 0 && !isReceiveReal)
+        {
+            animator.SetTrigger("Golpe");
+            StartCoroutine(StopMoving());
+        }
+    }
+
+    public void HealthPlayer(InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.performed && level >= 0)
+        {
+            GiveHeath(giveHealth);
+        }
+    }
     public void GiveHeath(float life)
     {
-        timeCurrent += Time.deltaTime;
-        if (timeCurrent >= timeNextHealth)
+        //timeCurrent += Time.deltaTime;
+        if (health < 10)
         {
             moveSpeed = 0;
-            timeCurrent = 0;
+            //timeCurrent = 0;
             animator.SetTrigger("Health");
             health = life;
-        }
+    }
         if (health >= 10)
         {
             moveSpeed = resetSpeed;
