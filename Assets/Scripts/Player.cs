@@ -76,13 +76,13 @@ public class Player : MonoBehaviour
             
 
             inputMov = playerInput.actions["Move"].ReadValue<Vector2>();
-
+            
             //x = Input.GetAxisRaw("Horizontal");
             //y = Input.GetAxisRaw("Vertical");
 
             x = inputMov.x;
             y = inputMov.y;
-
+            Debug.Log(inputMov + " X: " + x + " Y: " + y);
             if (x != 0 || y != 0)
             {
                 animator.SetFloat("X",x);
@@ -149,19 +149,19 @@ public class Player : MonoBehaviour
 
     private void CheckHitBox()
     {
-        if (x == 1) //Hit Right 
+        if (x <= 1 && x > 0) //Hit Right 
         {
             controladorGolpe.transform.position = new Vector2(transform.position.x + 0.955f, transform.position.y - 0.041f);
         }
-        if (x == -1) //Hit Left
+        if (x >= -1 && x < 0) //Hit Left
         {
             controladorGolpe.transform.position = new Vector2(transform.position.x - 0.969f, transform.position.y - 0.09f);
         }
-        if (y == 1) //Hit Up
+        if (y <= 1 && y > 0) //Hit Up
         {
             controladorGolpe.transform.position = new Vector2(transform.position.x - 0.032f, transform.position.y + 1.239f);
         }
-        if (y == -1) //Hit Down
+        if (y >= -1 && y < 0) //Hit Down
         {
             controladorGolpe.transform.position = new Vector2(transform.position.x - 0.013f, transform.position.y - 0.924f);
         }
@@ -241,6 +241,16 @@ public class Player : MonoBehaviour
             GiveHeath(giveHealth);
         }
     }
+
+    public void Talking(InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.performed)
+        {
+            string typeController = playerInput.currentControlScheme;
+            GameObject.Find("Sign").GetComponent<DialogueNPC>().StartTalking(typeController);
+        }
+    }
+
     public void GiveHeath(float life)
     {
         //timeCurrent += Time.deltaTime;
@@ -322,5 +332,10 @@ public class Player : MonoBehaviour
         {
             LevelUp(1);
         }
+    }
+
+    public void ControlsChanged(PlayerInput playerInput)
+    {
+        Debug.Log("Cambio de dispositivo: " + playerInput.currentControlScheme);
     }
 }
