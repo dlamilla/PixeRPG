@@ -33,8 +33,6 @@ public class FuncaBoss : MonoBehaviour
     private bool isBacking = false;
     private bool isFollowingPlayer = true;
 
-    [SerializeField] private GameObject enemyGameObject;
-
     private bool hasReachedHalfHP = false;
     private bool isAttacking = false;
     private float attackDuration = 1.3f;
@@ -56,7 +54,6 @@ public class FuncaBoss : MonoBehaviour
 
     void Update()
     {
-        healthBarBoss.SetActive(true);
         if (hpEnemy > 0)
         {
             Vector2 directionToPlayer = (target.position - transform.position).normalized;
@@ -115,10 +112,6 @@ public class FuncaBoss : MonoBehaviour
             }
         }
 
-        if (hpEnemy <= 0)
-        {
-            enemyGameObject.SetActive(false);
-        }
     }
 
     void Teleport()
@@ -135,7 +128,7 @@ public class FuncaBoss : MonoBehaviour
         {
             target.GetComponent<Player>().LevelUp(1);
             healthBarBoss.SetActive(false);
-            Debug.Log("Muerto");
+            gameObject.SetActive(false);
         }
     }
 

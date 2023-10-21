@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     [Header("Doors Bosses")]
     [SerializeField] private GameObject doorBoss1;
     [SerializeField] private GameObject doorBoss2;
+    [SerializeField] private GameObject doorBoss3;
 
     [Header("Boss Info")]
     [SerializeField] private float danoAgarre;
@@ -137,7 +138,7 @@ public class Player : MonoBehaviour
             }
             if (level == 3)
             {
-
+                doorBoss3.SetActive(false);
             }
             //if (Input.GetKey(KeyCode.E) && level >= 0 && health <= 10)
             //{
