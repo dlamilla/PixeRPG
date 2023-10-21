@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health > 0 && !isReceiveDamage && moveSpeed > 0)
+        if (health > 4f && !isReceiveDamage && moveSpeed > 0)
         {
             
 
@@ -120,7 +120,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (health > 0 && !isReceiveDamage && moveSpeed > 0)
+        if (health > 4f && !isReceiveDamage && moveSpeed > 0)
         {
             Supresion();
             rb.MovePosition(rb.position + inputMov.normalized * moveSpeed * Time.fixedDeltaTime);
@@ -130,15 +130,21 @@ public class Player : MonoBehaviour
             if (level == 1)
             {
                 doorBoss1.SetActive(false);
+                //health = hpPlayerMax;
+                //healthBar.UpdateHealthBar(hpPlayerMax, health);
                 //GiveMoreDamage(damageExtra);
             }
             if (level == 2)
             {
                 doorBoss2.SetActive(false);
+                //health = hpPlayerMax;
+                //healthBar.UpdateHealthBar(hpPlayerMax, health);
             }
             if (level == 3)
             {
                 doorBoss3.SetActive(false);
+                //health = hpPlayerMax;
+                //healthBar.UpdateHealthBar(hpPlayerMax, health);
             }
             //if (Input.GetKey(KeyCode.E) && level >= 0 && health <= 10)
             //{
@@ -284,10 +290,10 @@ public class Player : MonoBehaviour
         health -= damage;
         StartCoroutine(StopMoving());
         animator.SetTrigger("Hit");
-        Debug.Log(hpPlayerMax + " : " + health);
+        Debug.Log(hpPlayerMax + " : " + health + "Vida Barra :" + health / hpPlayerMax);
         healthBar.UpdateHealthBar(hpPlayerMax, health);
         isReceiveDamage = true;
-        if (health <= 0)
+        if (health <= 4f)
         {
             bx.enabled = false;
             StartCoroutine(ReloadGame());
@@ -320,7 +326,7 @@ public class Player : MonoBehaviour
         exp += expEnemy;
         if (exp >= expMax)
         {
-            level++;
+            //level++;
             expMax = Mathf.Round(expMax * 1.3f);
         }
     }

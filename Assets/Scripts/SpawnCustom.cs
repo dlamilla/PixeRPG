@@ -17,6 +17,9 @@ public class SpawnCustom : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] private float radiusAttack;
 
+    [Header("Stadistics")]
+    [SerializeField] private float expEnemy;
+
     private Vector2 target;
 
     private Transform player;
@@ -67,7 +70,7 @@ public class SpawnCustom : MonoBehaviour
             if (collision.gameObject.tag == "Player")
             {
                 float playerLife = collision.GetComponent<Player>().health;
-                if (playerLife > 0)
+                if (playerLife > 4f)
                 {
                     collision.GetComponent<Player>().ReceiveDamage(damage);
                 }
@@ -85,8 +88,9 @@ public class SpawnCustom : MonoBehaviour
     {
         hpEnemy -= damage;
 
-        if (hpEnemy <= 0)
+        if (hpEnemy <= 4f)
         {
+            player.GetComponent<Player>().ExpUp(expEnemy);
             Destroy(gameObject);
         }
     }
@@ -97,7 +101,7 @@ public class SpawnCustom : MonoBehaviour
         {
             
             float playerLife = other.GetComponent<Player>().health;
-            if (playerLife > 0)
+            if (playerLife > 4f)
             {
                 Debug.Log("Daño planta");
                 other.gameObject.GetComponent<Player>().ReceiveDamage(damage);

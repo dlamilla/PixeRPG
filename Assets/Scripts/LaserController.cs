@@ -17,6 +17,8 @@ public class LaserController : MonoBehaviour
     [SerializeField] private float damage;
     private float distance;
     [SerializeField] private TypesLaser category;
+    [SerializeField] private bool rotateLaser;
+    [SerializeField] private float speedRotate;
 
     private Vector2 startPosition;
     private Vector2 direction;
@@ -52,6 +54,11 @@ public class LaserController : MonoBehaviour
                 break;
         }
 
+        if (rotateLaser)
+        {
+            transform.Rotate(new Vector3(0f, 0f, speedRotate) * Time.deltaTime);
+        }
+
         distance = CalculateDistance();
 
         startPosition = objetLaser.transform.position;
@@ -65,7 +72,7 @@ public class LaserController : MonoBehaviour
             {
                 Debug.Log("Player");
                 float playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().health;
-                if (playerLife > 0)
+                if (playerLife > 4)
                 {
                     GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().ReceiveDamage(damage);
                 }

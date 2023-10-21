@@ -37,7 +37,7 @@ public class Projectile : MonoBehaviour
             
             //other.gameObject.GetComponent<Player>().ReceiveDamage(hitDamage);
             float playerLife = other.GetComponent<Player>().health;
-            if (playerLife > 0)
+            if (playerLife > 4f)
             {
                 other.GetComponent<Player>().ReceiveDamage(hitDamage);
                 DestroyProjectile();

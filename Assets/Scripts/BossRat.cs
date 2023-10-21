@@ -59,9 +59,10 @@ public class BossRat : MonoBehaviour
     {
         hpCurrent -= damage;
         healthBar.UpdateHealthBar(hpBoss, hpCurrent);
-        if (hpCurrent <= 0)
+        Debug.Log(hpCurrent + " Vida Barra :" + hpCurrent / hpBoss);
+        if (hpCurrent <= 5f)
         {
-            //player.GetComponent<Player>().ExpUp(exp);
+            player.GetComponent<Player>().ExpUp(exp);
             player.GetComponent<Player>().LevelUp(1);
             healthBarBoss.SetActive(false);
             gameObject.SetActive(false);          
@@ -135,7 +136,7 @@ public class BossRat : MonoBehaviour
             if (collision.gameObject.tag == "Player")
             {
                 float playerLife = collision.GetComponent<Player>().health;
-                if (playerLife > 0)
+                if (playerLife > 4f)
                 {
                     collision.GetComponent<Player>().ReceiveDamage(hitDamage);
                 }

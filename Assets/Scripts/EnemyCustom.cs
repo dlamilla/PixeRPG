@@ -26,6 +26,9 @@ public class EnemyCustom : MonoBehaviour
     [Header("Plant")]
     [SerializeField] private float radiusShoot;
 
+    [Header("Stadistics")]
+    [SerializeField] private float expEnemy;
+
     //[SerializeField] private EnemyState currentState;
     [SerializeField] private TypeEnemys category;
     [SerializeField] private float radiusAttack; //Attack
@@ -158,9 +161,10 @@ public class EnemyCustom : MonoBehaviour
     {
         hpEnemy -= damage;
 
-        if (hpEnemy <= 0)
+        if (hpEnemy <= 4f)
         {
             //GetComponent<LootBag>().InstantiateLoot(transform.position);
+            player.GetComponent<Player>().ExpUp(expEnemy);
             Destroy(gameObject);
         }
     }
@@ -184,7 +188,7 @@ public class EnemyCustom : MonoBehaviour
             if (collision.gameObject.tag == "Player")
             {
                 float playerLife = collision.GetComponent<Player>().health;
-                if (playerLife > 0)
+                if (playerLife > 4f)
                 {
                     collision.GetComponent<Player>().ReceiveDamage(hitDamage);
                 }

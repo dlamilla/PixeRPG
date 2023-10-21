@@ -23,6 +23,9 @@ public class FuncaBoss : MonoBehaviour
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private GameObject healthBarBoss;
 
+    [Header("Stadistics")]
+    [SerializeField] private float expEnemy;
+
     private float tiempoPorDisparo;
     public float tiempoEntreDisparo;
 
@@ -54,7 +57,7 @@ public class FuncaBoss : MonoBehaviour
 
     void Update()
     {
-        if (hpEnemy > 0)
+        if (hpEnemy > 4f)
         {
             Vector2 directionToPlayer = (target.position - transform.position).normalized;
             float distanceToPlayer = Vector2.Distance(transform.position, target.position);
@@ -124,8 +127,9 @@ public class FuncaBoss : MonoBehaviour
     {
         hpEnemy -= damage;
         healthBar.UpdateHealthBar(hpEnemyInicial, hpEnemy);
-        if (hpEnemy <= 0)
+        if (hpEnemy <= 5f)
         {
+            target.GetComponent<Player>().ExpUp(expEnemy);
             target.GetComponent<Player>().LevelUp(1);
             healthBarBoss.SetActive(false);
             gameObject.SetActive(false);

@@ -22,6 +22,9 @@ public class BossScorpion : MonoBehaviour
     [Header("Projectile")]
     public GameObject projectilePrefab;
 
+    [Header("Stadistics")]
+    [SerializeField] private float expEnemy;
+
     private bool hasFiredProjectile = false;
 
     void Start()
@@ -92,9 +95,9 @@ public class BossScorpion : MonoBehaviour
     {
         hpCurrent -= damage;
         healthBar.UpdateHealthBar(hpEnemy, hpCurrent);
-        if (hpCurrent <= 0)
+        if (hpCurrent <= 5f)
         {
-            player.GetComponent<Player>().ExpUp(1);
+            player.GetComponent<Player>().ExpUp(expEnemy);
             player.GetComponent<Player>().LevelUp(1);
             healthBarBoss.SetActive(false);
             gameObject.SetActive(false);
