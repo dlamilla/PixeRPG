@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [Header("Give Health")]
     [SerializeField] private float timeNextHealth;
     [SerializeField] private float giveHealth;
-    [SerializeField] private float timeCurrent;
+    //[SerializeField] private float timeCurrent;
 
     [Header("Statistics")]
     [SerializeField] public float exp;
@@ -25,8 +25,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform controladorGolpe;
     [SerializeField] private float radioGolpe;
     [SerializeField] private float dañoGolpe;
-    [SerializeField] private float tiempoEntreAtaques;
-    [SerializeField] private float tiempoSiguienteAtaque;
+    //[SerializeField] private float tiempoEntreAtaques;
+    //[SerializeField] private float tiempoSiguienteAtaque;
     [SerializeField] private float timeForAttack;
 
     [Header("HealthBar")]
@@ -197,6 +197,13 @@ public class Player : MonoBehaviour
         moveSpeed = resetSpeed;
     }
 
+    IEnumerator StopMovingAfterHealth()
+    {
+        moveSpeed = 0f;
+        yield return new WaitForSeconds(timeNextHealth);
+        moveSpeed = resetSpeed;
+    }
+
     private void Golpe()
     {
         Collider2D[] objetos = Physics2D.OverlapCircleAll(controladorGolpe.position, radioGolpe);
@@ -255,16 +262,13 @@ public class Player : MonoBehaviour
     public void GiveHeath(float life)
     {
         //timeCurrent += Time.deltaTime;
-        if (health < 10)
+        if (health < 10 && health > 0)
         {
-            moveSpeed = 0;
+            
             //timeCurrent = 0;
             animator.SetTrigger("Health");
             health = life;
-    }
-        if (health >= 10)
-        {
-            moveSpeed = resetSpeed;
+            StartCoroutine(StopMovingAfterHealth());
         }
         healthBar.UpdateHealthBar(hpPlayerMax, health);        
     }
