@@ -103,4 +103,10 @@ public class BossScorpion : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    public void RestartLife()
+    {
+        hpCurrent = hpEnemy;
+        healthBar.UpdateHealthBar(hpEnemy, hpCurrent);
+    }
 }

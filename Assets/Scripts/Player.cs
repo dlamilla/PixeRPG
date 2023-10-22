@@ -300,6 +300,18 @@ public class Player : MonoBehaviour
         if (health <= 4f)
         {
             bx.enabled = false;
+            if (level < 1)
+            {
+                GameObject.FindGameObjectWithTag("Boss1").GetComponent<BossRat>().RestartLife();
+            }
+            else if (level >= 1 && level < 2)
+            {
+                GameObject.FindGameObjectWithTag("Boss2").GetComponent<FuncaBoss>().RestartLife();
+            }
+            else if (level >= 2 && level < 3)
+            {
+                GameObject.FindGameObjectWithTag("Boss3").GetComponent<BossScorpion>().RestartLife();
+            }
             StartCoroutine(ReloadGame());
         }
     }

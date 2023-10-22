@@ -122,6 +122,12 @@ public class FuncaBoss : MonoBehaviour
 
     }
 
+    public void RestartLife()
+    {
+        hpEnemy = hpEnemyInicial;
+        healthBar.UpdateHealthBar(hpEnemyInicial, hpEnemy);
+    }
+
     private IEnumerator Disparo()
     {
         attackSource.Play();

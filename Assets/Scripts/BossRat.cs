@@ -145,6 +145,12 @@ public class BossRat : MonoBehaviour
 
     }
 
+    public void RestartLife()
+    {
+        hpCurrent = hpBoss;
+        healthBar.UpdateHealthBar(hpBoss, hpCurrent);
+    }
+
     IEnumerator WaitTime()
     {
         yield return new WaitForSeconds(2.5f);
