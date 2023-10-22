@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class FuncaBoss : MonoBehaviour
@@ -30,6 +31,7 @@ public class FuncaBoss : MonoBehaviour
     public float tiempoEntreDisparo;
 
     public GameObject projectile;
+    public float tiempoEntreSonido;
 
     private Transform target;
     private Animator animator;
@@ -40,6 +42,8 @@ public class FuncaBoss : MonoBehaviour
     private bool isAttacking = false;
     private float attackDuration = 1.3f;
     private float currentAttackTime = 0.0f;
+
+    private AudioSource attackSource;
 
     [SerializeField] private GameObject[] attackObjects; // Debe contener los 4 gameObjects que se activaran cuando el enemigo tenga la mitad de la vida
 
@@ -53,6 +57,7 @@ public class FuncaBoss : MonoBehaviour
         tiempoPorDisparo = tiempoEntreDisparo;
         hpEnemyInicial = hpEnemy;
         healthBar.UpdateHealthBar(hpEnemyInicial, hpEnemy);
+        attackSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -91,7 +96,7 @@ public class FuncaBoss : MonoBehaviour
 
             if (tiempoPorDisparo <= 0)
             {
-                Instantiate(projectile, transform.position, Quaternion.identity);
+               StartCoroutine(Disparo());
                 tiempoPorDisparo = tiempoEntreDisparo;
             }
             else
@@ -115,6 +120,13 @@ public class FuncaBoss : MonoBehaviour
             }
         }
 
+    }
+
+    private IEnumerator Disparo()
+    {
+        attackSource.Play();
+        yield return new WaitForSeconds(tiempoEntreSonido);
+        Instantiate(projectile, transform.position, Quaternion.identity);
     }
 
     void Teleport()

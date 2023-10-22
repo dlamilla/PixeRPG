@@ -236,6 +236,10 @@ public class Player : MonoBehaviour
             {
                 collision.GetComponent<SpawnCustom>().ReceiveDamage(dañoGolpe);
             }
+            if (collision.gameObject.tag == "Snake")
+            {
+                collision.GetComponent<ScriptSnake>().ReceiveDamage(dañoGolpe);
+            }
         }
     }
 

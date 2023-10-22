@@ -22,6 +22,9 @@ public class SpawnCustom : MonoBehaviour
 
     private Vector2 target;
 
+    private Animator anim;
+    public float radioBusqueda;
+
     private Transform player;
     private ChangeAnimation changeDirections;
     private BoxCollider2D player1;
@@ -32,6 +35,7 @@ public class SpawnCustom : MonoBehaviour
         changeDirections = GetComponent<ChangeAnimation>();
         target = new Vector2(player.position.x, player.position.y);
         player1 = GameObject.FindWithTag("Player").GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -41,10 +45,20 @@ public class SpawnCustom : MonoBehaviour
         {
             switch (category)
             {
-                case TypeSpawn.BABYRAT:                  
-                    transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-                    Vector2 temp = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-                    changeDirections.changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
+                case TypeSpawn.BABYRAT:
+                    if (Vector2.Distance(transform.position, player.transform.position) > radioBusqueda) {
+                        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                        Vector2 temp = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                        changeDirections.changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
+                        anim.SetBool("Attack", false);
+                    }
+                    if (Vector2.Distance(transform.position, player.transform.position) <= radioBusqueda && Vector2.Distance(transform.position, player.transform.position) <= radiusAttack)
+                    {
+                        if (player1.enabled)
+                        {
+                            anim.SetBool("Attack", true);
+                        }
+                    }
                     break;
                 case TypeSpawn.PLANT_SHOOT:
                     if (player1.enabled)
@@ -114,5 +128,6 @@ public class SpawnCustom : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radiusAttack);
+        Gizmos.DrawWireSphere(transform.position, radioBusqueda);
     }
 }
