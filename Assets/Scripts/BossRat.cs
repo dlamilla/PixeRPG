@@ -59,7 +59,6 @@ public class BossRat : MonoBehaviour
     {
         hpCurrent -= damage;
         healthBar.UpdateHealthBar(hpBoss, hpCurrent);
-        Debug.Log(hpCurrent + " Vida Barra :" + hpCurrent / hpBoss);
         if (hpCurrent <= 5f)
         {
             player.GetComponent<Player>().ExpUp(exp);

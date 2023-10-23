@@ -165,6 +165,7 @@ public class EnemyCustom : MonoBehaviour
         {
             //GetComponent<LootBag>().InstantiateLoot(transform.position);
             player.GetComponent<Player>().ExpUp(expEnemy);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
             Destroy(gameObject);
         }
     }

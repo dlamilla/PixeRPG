@@ -70,9 +70,9 @@ public class LaserController : MonoBehaviour
         {
             if (hit.transform.tag == "Player")
             {
-                Debug.Log("Player");
+                
                 float playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().health;
-                if (playerLife > 4)
+                if (playerLife > 4f)
                 {
                     GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().ReceiveDamage(damage);
                 }
@@ -80,7 +80,7 @@ public class LaserController : MonoBehaviour
             }
             else
             {
-                Debug.Log("Toco caja");
+                
                 lr.SetPosition(1, hit.point);
             }
         }

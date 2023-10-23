@@ -77,7 +77,6 @@ public class ControllerDataGame : MonoBehaviour
 
         string charJSON = JsonUtility.ToJson(newData);
         File.WriteAllText(saveFile, charJSON);
-        Debug.Log("Archivo guardado");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -116,7 +115,6 @@ public class ControllerDataGame : MonoBehaviour
 
     public void ChangeRoom(int roomNew)
     {
-        Debug.Log(roomNew);
         GameObject.Find("RoomsManager").GetComponent<RoomsManager>().OnRoom(roomNew);
     }
 

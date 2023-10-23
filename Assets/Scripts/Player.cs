@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     private float resetSpeed;
     private float x, y;
     private bool isWalking;
-    private bool isReceiveDamage;
+    [SerializeField] public bool isReceiveDamage;
     private bool isReceiveReal;
     private Vector2 moveDir;
     private Rigidbody2D rb;
@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health > 4f && !isReceiveDamage && moveSpeed > 0)
+        if (health > 4f && !isReceiveDamage && moveSpeed > 0 &&!isReceiveReal)
         {
             
 
@@ -120,7 +120,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (health > 4f && !isReceiveDamage && moveSpeed > 0)
+        if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal)
         {
             Supresion();
             rb.MovePosition(rb.position + inputMov.normalized * moveSpeed * Time.fixedDeltaTime);
@@ -245,7 +245,7 @@ public class Player : MonoBehaviour
 
     public void DamagePlayer(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed && level >= 0 && !isReceiveReal)
+        if (callbackContext.performed && level >= 0 && !isReceiveDamage)
         {
             animator.SetTrigger("Golpe");
             StartCoroutine(StopMoving());
@@ -254,7 +254,7 @@ public class Player : MonoBehaviour
 
     public void HealthPlayer(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed && level >= 0)
+        if (callbackContext.started && level >= 0)
         {
             GiveHeath(giveHealth);
         }
@@ -266,6 +266,14 @@ public class Player : MonoBehaviour
         {
             string typeController = playerInput.currentControlScheme;
             GameObject.Find("Sign").GetComponent<DialogueNPC>().StartTalking(typeController);
+        }
+    }
+
+    public void RestartLevel(InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.performed)
+        {
+            GameObject.FindGameObjectWithTag("CheckPoint").GetComponent<ControllerDataGame>().LoadData();
         }
     }
 
@@ -291,16 +299,16 @@ public class Player : MonoBehaviour
 
     public void ReceiveDamage(float damage)
     {
+        isReceiveDamage = true;
         health -= damage;
         StartCoroutine(StopMoving());
         animator.SetTrigger("Hit");
-        Debug.Log(hpPlayerMax + " : " + health + "Vida Barra :" + health / hpPlayerMax);
         healthBar.UpdateHealthBar(hpPlayerMax, health);
-        isReceiveDamage = true;
+        
         if (health <= 4f)
         {
             bx.enabled = false;
-            if (level < 1)
+            if (level > 0 && level <= 1)
             {
                 GameObject.FindGameObjectWithTag("Boss1").GetComponent<BossRat>().RestartLife();
             }

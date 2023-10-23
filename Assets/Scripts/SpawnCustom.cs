@@ -117,7 +117,6 @@ public class SpawnCustom : MonoBehaviour
             float playerLife = other.GetComponent<Player>().health;
             if (playerLife > 4f)
             {
-                Debug.Log("Daño planta");
                 other.gameObject.GetComponent<Player>().ReceiveDamage(damage);
                 DestroyProjectile();
             }
