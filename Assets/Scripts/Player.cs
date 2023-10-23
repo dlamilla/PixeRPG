@@ -40,6 +40,9 @@ public class Player : MonoBehaviour
 
     [Header("Boss Info")]
     [SerializeField] private float danoAgarre;
+    [SerializeField] private GameObject Boss1;
+    [SerializeField] private GameObject Boss3;
+    [SerializeField] private GameObject Boss2;
     public Animator enemyAnimator;
 
     private float resetSpeed;
@@ -72,7 +75,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health > 4f && !isReceiveDamage && moveSpeed > 0 &&!isReceiveReal)
+        if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal)
         {
             
 
@@ -122,7 +125,10 @@ public class Player : MonoBehaviour
     {
         if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal)
         {
-            Supresion();
+            
+                Supresion();
+            
+
             rb.MovePosition(rb.position + inputMov.normalized * moveSpeed * Time.fixedDeltaTime);
             //Hit 
             CheckHitBox();
@@ -176,18 +182,24 @@ public class Player : MonoBehaviour
 
     private void Supresion()
     {
+    
         if (enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Supression"))
         {
             playerSpriteRenderer.enabled = false;
             StartCoroutine(StopMoving());
-            isReceiveReal = true;
+            //isReceiveReal = true;
             ReceiveDamage(danoAgarre);
+            
+            
         }
         else
         {
             playerSpriteRenderer.enabled = true;
-            isReceiveReal= false;
+            //isReceiveReal = false;
+            //isReceiveDamage = false;
         }
+        
+
     }
     IEnumerator StopMoving()
     {
@@ -252,6 +264,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void RestartGame(InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.performed)
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
+
     public void HealthPlayer(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.started && level >= 0)
@@ -308,23 +328,37 @@ public class Player : MonoBehaviour
         if (health <= 4f)
         {
             bx.enabled = false;
-            if (level > 0 && level <= 1)
-            {
-                GameObject.FindGameObjectWithTag("Boss1").GetComponent<BossRat>().RestartLife();
-            }
-            else if (level >= 1 && level < 2)
-            {
-                GameObject.FindGameObjectWithTag("Boss2").GetComponent<FuncaBoss>().RestartLife();
-            }
-            else if (level >= 2 && level < 3)
-            {
-                GameObject.FindGameObjectWithTag("Boss3").GetComponent<BossScorpion>().RestartLife();
-            }
+            //if (level > 0 && level <= 1)
+            //{
+                
+            //    if (Boss1.activeInHierarchy)
+            //    {
+            //        GameObject.FindGameObjectWithTag("Boss1").GetComponent<BossRat>().RestartLife();
+            //    }
+                
+            //}
+            //else if (level >= 1 && level < 2)
+            //{
+                
+            //    if (Boss2.activeInHierarchy)
+            //    {
+            //        GameObject.FindGameObjectWithTag("Boss2").GetComponent<FuncaBoss>().RestartLife();
+            //    }
+                
+            //}
+            //else if (level >= 2 && level < 3)
+            //{
+                
+            //    if (Boss3.activeInHierarchy)
+            //    {
+            //        //GameObject.FindGameObjectWithTag("Boss3").GetComponent<BossScorpion>().RestartLife();
+            //    }
+            //}
             StartCoroutine(ReloadGame());
         }
     }
 
-    private IEnumerator ReloadGame()
+    public IEnumerator ReloadGame()
     {
         animator.SetBool("Died",true);
         yield return new WaitForSeconds(1.5f);
