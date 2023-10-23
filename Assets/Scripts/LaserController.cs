@@ -14,7 +14,7 @@ public class LaserController : MonoBehaviour
 {
     [SerializeField] private Transform objetLaser;
     [SerializeField] private Transform objetLaser1;
-    [SerializeField] private float damage;
+    private float damage = 5f;
     private float distance;
     [SerializeField] private TypesLaser category;
     [SerializeField] private bool rotateLaser;
