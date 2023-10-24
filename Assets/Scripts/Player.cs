@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     //[SerializeField] private float tiempoEntreAtaques;
     //[SerializeField] private float tiempoSiguienteAtaque;
     [SerializeField] private float timeForAttack;
+    [SerializeField] public bool isReceiveDamage;
 
     [Header("HealthBar")]
     [SerializeField] private HealthBar healthBar;
@@ -38,17 +39,13 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject doorBoss2;
     [SerializeField] private GameObject doorBoss3;
 
-    [Header("Boss Info")]
+    [Header("Boss Scorpion Info")]
     [SerializeField] private float danoAgarre;
-    [SerializeField] private GameObject Boss1;
-    [SerializeField] private GameObject Boss3;
-    [SerializeField] private GameObject Boss2;
-    public Animator enemyAnimator;
-
+    [SerializeField] public Animator enemyAnimator;
+    
     private float resetSpeed;
     private float x, y;
     private bool isWalking;
-    [SerializeField] public bool isReceiveDamage;
     private bool isReceiveReal;
     private Vector2 moveDir;
     private Rigidbody2D rb;
@@ -213,6 +210,8 @@ public class Player : MonoBehaviour
         moveSpeed = 0f;
         yield return new WaitForSeconds(1f);
         moveSpeed = resetSpeed;
+        health = hpPlayerMax;
+        healthBar.UpdateHealthBar(hpPlayerMax, health);
     }
 
     IEnumerator StopMovingAfterHealth()
@@ -362,7 +361,7 @@ public class Player : MonoBehaviour
     {
         animator.SetBool("Died",true);
         yield return new WaitForSeconds(1.5f);
-        GameObject.FindWithTag("CheckPoint").GetComponent<ControllerDataGame>().LoadData();
+        transform.position = GameObject.FindWithTag("Respawn").GetComponent<CheckPointController>().checkPoint;
         StartCoroutine(StopMovingAfterDied());
         animator.SetBool("Died", false);
         isReceiveDamage = false;

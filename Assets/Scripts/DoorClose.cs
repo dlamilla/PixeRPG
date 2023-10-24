@@ -6,8 +6,6 @@ public class DoorClose : MonoBehaviour
 {
     [SerializeField] private float timeClosed;
     [SerializeField] private GameObject door;
-    // Start is called before the first frame update
-    
 
     private void OnEnable()
     {

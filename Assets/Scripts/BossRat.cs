@@ -139,6 +139,12 @@ public class BossRat : MonoBehaviour
                 {
                     collision.GetComponent<Player>().ReceiveDamage(hitDamage);
                 }
+                if (playerLife <= 4f)
+                {
+                    transform.position = posBossInitial;
+                    hpCurrent = hpBoss;
+                    healthBar.UpdateHealthBar(hpBoss, hpCurrent);
+                }
             }
         }
 
