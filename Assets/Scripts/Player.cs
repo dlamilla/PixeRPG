@@ -290,9 +290,13 @@ public class Player : MonoBehaviour
 
     public void RestartLevel(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed)
+        if (callbackContext.started)
         {
-            GameObject.FindGameObjectWithTag("CheckPoint").GetComponent<ControllerDataGame>().LoadData();
+            GameObject[] obj = GameObject.FindGameObjectsWithTag("Box");
+            foreach (GameObject item in obj)
+            {
+                item.GetComponent<RespawnBox>().RestartBox();
+            }
         }
     }
 

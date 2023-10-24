@@ -206,6 +206,17 @@
                 },
                 {
                     "name": "",
+                    "id": "3aaef33f-206a-4f0b-9a43-e32f30d4bccc",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Restart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "50cc86af-b783-4a2e-b45c-082c5293d15c",
                     "path": "<Keyboard>/space",
                     "interactions": "",

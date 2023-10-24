@@ -15,6 +15,7 @@ TagManager:
   - CheckPoint
   - Rock
   - Snake
+  - Box
   layers:
   - Default
   - TransparentFX
