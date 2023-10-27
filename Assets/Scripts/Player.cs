@@ -6,14 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    [Header("Live")]
+    [Header("Basic")]
     [SerializeField] private float moveSpeed;
     [SerializeField] public float hpPlayerMax;
+    [SerializeField] private float life;
+    [SerializeField] private float timeAfterDied;
 
     [Header("Give Health")]
     [SerializeField] private float timeNextHealth;
     [SerializeField] private float giveHealth;
-    //[SerializeField] private float timeCurrent;
 
     [Header("Statistics")]
     [SerializeField] public float exp;
@@ -25,8 +26,6 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform controladorGolpe;
     [SerializeField] private float radioGolpe;
     [SerializeField] private float dañoGolpe;
-    //[SerializeField] private float tiempoEntreAtaques;
-    //[SerializeField] private float tiempoSiguienteAtaque;
     [SerializeField] private float timeForAttack;
     [SerializeField] public bool isReceiveDamage;
 
@@ -47,7 +46,6 @@ public class Player : MonoBehaviour
     private float x, y;
     private bool isWalking;
     private bool isReceiveReal;
-    private Vector2 moveDir;
     private Rigidbody2D rb;
     private Animator animator;
     private BoxCollider2D bx;
@@ -74,13 +72,8 @@ public class Player : MonoBehaviour
     {
         if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal)
         {
-            
-
             inputMov = playerInput.actions["Move"].ReadValue<Vector2>();
             
-            //x = Input.GetAxisRaw("Horizontal");
-            //y = Input.GetAxisRaw("Vertical");
-
             x = inputMov.x;
             y = inputMov.y;
 
@@ -101,62 +94,41 @@ public class Player : MonoBehaviour
                     animator.SetBool("IsMoving", isWalking);
                 }
             }
-            //moveDir = new Vector2(x, y).normalized;
-
-            //if (tiempoEntreAtaques > 0)
-            //{
-            //    tiempoSiguienteAtaque -= Time.deltaTime;
-            //}
-            //if (Input.GetKeyDown(KeyCode.K) && tiempoSiguienteAtaque <= 0 && level >= 0 && !isReceiveReal)
-            //{
-            //    animator.SetTrigger("Golpe");
-            //    StartCoroutine(StopMoving());
-            //    tiempoSiguienteAtaque = tiempoEntreAtaques;
-            //}
         }
-
-
     }
 
     private void FixedUpdate()
     {
         if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal)
         {
+            //Ataque del 3er boss
+            Supresion();
             
-                Supresion();
-            
-
+            //Mov del player
             rb.MovePosition(rb.position + inputMov.normalized * moveSpeed * Time.fixedDeltaTime);
-            //Hit 
+
+            //Hitbox del area del daño
             CheckHitBox();
 
             if (level == 1)
             {
+                //Desactiva pase luego de eliminar al boss
                 doorBoss1.SetActive(false);
-                //health = hpPlayerMax;
-                //healthBar.UpdateHealthBar(hpPlayerMax, health);
-                //GiveMoreDamage(damageExtra);
             }
             if (level == 2)
             {
+                //Desactiva pase luego de eliminar al boss
                 doorBoss2.SetActive(false);
-                //health = hpPlayerMax;
-                //healthBar.UpdateHealthBar(hpPlayerMax, health);
             }
             if (level == 3)
             {
+                //Desactiva pase luego de eliminar al boss
                 doorBoss3.SetActive(false);
-                //health = hpPlayerMax;
-                //healthBar.UpdateHealthBar(hpPlayerMax, health);
             }
-            //if (Input.GetKey(KeyCode.E) && level >= 0 && health <= 10)
-            //{
-            //    GiveHeath(giveHealth);
-            //}
         }
-
     }
 
+    //Detecta donde impactara el daño al ejecutar la accion
     private void CheckHitBox()
     {
         if (x <= 1 && x > 0) //Hit Right 
@@ -177,50 +149,22 @@ public class Player : MonoBehaviour
         }
     }
 
+    //El player desaparece al recibir daño por el BossScorpion
     private void Supresion()
     {
-    
         if (enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Supression"))
         {
             playerSpriteRenderer.enabled = false;
             StartCoroutine(StopMoving());
-            //isReceiveReal = true;
             ReceiveDamage(danoAgarre);
-            
-            
         }
         else
         {
             playerSpriteRenderer.enabled = true;
-            //isReceiveReal = false;
-            //isReceiveDamage = false;
         }
-        
-
-    }
-    IEnumerator StopMoving()
-    {
-        moveSpeed = 0f;
-        yield return new WaitForSeconds(timeForAttack);
-        moveSpeed = resetSpeed;
     }
 
-    IEnumerator StopMovingAfterDied()
-    {
-        moveSpeed = 0f;
-        yield return new WaitForSeconds(1f);
-        moveSpeed = resetSpeed;
-        health = hpPlayerMax;
-        healthBar.UpdateHealthBar(hpPlayerMax, health);
-    }
-
-    IEnumerator StopMovingAfterHealth()
-    {
-        moveSpeed = 0f;
-        yield return new WaitForSeconds(timeNextHealth);
-        moveSpeed = resetSpeed;
-    }
-
+    //Hace daño a los enemigos segun su tag
     private void Golpe()
     {
         Collider2D[] objetos = Physics2D.OverlapCircleAll(controladorGolpe.position, radioGolpe);
@@ -254,6 +198,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    //Con la tecla K en teclado y Cuadrado en mando para atacar
     public void DamagePlayer(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.performed && level >= 0 && !isReceiveDamage)
@@ -263,6 +208,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    //Tecla espacio para testear reiniciar el juego
     public void RestartGame(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.performed)
@@ -271,6 +217,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    //Con la tecla E en teclado y triangulo en mando para curarse
     public void HealthPlayer(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.started && level >= 0)
@@ -279,6 +226,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    //Con la tecla F en teclado y Circulo en mando para interactuar con los letreros
     public void Talking(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.performed)
@@ -288,6 +236,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    //Con la R en teclado y L1 en mando las cajas regresan a su sitio
     public void RestartLevel(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.started)
@@ -300,26 +249,34 @@ public class Player : MonoBehaviour
         }
     }
 
+    //Aumentar vida
     public void GiveHeath(float life)
     {
-        //timeCurrent += Time.deltaTime;
         if (health < 10 && health > 0)
         {
-            
-            //timeCurrent = 0;
             animator.SetTrigger("Health");
             health = life;
+            healthBar.UpdateHealthBar(hpPlayerMax, health);
             StartCoroutine(StopMovingAfterHealth());
         }
-        healthBar.UpdateHealthBar(hpPlayerMax, health);        
+               
     }
 
+    //Tiempo en que se queda quieto mientras se cura
+    IEnumerator StopMovingAfterHealth()
+    {
+        moveSpeed = 0f;
+        yield return new WaitForSeconds(timeNextHealth);
+        moveSpeed = resetSpeed;
+    }
+
+    //Metodo sin usar
     public void GiveMoreDamage(float moreDamage)
     {
         dañoGolpe += moreDamage;
     }
 
-
+    //Recibe daño el player
     public void ReceiveDamage(float damage)
     {
         isReceiveDamage = true;
@@ -331,57 +288,57 @@ public class Player : MonoBehaviour
         if (health <= 4f)
         {
             bx.enabled = false;
-            //if (level > 0 && level <= 1)
-            //{
-                
-            //    if (Boss1.activeInHierarchy)
-            //    {
-            //        GameObject.FindGameObjectWithTag("Boss1").GetComponent<BossRat>().RestartLife();
-            //    }
-                
-            //}
-            //else if (level >= 1 && level < 2)
-            //{
-                
-            //    if (Boss2.activeInHierarchy)
-            //    {
-            //        GameObject.FindGameObjectWithTag("Boss2").GetComponent<FuncaBoss>().RestartLife();
-            //    }
-                
-            //}
-            //else if (level >= 2 && level < 3)
-            //{
-                
-            //    if (Boss3.activeInHierarchy)
-            //    {
-            //        //GameObject.FindGameObjectWithTag("Boss3").GetComponent<BossScorpion>().RestartLife();
-            //    }
-            //}
-            StartCoroutine(ReloadGame());
+            ChangeLife();
+            if (life != 0)
+            {
+                StartCoroutine(ReloadGame());
+            }  
         }
     }
 
+    //Permite detener al player por un tiempo antes de cualquier accion
+    IEnumerator StopMoving()
+    {
+        moveSpeed = 0f;
+        yield return new WaitForSeconds(timeForAttack);
+        moveSpeed = resetSpeed;
+    }
+
+    //Respawn a chekpoint si life es diferente de 0
     public IEnumerator ReloadGame()
     {
         animator.SetBool("Died",true);
         yield return new WaitForSeconds(1.5f);
         transform.position = GameObject.FindWithTag("Respawn").GetComponent<CheckPointController>().checkPoint;
-        StartCoroutine(StopMovingAfterDied());
+        StartCoroutine(StopMovingAfterDied()); 
+    }
+
+    //Tiempo entre que se muere y renace
+    IEnumerator StopMovingAfterDied()
+    {
+        moveSpeed = 0f;
+        yield return new WaitForSeconds(timeAfterDied);
+        moveSpeed = resetSpeed;
+        health = hpPlayerMax;
+        healthBar.UpdateHealthBar(hpPlayerMax, health);
         animator.SetBool("Died", false);
         isReceiveDamage = false;
     }
 
+    //Usado en la animacion de daño, ultimo frame
     public void ResetDamage()
     {
         isReceiveDamage = false;
         bx.enabled = true;
     }
 
+    //Sube nivel del player, segun el boss asesinado
     public void LevelUp(float levelUp)
     {
         level += levelUp;
     }
 
+    //Aumenta la exp del player, segun los enemigos asesinados
     public void ExpUp(float expEnemy)
     {
         exp += expEnemy;
@@ -392,12 +349,23 @@ public class Player : MonoBehaviour
         }
     }
 
+    //Despues de morir su vida baja 1
+    private void ChangeLife()
+    {
+        life--;
+        if (life <= 0)
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(controladorGolpe.position, radioGolpe);
     }
 
+    //Luego de pasar la primera habitacion se establece su nivel a 0
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Door")
@@ -406,6 +374,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    //Detecta que dispositivo esta usando Teclado o Mando
     public void ControlsChanged(PlayerInput playerInput)
     {
         Debug.Log("Cambio de dispositivo: " + playerInput.currentControlScheme);
