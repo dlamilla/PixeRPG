@@ -41,6 +41,13 @@ public class Player : MonoBehaviour
     [Header("Boss Scorpion Info")]
     [SerializeField] private float danoAgarre;
     [SerializeField] public Animator enemyAnimator;
+
+    [Header("Dash Configuracion")]
+    [SerializeField] float dashSpeed = 10f;
+    [SerializeField] float dashDuration = 1f;
+    [SerializeField] float dashCooldown = 1f;
+    bool isDashing;
+    bool canDash = true;
     
     private float resetSpeed;
     private float x, y;
@@ -64,12 +71,19 @@ public class Player : MonoBehaviour
 
         health = hpPlayerMax;
         healthBar.UpdateHealthBar(hpPlayerMax, health);
-        resetSpeed = moveSpeed;      
+        resetSpeed = moveSpeed;
+
+        canDash = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isDashing)
+        {
+            return;
+        }
+
         if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal)
         {
             inputMov = playerInput.actions["Move"].ReadValue<Vector2>();
@@ -95,10 +109,20 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Q) && canDash)
+        {
+            StartCoroutine(Dash());
+        }
     }
 
     private void FixedUpdate()
     {
+        if (isDashing)
+        {
+            return;
+        }
+
         if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal)
         {
             //Ataque del 3er boss
@@ -126,6 +150,18 @@ public class Player : MonoBehaviour
                 doorBoss3.SetActive(false);
             }
         }
+    }
+
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        rb.velocity = new Vector2(inputMov.x * dashSpeed, inputMov.y * dashSpeed);
+        yield return new WaitForSeconds(dashDuration);
+        isDashing = false;
+
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
     }
 
     //Detecta donde impactara el daño al ejecutar la accion
