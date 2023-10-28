@@ -42,12 +42,12 @@ public class Player : MonoBehaviour
     [SerializeField] private float danoAgarre;
     [SerializeField] public Animator enemyAnimator;
 
-    [Header("Dash Configuracion")]
+    [Header("Dash")]
     [SerializeField] float dashSpeed = 10f;
     [SerializeField] float dashDuration = 1f;
     [SerializeField] float dashCooldown = 1f;
-    bool isDashing;
-    bool canDash = true;
+    private bool isDashing;
+    private bool canDash = true;
     
     private float resetSpeed;
     private float x, y;
@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer playerSpriteRenderer;
     private PlayerInput playerInput;
     private Vector2 inputMov;
-    
+    private Vector2 normalInput;
 
     private void Start()
     {
@@ -72,22 +72,16 @@ public class Player : MonoBehaviour
         health = hpPlayerMax;
         healthBar.UpdateHealthBar(hpPlayerMax, health);
         resetSpeed = moveSpeed;
-
-        canDash = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isDashing)
-        {
-            return;
-        }
 
         if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal)
         {
             inputMov = playerInput.actions["Move"].ReadValue<Vector2>();
-            
+            normalInput = inputMov.normalized;
             x = inputMov.x;
             y = inputMov.y;
 
@@ -109,27 +103,22 @@ public class Player : MonoBehaviour
                 }
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Q) && canDash)
-        {
-            StartCoroutine(Dash());
-        }
     }
 
     private void FixedUpdate()
     {
-        if (isDashing)
-        {
-            return;
-        }
 
         if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal)
         {
             //Ataque del 3er boss
             Supresion();
-            
+
             //Mov del player
-            rb.MovePosition(rb.position + inputMov.normalized * moveSpeed * Time.fixedDeltaTime);
+            if (!isDashing)
+            {
+                rb.MovePosition(rb.position + inputMov.normalized * moveSpeed * Time.fixedDeltaTime);
+            }
+            
 
             //Hitbox del area del daño
             CheckHitBox();
@@ -149,6 +138,8 @@ public class Player : MonoBehaviour
                 //Desactiva pase luego de eliminar al boss
                 doorBoss3.SetActive(false);
             }
+
+            
         }
     }
 
@@ -156,12 +147,12 @@ public class Player : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-        rb.velocity = new Vector2(inputMov.x * dashSpeed, inputMov.y * dashSpeed);
+        rb.velocity = new Vector2(normalInput.x * dashSpeed, normalInput.y * dashSpeed);
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
-
+        rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
+        canDash = true;        
     }
 
     //Detecta donde impactara el daño al ejecutar la accion
@@ -237,10 +228,20 @@ public class Player : MonoBehaviour
     //Con la tecla K en teclado y Cuadrado en mando para atacar
     public void DamagePlayer(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed && level >= 0 && !isReceiveDamage)
+        if (callbackContext.started && level >= 0 && !isReceiveDamage)
         {
             animator.SetTrigger("Golpe");
             StartCoroutine(StopMoving());
+        }
+    }
+
+    //Con la tecla Q en teclado y X en mando para dashear
+    public void DashPlayer(InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.started && canDash)
+        {
+
+            StartCoroutine(Dash());
         }
     }
 
