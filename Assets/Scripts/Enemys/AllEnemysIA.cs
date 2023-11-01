@@ -64,6 +64,7 @@ public class AllEnemysIA : MonoBehaviour
         {
             switch (category)
             {
+                //Enemigo que patrulla puntos especificos y cuando te acercas te sigue y te ataca, al huir regresa a patrullar
                 case AllEnemys_IA.ENEMY_PATROL:
 
                     if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch && Vector2.Distance(transform.position, player.transform.position) > radiusAttack)
@@ -99,6 +100,7 @@ public class AllEnemysIA : MonoBehaviour
                     }
 
                     break;
+                //Enemigo estatico que solo dispara
                 case AllEnemys_IA.ENEMY_SHOOT:
 
                     if (Vector2.Distance(transform.position, player.transform.position) <= radiusShoot)
@@ -135,10 +137,10 @@ public class AllEnemysIA : MonoBehaviour
 
     IEnumerator Attack()
     {
-        anim.SetBool("AtaqueArana", true);
+        anim.SetBool("Attack", true);
         yield return new WaitForSeconds(timeForHit);
 
-        anim.SetBool("AtaqueArana", false);
+        anim.SetBool("Attack", false);
     }
 
     public void ReceiveDamage(float damage)
@@ -164,7 +166,7 @@ public class AllEnemysIA : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radiusShoot);
     }
 
-    public void AttackSpider()
+    public void AttackPlayer()
     {
         Collider2D[] objetos = Physics2D.OverlapCircleAll(transform.position, radiusAttack);
 

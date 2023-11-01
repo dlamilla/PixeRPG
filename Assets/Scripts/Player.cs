@@ -43,9 +43,9 @@ public class Player : MonoBehaviour
     [SerializeField] public Animator enemyAnimator;
 
     [Header("Dash")]
-    [SerializeField] float dashSpeed = 10f;
-    [SerializeField] float dashDuration = 1f;
-    [SerializeField] float dashCooldown = 1f;
+    [SerializeField] private float dashSpeed;
+    [SerializeField] private float dashDuration;
+    [SerializeField] private float dashCooldown;
     private bool isDashing;
     private bool canDash = true;
     

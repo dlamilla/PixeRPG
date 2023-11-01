@@ -38,9 +38,15 @@ public class SpawnCustom : MonoBehaviour
         target = new Vector2(player.position.x, player.position.y);
         player1 = GameObject.FindWithTag("Player").GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        navMeshAgent.updateRotation = false;
-        navMeshAgent.updateUpAxis = false;
+        switch (category)
+        {
+            case TypeSpawn.BABYRAT:
+                navMeshAgent = GetComponent<NavMeshAgent>();
+                navMeshAgent.updateRotation = false;
+                navMeshAgent.updateUpAxis = false;
+                break;
+        }
+        
     }
 
     // Update is called once per frame
