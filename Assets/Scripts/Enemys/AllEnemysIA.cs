@@ -20,7 +20,7 @@ public class AllEnemysIA : MonoBehaviour
 
     [Header("Patrol")]
     [SerializeField] private Transform[] waypoints;
-    [SerializeField] private int currentPoint;
+    private int currentPoint;
 
     [Header("Plant")]
     [SerializeField] private float radiusShoot;
