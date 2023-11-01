@@ -200,7 +200,7 @@ public class Player : MonoBehaviour
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                collision.GetComponent<EnemyCustom>().ReceiveDamage(dañoGolpe);
+                collision.GetComponent<AllEnemysIA>().ReceiveDamage(dañoGolpe);
             }
             if (collision.gameObject.tag == "Boss1")
             {
@@ -217,10 +217,6 @@ public class Player : MonoBehaviour
             if (collision.gameObject.tag == "BabyRat")
             {
                 collision.GetComponent<SpawnCustom>().ReceiveDamage(dañoGolpe);
-            }
-            if (collision.gameObject.tag == "Snake")
-            {
-                collision.GetComponent<ScriptSnake>().ReceiveDamage(dañoGolpe);
             }
         }
     }
