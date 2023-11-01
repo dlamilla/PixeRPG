@@ -138,6 +138,8 @@ MonoBehaviour:
   speed: 10
   damage: 2
   radiusAttack: 0.48
+  expEnemy: 0
+  radioBusqueda: 0
 --- !u!58 &3838012448203033701
 CircleCollider2D:
   m_ObjectHideFlags: 0

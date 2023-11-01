@@ -14,6 +14,8 @@ TagManager:
   - Boss3
   - CheckPoint
   - Rock
+  - Snake
+  - Box
   layers:
   - Default
   - TransparentFX

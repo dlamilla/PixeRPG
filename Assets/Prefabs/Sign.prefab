@@ -152,8 +152,13 @@ MonoBehaviour:
   dialogueMark: {fileID: 616646855284437420}
   dialoguePanel: {fileID: 616646855573355178}
   dialogueText: {fileID: 616646855475558576}
-  dialogueLines:
+  interact: {fileID: 616646856433623126}
+  dialogueLinesKeyboard:
+  - Bienvenida aventurera
+  - Para desplazarte usa W, A, S, D.
+  dialogueLinesGamepad:
   - Bienvenido
+  - "Para desplazarte usa botones de direcci\xF3n."
 --- !u!82 &616646855105198020
 AudioSource:
   m_ObjectHideFlags: 0
@@ -166,7 +171,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -730,7 +735,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[F]'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 63db7a8306c141145b3640a2f4f991e3, type: 2}
   m_sharedMaterial: {fileID: -5072321454975952693, guid: 63db7a8306c141145b3640a2f4f991e3, type: 2}
