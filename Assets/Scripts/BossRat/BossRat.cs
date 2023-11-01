@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(ChangeAnimation))]
 public class BossRat : MonoBehaviour
@@ -37,6 +38,7 @@ public class BossRat : MonoBehaviour
     private Animator anim;
     private Transform player;
     private BoxCollider2D bx;
+    private NavMeshAgent navMeshAgent;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +49,9 @@ public class BossRat : MonoBehaviour
         hpCurrent = hpBoss;
         healthBar.UpdateHealthBar(hpBoss, hpCurrent);
         posBossInitial = transform.position;
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.updateRotation = false;
+        navMeshAgent.updateUpAxis = false;
     }
 
     // Update is called once per frame
@@ -80,7 +85,8 @@ public class BossRat : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, player.transform.position) > radiusAttack)
         {
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+            navMeshAgent.SetDestination(player.transform.position);
+            //transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             Vector2 temp = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             changeDirections.changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
             anim.SetBool("isRunning", true);
@@ -94,7 +100,8 @@ public class BossRat : MonoBehaviour
     public void Attack2()
     {
         bx.enabled = false;
-        transform.position = Vector2.MoveTowards(transform.position, posBossInitial, speed * Time.deltaTime);
+        navMeshAgent.SetDestination(posBossInitial);
+        //transform.position = Vector2.MoveTowards(transform.position, posBossInitial, speed * Time.deltaTime);
         Vector2 temp = Vector2.MoveTowards(transform.position, posBossInitial, speed * Time.deltaTime);
         changeDirections.changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
         anim.SetBool("isRunning", true);

@@ -21,7 +21,7 @@ public class EnemyCustom : MonoBehaviour
     [Header("Patrol")]
     [SerializeField] private Transform[] waypoints;
     //private Transform startPosition;
-    private int currentPoint;
+    [SerializeField] private int currentPoint;
 
     [Header("Plant")]
     [SerializeField] private float radiusShoot;
