@@ -66,6 +66,7 @@ public class BossRat : MonoBehaviour
         healthBar.UpdateHealthBar(hpBoss, hpCurrent);
         if (hpCurrent <= 5f)
         {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
             player.GetComponent<Player>().ExpUp(exp);
             player.GetComponent<Player>().LevelUp(1);
             healthBarBoss.SetActive(false);

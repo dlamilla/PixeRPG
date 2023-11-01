@@ -147,6 +147,7 @@ public class FuncaBoss : MonoBehaviour
         healthBar.UpdateHealthBar(hpEnemyInicial, hpEnemy);
         if (hpEnemy <= 5f)
         {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
             target.GetComponent<Player>().ExpUp(expEnemy);
             target.GetComponent<Player>().LevelUp(1);
             healthBarBoss.SetActive(false);

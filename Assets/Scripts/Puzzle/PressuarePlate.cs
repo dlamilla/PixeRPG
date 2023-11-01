@@ -10,8 +10,16 @@ public class PressuarePlate : MonoBehaviour
     {
         if (collision.gameObject.tag == "Box1")
         {
-            Debug.Log("Piso caja");
             bridge.SetActive(true);
+            bridgeStop.SetActive(false);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Box1")
+        {
+            bridge.SetActive(false);
             bridgeStop.SetActive(false);
         }
     }

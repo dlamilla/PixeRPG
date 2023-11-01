@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum TypeSpawn
 {
@@ -28,6 +29,7 @@ public class SpawnCustom : MonoBehaviour
     private Transform player;
     private ChangeAnimation changeDirections;
     private BoxCollider2D player1;
+    private NavMeshAgent navMeshAgent;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,9 @@ public class SpawnCustom : MonoBehaviour
         target = new Vector2(player.position.x, player.position.y);
         player1 = GameObject.FindWithTag("Player").GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.updateRotation = false;
+        navMeshAgent.updateUpAxis = false;
     }
 
     // Update is called once per frame
@@ -46,8 +51,10 @@ public class SpawnCustom : MonoBehaviour
             switch (category)
             {
                 case TypeSpawn.BABYRAT:
-                    if (Vector2.Distance(transform.position, player.transform.position) > radioBusqueda) {
-                        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                    if (Vector2.Distance(transform.position, player.transform.position) > radioBusqueda) 
+                    {
+                        navMeshAgent.SetDestination(player.transform.position);
+                        //transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
                         Vector2 temp = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
                         changeDirections.changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
                         anim.SetBool("Attack", false);
@@ -104,6 +111,7 @@ public class SpawnCustom : MonoBehaviour
 
         if (hpEnemy <= 4f)
         {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
             player.GetComponent<Player>().ExpUp(expEnemy);
             Destroy(gameObject);
         }

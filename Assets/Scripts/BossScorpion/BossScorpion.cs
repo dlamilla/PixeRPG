@@ -97,6 +97,7 @@ public class BossScorpion : MonoBehaviour
         healthBar.UpdateHealthBar(hpEnemy, hpCurrent);
         if (hpCurrent <= 5f)
         {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
             player.GetComponent<Player>().ExpUp(expEnemy);
             player.GetComponent<Player>().LevelUp(1);
             healthBarBoss.SetActive(false);
