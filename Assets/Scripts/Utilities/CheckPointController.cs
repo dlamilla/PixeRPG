@@ -12,5 +12,6 @@ public class CheckPointController : MonoBehaviour
     private void OnEnable()
     {
         checkPoint = pointRespawn.transform.position;
+        GameObject.Find("Player").transform.position = pointRespawn.transform.position;
     }
 }

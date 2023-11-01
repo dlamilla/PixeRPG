@@ -12,7 +12,7 @@ public class ChangeRoom : MonoBehaviour
         {
             GameObject.Find("RoomsManager").GetComponent<RoomsManager>().OnRoom(roomDestination);
 
-            GameObject.Find("Player").transform.position = GameObject.FindWithTag("Respawn").GetComponent<CheckPointController>().checkPoint;
+            
         }
     }
 }
