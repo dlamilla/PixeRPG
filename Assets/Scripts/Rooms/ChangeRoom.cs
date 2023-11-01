@@ -5,7 +5,6 @@ using UnityEngine;
 public class ChangeRoom : MonoBehaviour
 {
     [SerializeField] private int roomDestination;
-    [SerializeField] private int direction;
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,7 +12,7 @@ public class ChangeRoom : MonoBehaviour
         {
             GameObject.Find("RoomsManager").GetComponent<RoomsManager>().OnRoom(roomDestination);
 
-            
+            GameObject.Find("Player").transform.position = GameObject.FindWithTag("Respawn").GetComponent<CheckPointController>().checkPoint;
         }
     }
 }
