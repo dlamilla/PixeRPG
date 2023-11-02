@@ -58,26 +58,31 @@ public class BossRat : MonoBehaviour
     void Update()
     {
         StartCoroutine(WaitTime());
+        
     }
 
     public void ReceiveDamage(float damage)
     {
         hpCurrent -= damage;
-        healthBar.UpdateHealthBar(hpBoss, hpCurrent);
+        anim.SetTrigger("Hit");
+        healthBar.UpdateHealthBar(hpBoss, hpCurrent);        
         if (hpCurrent <= 5f)
         {
+            anim.SetBool("Died", true);
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
             player.GetComponent<Player>().ExpUp(exp);
             player.GetComponent<Player>().LevelUp(1);
             healthBarBoss.SetActive(false);
-            gameObject.SetActive(false);          
+            //gameObject.SetActive(false);          
         }
     }
 
     IEnumerator AttackBoss()
     {
         anim.SetBool("attackBoss", true);
+        navMeshAgent.speed = 0f;
         yield return new WaitForSeconds(timeForHit);
+        navMeshAgent.speed = speed;
         anim.SetBool("attackBoss", false);
         
     }
@@ -172,26 +177,30 @@ public class BossRat : MonoBehaviour
 
     private void MechanicsBoss()
     {
-        healthBarBoss.SetActive(true);
-        if (hpCurrent > changeAttack)
+        if (hpCurrent > 5f)
         {
-            Attack1();
-        }
-        else
-        {
-            timeCurrent += Time.deltaTime;
-            if (timeCurrent >= 0 && timeCurrent <= timeFinalAttack)
+            healthBarBoss.SetActive(true);
+            if (hpCurrent > changeAttack)
             {
-                Attack2();
-            }
-
-            if (timeCurrent >= timeFinalAttack)
-            {
-                bx.enabled = true;
-                anim.SetBool("attack2", false);
                 Attack1();
             }
+            else
+            {
+                timeCurrent += Time.deltaTime;
+                if (timeCurrent >= 0 && timeCurrent <= timeFinalAttack)
+                {
+                    Attack2();
+                }
 
+                if (timeCurrent >= timeFinalAttack)
+                {
+                    bx.enabled = true;
+                    anim.SetBool("attack2", false);
+                    Attack1();
+                }
+
+            }
         }
+        
     }
 }

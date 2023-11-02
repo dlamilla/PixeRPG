@@ -120,10 +120,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 242
-        width: 24
-        height: 40
+        x: 0
+        y: 240
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,10 +141,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_2
       rect:
         serializedVersion: 2
-        x: 36
-        y: 242
-        width: 24
-        height: 40
+        x: 64
+        y: 240
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,10 +162,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_4
       rect:
         serializedVersion: 2
-        x: 68
-        y: 242
-        width: 24
-        height: 40
+        x: 128
+        y: 240
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,10 +183,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_6
       rect:
         serializedVersion: 2
-        x: 99
-        y: 241
-        width: 25
-        height: 41
+        x: 0
+        y: 192
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,10 +204,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_8
       rect:
         serializedVersion: 2
-        x: 131
-        y: 241
-        width: 25
-        height: 41
+        x: 64
+        y: 192
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,10 +225,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_10
       rect:
         serializedVersion: 2
-        x: 163
-        y: 241
-        width: 27
-        height: 41
+        x: 128
+        y: 192
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,10 +246,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_12
       rect:
         serializedVersion: 2
-        x: 3
-        y: 193
-        width: 29
-        height: 40
+        x: 0
+        y: 144
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -267,10 +267,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_13
       rect:
         serializedVersion: 2
-        x: 35
-        y: 193
-        width: 26
-        height: 40
+        x: 32
+        y: 144
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,10 +288,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_14
       rect:
         serializedVersion: 2
-        x: 65
-        y: 193
-        width: 27
-        height: 40
+        x: 64
+        y: 144
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,10 +309,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_15
       rect:
         serializedVersion: 2
-        x: 100
-        y: 193
-        width: 25
-        height: 40
+        x: 96
+        y: 144
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -330,10 +330,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_16
       rect:
         serializedVersion: 2
-        x: 132
-        y: 193
-        width: 25
-        height: 40
+        x: 128
+        y: 144
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -351,10 +351,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_17
       rect:
         serializedVersion: 2
-        x: 164
-        y: 193
-        width: 25
-        height: 40
+        x: 160
+        y: 144
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -372,10 +372,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_18
       rect:
         serializedVersion: 2
-        x: 2
-        y: 145
-        width: 27
-        height: 40
+        x: 0
+        y: 96
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -393,10 +393,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_19
       rect:
         serializedVersion: 2
-        x: 35
-        y: 145
-        width: 25
-        height: 40
+        x: 32
+        y: 96
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -414,10 +414,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_20
       rect:
         serializedVersion: 2
-        x: 68
-        y: 145
-        width: 24
-        height: 40
+        x: 64
+        y: 96
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -435,10 +435,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_21
       rect:
         serializedVersion: 2
-        x: 100
-        y: 145
-        width: 24
-        height: 41
+        x: 96
+        y: 96
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -456,10 +456,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_22
       rect:
         serializedVersion: 2
-        x: 131
-        y: 145
-        width: 25
-        height: 41
+        x: 128
+        y: 96
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -477,10 +477,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_23
       rect:
         serializedVersion: 2
-        x: 164
-        y: 145
-        width: 24
-        height: 41
+        x: 160
+        y: 96
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -498,10 +498,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_24
       rect:
         serializedVersion: 2
-        x: 2
-        y: 98
-        width: 26
-        height: 40
+        x: 0
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -519,10 +519,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_25
       rect:
         serializedVersion: 2
-        x: 34
-        y: 98
-        width: 27
-        height: 40
+        x: 32
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -540,10 +540,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_26
       rect:
         serializedVersion: 2
-        x: 67
-        y: 98
-        width: 27
-        height: 40
+        x: 64
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -561,10 +561,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_27
       rect:
         serializedVersion: 2
-        x: 99
-        y: 98
-        width: 25
-        height: 40
+        x: 96
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -582,10 +582,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_28
       rect:
         serializedVersion: 2
-        x: 130
-        y: 97
-        width: 26
-        height: 41
+        x: 128
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -603,10 +603,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_29
       rect:
         serializedVersion: 2
-        x: 161
-        y: 98
-        width: 30
-        height: 40
+        x: 160
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -624,10 +624,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_30
       rect:
         serializedVersion: 2
-        x: 4
-        y: 50
-        width: 26
-        height: 40
+        x: 0
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -645,10 +645,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_31
       rect:
         serializedVersion: 2
-        x: 33
-        y: 50
-        width: 29
-        height: 40
+        x: 32
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -666,10 +666,10 @@ TextureImporter:
       name: personaje taller 4 -Sheet_32
       rect:
         serializedVersion: 2
-        x: 66
-        y: 50
-        width: 27
-        height: 40
+        x: 64
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -684,13 +684,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: personaje taller 4 -Sheet_33
+      name: personaje taller 4 -Sheet_1
       rect:
         serializedVersion: 2
-        x: 100
-        y: 50
-        width: 25
-        height: 40
+        x: 32
+        y: 240
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -698,20 +698,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ad2179ab5f24164e907793fad7dace0
-      internalID: 136015459
+      spriteID: ce0ed4fa3bae2e041bc85ed9fd1aa87f
+      internalID: 233994378
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: personaje taller 4 -Sheet_34
+      name: personaje taller 4 -Sheet_3
       rect:
         serializedVersion: 2
-        x: 132
-        y: 49
-        width: 26
-        height: 41
+        x: 96
+        y: 240
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -719,20 +719,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f188ebb4c057864cac7ba61133174bf
-      internalID: 501640241
+      spriteID: 76613146ecd6ec343b6144d3071b01f2
+      internalID: -501582579
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: personaje taller 4 -Sheet_35
+      name: personaje taller 4 -Sheet_5
       rect:
         serializedVersion: 2
-        x: 163
-        y: 49
-        width: 28
-        height: 41
+        x: 160
+        y: 240
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -740,20 +740,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: baaa23b697b0358438def2795c6cecac
-      internalID: -333694852
+      spriteID: a2c025a527bab9148b9c7dcd0c6b68be
+      internalID: 1407380660
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: personaje taller 4 -Sheet_36
+      name: personaje taller 4 -Sheet_7
       rect:
         serializedVersion: 2
-        x: 4
-        y: 1
-        width: 24
-        height: 41
+        x: 32
+        y: 192
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -761,20 +761,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 824a0dfe61f9d4d4e95cd7c05674091e
-      internalID: 1184942173
+      spriteID: d9c7f873dcc678741b50f33774401759
+      internalID: -1043358343
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: personaje taller 4 -Sheet_37
+      name: personaje taller 4 -Sheet_9
       rect:
         serializedVersion: 2
-        x: 36
-        y: 1
-        width: 24
-        height: 41
+        x: 96
+        y: 192
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -782,20 +782,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4507027931c0efb479300fe54b8cce70
-      internalID: 836561912
+      spriteID: b8701c281e8ab6b49adefb1760fc7307
+      internalID: -424622525
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: personaje taller 4 -Sheet_38
+      name: personaje taller 4 -Sheet_11
       rect:
         serializedVersion: 2
-        x: 68
-        y: 1
-        width: 24
-        height: 41
+        x: 160
+        y: 192
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -803,8 +803,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 393e3c75b5814d54983835dc3cb360ba
-      internalID: 467633906
+      spriteID: ba33ff7e81c621f489aeaff6e6c07308
+      internalID: 474235846
       vertices: []
       indices: 
       edges: []
@@ -847,12 +847,6 @@ TextureImporter:
       personaje taller 4 -Sheet_30: -123634367
       personaje taller 4 -Sheet_31: -355555445
       personaje taller 4 -Sheet_32: 480002117
-      personaje taller 4 -Sheet_33: 136015459
-      personaje taller 4 -Sheet_34: 501640241
-      personaje taller 4 -Sheet_35: -333694852
-      personaje taller 4 -Sheet_36: 1184942173
-      personaje taller 4 -Sheet_37: 836561912
-      personaje taller 4 -Sheet_38: 467633906
       personaje taller 4 -Sheet_4: 984119495
       personaje taller 4 -Sheet_5: 1407380660
       personaje taller 4 -Sheet_6: -1226784234

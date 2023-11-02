@@ -20,15 +20,15 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 528463014, guid: b02582939ebf2b041b0a500ce666bd18, type: 3}
+      value: {fileID: 1956130504, guid: 8d614fa5236571e4f9efce2be59ce698, type: 3}
     - time: 0.125
-      value: {fileID: -872436160, guid: b02582939ebf2b041b0a500ce666bd18, type: 3}
+      value: {fileID: -479485988, guid: 8d614fa5236571e4f9efce2be59ce698, type: 3}
     - time: 0.25
-      value: {fileID: -1329946891, guid: b02582939ebf2b041b0a500ce666bd18, type: 3}
+      value: {fileID: -1863059695, guid: 8d614fa5236571e4f9efce2be59ce698, type: 3}
     - time: 0.375
-      value: {fileID: 1814637035, guid: b02582939ebf2b041b0a500ce666bd18, type: 3}
+      value: {fileID: -238026636, guid: 8d614fa5236571e4f9efce2be59ce698, type: 3}
     - time: 0.5
-      value: {fileID: -221244964, guid: b02582939ebf2b041b0a500ce666bd18, type: 3}
+      value: {fileID: -1928511002, guid: 8d614fa5236571e4f9efce2be59ce698, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -48,11 +48,11 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 528463014, guid: b02582939ebf2b041b0a500ce666bd18, type: 3}
-    - {fileID: -872436160, guid: b02582939ebf2b041b0a500ce666bd18, type: 3}
-    - {fileID: -1329946891, guid: b02582939ebf2b041b0a500ce666bd18, type: 3}
-    - {fileID: 1814637035, guid: b02582939ebf2b041b0a500ce666bd18, type: 3}
-    - {fileID: -221244964, guid: b02582939ebf2b041b0a500ce666bd18, type: 3}
+    - {fileID: 1956130504, guid: 8d614fa5236571e4f9efce2be59ce698, type: 3}
+    - {fileID: -479485988, guid: 8d614fa5236571e4f9efce2be59ce698, type: 3}
+    - {fileID: -1863059695, guid: 8d614fa5236571e4f9efce2be59ce698, type: 3}
+    - {fileID: -238026636, guid: 8d614fa5236571e4f9efce2be59ce698, type: 3}
+    - {fileID: -1928511002, guid: 8d614fa5236571e4f9efce2be59ce698, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -78,7 +78,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.375
+  - time: 0.25
     functionName: Golpe
     data: 
     objectReferenceParameter: {fileID: 0}

@@ -160,19 +160,19 @@ public class Player : MonoBehaviour
     {
         if (x <= 1 && x > 0) //Hit Right 
         {
-            controladorGolpe.transform.position = new Vector2(transform.position.x + 0.955f, transform.position.y - 0.041f);
+            controladorGolpe.transform.position = new Vector2(transform.position.x + 1.71f, transform.position.y - 0.52f);
         }
         if (x >= -1 && x < 0) //Hit Left
         {
-            controladorGolpe.transform.position = new Vector2(transform.position.x - 0.969f, transform.position.y - 0.09f);
+            controladorGolpe.transform.position = new Vector2(transform.position.x - 1.71f, transform.position.y - 0.52f);
         }
         if (y <= 1 && y > 0) //Hit Up
         {
-            controladorGolpe.transform.position = new Vector2(transform.position.x - 0.032f, transform.position.y + 1.239f);
+            controladorGolpe.transform.position = new Vector2(transform.position.x + 0.14f, transform.position.y + 1.54f);
         }
         if (y >= -1 && y < 0) //Hit Down
         {
-            controladorGolpe.transform.position = new Vector2(transform.position.x - 0.013f, transform.position.y - 0.924f);
+            controladorGolpe.transform.position = new Vector2(transform.position.x - 0.11f, transform.position.y - 1.91f);
         }
     }
 
