@@ -6,9 +6,13 @@ public class JefeSelva : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float hpEnemy;
-    [SerializeField] private float speed;
+    [SerializeField] private float normalSpeed; // Velocidad predeterminada de mi enemigo
+    [SerializeField] private float increasedSpeed; // Uso esta velocidad para medir a cuanta velocidad va regresar a la lanza
+    private float currentSpeed;
     private Rigidbody2D rb;
     private Transform player;
+
+    [Header("AtaqueLanza")]
     private Transform lanza;
     private bool isFollowingPlayer = true;
     private bool isLanzaDetached = false;
@@ -16,6 +20,7 @@ public class JefeSelva : MonoBehaviour
     private float returnToLanzaTime = 5.0f;
     private float detachStartTime = -1f;
     private Vector2 lanzaPosition;
+    private Transform jefeSelva; 
 
     void Start()
     {
@@ -23,26 +28,30 @@ public class JefeSelva : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform;
         lanza = transform.Find("Lanza");
 
-        // Primero aseguro que mi enemigo seguira a mi jugador
-        rb = GetComponent<Rigidbody2D>();
+        jefeSelva = GameObject.FindWithTag("JefeSelva").transform;
+
+        currentSpeed = normalSpeed;
     }
 
     void Update()
     {
         if (isFollowingPlayer)
         {
-            // El enemigo sigue al jugador por los primeros 5 segundos - parte prueba
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            // Primero en esta etapa, mi enemigo sigue a mi jugador con la velocidad normal que yo le he dado
+            transform.position = Vector2.MoveTowards(transform.position, player.position, currentSpeed * Time.deltaTime);
         }
         else if (isLanzaDetached)
         {
-            // Mi enemigo se dirigira a la posicion de la lanza despues de otros 5 segundos 
-            transform.position = Vector2.MoveTowards(transform.position, lanzaPosition, speed * Time.deltaTime);
+            // Segundo, hago llamar a esta linea de codigo para que mi enemigo regrese a la lanza tras los segundos 5 segundos  
+            transform.position = Vector2.MoveTowards(transform.position, lanzaPosition, increasedSpeed * Time.deltaTime);
 
-            // Esta concidion de abajo esta bajo medida de prueba, no funciona pero lo necesitare
+            // Cuando el enemigo llega a la posición de la lanza, vincula la lanza a JefeSelva (Nombre con el que tengo a mi enemigo y tageado tmb), y cambia la velocidad a la que esta predeterminada, no a la acelerada
             if (Vector2.Distance(transform.position, lanzaPosition) < 0.1f)
             {
                 isFollowingPlayer = true;
+                Debug.Log("SeguirPlayer");
+                lanza.parent = jefeSelva;
+                currentSpeed = normalSpeed;
             }
         }
     }
@@ -51,15 +60,23 @@ public class JefeSelva : MonoBehaviour
     {
         if (!isLanzaDetached && Time.time >= detachTime)
         {
-            // Con esta parte, cuando pasen los primeros 5 segundos, la lanza se va desvincular de mi enemigo
+            // En este punto tras haber hecho mi condicion quiero que cuando pasen los primeros 5 segundos, la lanza se va a desvincular de mi enemigo
             lanza.parent = null;
             isLanzaDetached = true;
             lanzaPosition = lanza.position;
             detachStartTime = Time.time;
+            // Cambia la velocidad a la velocidad aumentada que le he dado para cuando se desvincula de la lanza
+            currentSpeed = increasedSpeed;
         }
         else if (isLanzaDetached && isFollowingPlayer && Time.time >= detachStartTime + returnToLanzaTime)
         {
             isFollowingPlayer = false;
+        }
+
+        // Llamo a esta condicion solo cuando mi lanza se haya vinculado a mi enemigo (Osea que se haga hijo de mi enemigo xd), si eso ocurre, que el enemigo vuelva a seguir a mi jugador 
+        if (lanza.parent == jefeSelva)
+        {
+            isFollowingPlayer = true;
         }
     }
 }
