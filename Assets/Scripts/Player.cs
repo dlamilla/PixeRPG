@@ -148,10 +148,14 @@ public class Player : MonoBehaviour
         canDash = false;
         isDashing = true;
         rb.velocity = new Vector2(normalInput.x * dashSpeed, normalInput.y * dashSpeed);
+        animator.SetBool("Dash", true);
+
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         rb.velocity = Vector2.zero;
-        yield return new WaitForSeconds(dashCooldown);
+        animator.SetBool("Dash", false);
+
+        yield return new WaitForSeconds(dashCooldown); 
         canDash = true;        
     }
 
