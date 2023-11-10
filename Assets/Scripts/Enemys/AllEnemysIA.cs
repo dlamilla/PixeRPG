@@ -146,7 +146,8 @@ public class AllEnemysIA : MonoBehaviour
     public void ReceiveDamage(float damage)
     {
         hpEnemy -= damage;
-
+        anim.SetTrigger("Hit");
+        StartCoroutine(SpeedHit());
         if (hpEnemy <= 4f)
         {
             //GetComponent<LootBag>().InstantiateLoot(transform.position);
@@ -183,5 +184,12 @@ public class AllEnemysIA : MonoBehaviour
             }
         }
 
+    }
+
+    IEnumerator SpeedHit()
+    {
+        navMeshAgent.speed = 0f;
+        yield return new WaitForSeconds(0.5f);
+        navMeshAgent.speed = speed;
     }
 }
