@@ -17,10 +17,10 @@ public class DialogueNPC : MonoBehaviour
     [SerializeField] private GameObject dialogueMark;
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text dialogueText;
-    [SerializeField] private TMP_Text interact;
+    [SerializeField] private GameObject interactKeyboard;
+    [SerializeField] private GameObject interactGamepad;
     [SerializeField, TextArea(4,6)] private string[] dialogueLinesKeyboard;
     [SerializeField, TextArea(4, 6)] private string[] dialogueLinesGamepad;
-
 
     private AudioSource audioSource;
     private bool isPlayerInRange;
@@ -177,6 +177,7 @@ public class DialogueNPC : MonoBehaviour
         }
     }
 
+    //Controller Audio
     private void SelectAudioClip()
     {
         if (isADialogue)
@@ -199,13 +200,15 @@ public class DialogueNPC : MonoBehaviour
             {
                 isPlayerInRange = true;
                 dialogueMark.SetActive(true);
-                interact.text = "[F]";
+                interactKeyboard.SetActive(true);
+                interactGamepad.SetActive(false);
             }
             if (controllerInput == "Gamepad")
             {
                 isPlayerInRange = true;
                 dialogueMark.SetActive(true);
-                interact.text = "[O]";
+                interactKeyboard.SetActive(false);
+                interactGamepad.SetActive(true);
             }
         }
     }
