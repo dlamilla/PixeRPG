@@ -45,9 +45,11 @@ public class JefeSelva : MonoBehaviour
     {
         if (isFollowingPlayer)
         {
-            //Vector2 moveDirection = (player.position - transform.position).normalized;
+            Vector2 moveDirection = (player.position - transform.position).normalized;
 
-            //changeDirections.changeAnim(moveDirection);
+            changeDirections.changeAnim(moveDirection);
+            anim.SetBool("enCamino", true);
+
             // Primero en esta etapa, mi enemigo sigue a mi jugador con la velocidad normal que yo le he dado
             transform.position = Vector2.MoveTowards(transform.position, player.position, currentSpeed * Time.deltaTime);
         }
