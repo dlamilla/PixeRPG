@@ -9,8 +9,20 @@ public class Player : MonoBehaviour
     [Header("Basic")]
     [SerializeField] private float moveSpeed;
     [SerializeField] public float hpPlayerMax;
-    [SerializeField] private float life;
+    [SerializeField] private float lifeMax;
     [SerializeField] private float timeAfterDied;
+
+    [Header("Hit")]
+    [SerializeField] private Transform controladorGolpe;
+    [SerializeField] private float radioGolpe;
+    [SerializeField] private float dañoGolpe;
+    [SerializeField] private float timeForAttack;
+    [SerializeField] public bool isReceiveDamage;
+
+    [Header("Dash")]
+    [SerializeField] private float dashSpeed;
+    [SerializeField] private float dashDuration;
+    [SerializeField] private float dashCooldown;
 
     [Header("Give Health")]
     [SerializeField] private float timeNextHealth;
@@ -22,16 +34,20 @@ public class Player : MonoBehaviour
     [SerializeField] public float level;
     [SerializeField] private float damageExtra;
 
-    [Header("Hit")]
-    [SerializeField] private Transform controladorGolpe;
-    [SerializeField] private float radioGolpe;
-    [SerializeField] private float dañoGolpe;
-    [SerializeField] private float timeForAttack;
-    [SerializeField] public bool isReceiveDamage;
-
-    [Header("HealthBar")]
+    [Header("HealthBar1")]
     [SerializeField] private HealthBar healthBar;
     [SerializeField] public float health;
+
+    [Header("HealthBar2")]
+    [SerializeField] private HealthBar2 healthBar2;
+
+    [Header("LifeBar")]
+    [SerializeField] private LifeBar lifeBar;
+    [SerializeField] public float life;
+
+    [Header("ControllerBar")]
+    [SerializeField] private GameObject bar1;
+    [SerializeField] private GameObject bar2;
 
     [Header("Doors Bosses")]
     [SerializeField] private GameObject doorBoss1;
@@ -42,10 +58,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float danoAgarre;
     [SerializeField] public Animator enemyAnimator;
 
-    [Header("Dash")]
-    [SerializeField] private float dashSpeed;
-    [SerializeField] private float dashDuration;
-    [SerializeField] private float dashCooldown;
+    
     private bool isDashing;
     private bool canDash = true;
     
@@ -71,6 +84,14 @@ public class Player : MonoBehaviour
 
         health = hpPlayerMax;
         healthBar.UpdateHealthBar(hpPlayerMax, health);
+
+        health = hpPlayerMax;
+        healthBar2.UpdateHealthBar(hpPlayerMax, health);
+        healthBar2.UpdateDashBar(1f);
+
+        life = lifeMax;
+        lifeBar.UpdateLifeBar(lifeMax, life);
+
         resetSpeed = moveSpeed;
     }
 
@@ -127,6 +148,9 @@ public class Player : MonoBehaviour
             {
                 //Desactiva pase luego de eliminar al boss
                 doorBoss1.SetActive(false);
+                //Activa barra de vida v2
+                bar1.SetActive(false);
+                bar2.SetActive(true);
             }
             if (level == 2)
             {
@@ -149,13 +173,14 @@ public class Player : MonoBehaviour
         isDashing = true;
         rb.velocity = new Vector2(normalInput.x * dashSpeed, normalInput.y * dashSpeed);
         animator.SetBool("Dash", true);
-
+        healthBar2.UpdateDashBar(0f);
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         rb.velocity = Vector2.zero;
         animator.SetBool("Dash", false);
 
-        yield return new WaitForSeconds(dashCooldown); 
+        yield return new WaitForSeconds(dashCooldown);
+        healthBar2.UpdateDashBar(1f);
         canDash = true;        
     }
 
@@ -238,7 +263,7 @@ public class Player : MonoBehaviour
     //Con la tecla Q en teclado y X en mando para dashear
     public void DashPlayer(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.started && canDash)
+        if (callbackContext.started && canDash && level >= 1)
         {
 
             StartCoroutine(Dash());
@@ -294,6 +319,7 @@ public class Player : MonoBehaviour
             animator.SetTrigger("Health");
             health = life;
             healthBar.UpdateHealthBar(hpPlayerMax, health);
+            healthBar2.UpdateHealthBar(hpPlayerMax, health);
             StartCoroutine(StopMovingAfterHealth());
         }
                
@@ -321,7 +347,7 @@ public class Player : MonoBehaviour
         StartCoroutine(StopMoving());
         animator.SetTrigger("Hit");
         healthBar.UpdateHealthBar(hpPlayerMax, health);
-        
+        healthBar2.UpdateHealthBar(hpPlayerMax, health);
         if (health <= 4f)
         {
             bx.enabled = false;
@@ -358,6 +384,7 @@ public class Player : MonoBehaviour
         moveSpeed = resetSpeed;
         health = hpPlayerMax;
         healthBar.UpdateHealthBar(hpPlayerMax, health);
+        healthBar2.UpdateHealthBar(hpPlayerMax, health);
         animator.SetBool("Died", false);
         isReceiveDamage = false;
     }
@@ -390,6 +417,7 @@ public class Player : MonoBehaviour
     private void ChangeLife()
     {
         life--;
+        lifeBar.UpdateLifeBar(lifeMax, life);
         if (life <= 0)
         {
             SceneManager.LoadScene(0);

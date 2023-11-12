@@ -20,7 +20,7 @@ public class PressuarePlate : MonoBehaviour
         if (collision.gameObject.tag == "Box1")
         {
             bridge.SetActive(false);
-            bridgeStop.SetActive(false);
+            bridgeStop.SetActive(true);
         }
     }
 }
