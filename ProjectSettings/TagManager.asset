@@ -18,6 +18,7 @@ TagManager:
   - Box
   - Lanza
   - JefeSelva
+  - UI
   layers:
   - Default
   - TransparentFX

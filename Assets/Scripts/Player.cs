@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -57,6 +58,10 @@ public class Player : MonoBehaviour
     [Header("Boss Scorpion Info")]
     [SerializeField] private float danoAgarre;
     [SerializeField] public Animator enemyAnimator;
+
+    [Header("TextUI")]
+    [SerializeField] private TMP_Text textUI;
+    [SerializeField] private GameObject UI_Panel;
 
     
     private bool isDashing;
@@ -420,7 +425,7 @@ public class Player : MonoBehaviour
         lifeBar.UpdateLifeBar(lifeMax, life);
         if (life <= 0)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(2);
         }
     }
 
@@ -440,8 +445,68 @@ public class Player : MonoBehaviour
     }
 
     //Detecta que dispositivo esta usando Teclado o Mando
-    public void ControlsChanged(PlayerInput playerInput)
+    public void ControlsChanged(PlayerInput a)
     {
-        Debug.Log("Cambio de dispositivo: " + playerInput.currentControlScheme);
+        string b = a.currentControlScheme;
+        if (b == "Gamepad")
+        {
+            StartCoroutine(ChangeControllerGamepad());
+        }
+        else if (b == "Keyboard")
+        {
+            StartCoroutine(ChangeControllerKeyboard());
+        }
+    }
+
+    IEnumerator ChangeControllerGamepad()
+    {
+        UI_Panel.SetActive(true);
+        textUI.text = "Modo de juego configurado para mando.";
+        yield return new WaitForSeconds(1.5f);
+        UI_Panel.SetActive(false);
+    }
+
+    IEnumerator ChangeControllerKeyboard()
+    {
+        UI_Panel.SetActive(true);
+        textUI.text = "Modo de juego configurado para teclado.";
+        yield return new WaitForSeconds(1.5f);
+        UI_Panel.SetActive(false);
+    }
+
+    //Detecta cuando mando se desconectad y cambia a teclado por defecto
+    public void ControlsLost(PlayerInput a)
+    {
+        string b = a.currentControlScheme;
+        if (b == "Gamepad")
+        {
+            StartCoroutine(ChangeControllerLost());
+        }
+    }
+
+    IEnumerator ChangeControllerLost()
+    {
+        UI_Panel.SetActive(true);
+        textUI.text = "Mando desconectado. Modo de juego configurado para teclado.";
+        yield return new WaitForSeconds(1.5f);
+        UI_Panel.SetActive(false);
+    }
+
+    //Detecta la reconexion del mando
+    public void ControlsReconneted(PlayerInput a)
+    {
+        string b = a.currentControlScheme;
+        if (b == "Gamepad")
+        {
+            StartCoroutine(ChangeControllerReconected());
+        }
+    }
+
+    IEnumerator ChangeControllerReconected()
+    {
+        UI_Panel.SetActive(true);
+        textUI.text = "Mando reconectado. Modo de juego configurado para mando.";
+        yield return new WaitForSeconds(1.5f);
+        UI_Panel.SetActive(false);
     }
 }
