@@ -120,10 +120,10 @@ TextureImporter:
       name: jefe 4 caminando_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 7
-        width: 74
-        height: 87
+        x: 0
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,10 +141,10 @@ TextureImporter:
       name: jefe 4 caminando_1
       rect:
         serializedVersion: 2
-        x: 110
-        y: 10
-        width: 71
-        height: 85
+        x: 100
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,10 +162,10 @@ TextureImporter:
       name: jefe 4 caminando_2
       rect:
         serializedVersion: 2
-        x: 211
-        y: 10
-        width: 70
-        height: 88
+        x: 200
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,10 +183,10 @@ TextureImporter:
       name: jefe 4 caminando_3
       rect:
         serializedVersion: 2
-        x: 312
-        y: 4
-        width: 70
-        height: 90
+        x: 300
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,10 +204,10 @@ TextureImporter:
       name: jefe 4 caminando_4
       rect:
         serializedVersion: 2
-        x: 413
-        y: 7
-        width: 72
-        height: 89
+        x: 400
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,10 +225,10 @@ TextureImporter:
       name: jefe 4 caminando_5
       rect:
         serializedVersion: 2
-        x: 513
-        y: 10
-        width: 68
-        height: 83
+        x: 500
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,10 +246,10 @@ TextureImporter:
       name: jefe 4 caminando_6
       rect:
         serializedVersion: 2
-        x: 616
-        y: 7
-        width: 74
-        height: 87
+        x: 600
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -267,10 +267,10 @@ TextureImporter:
       name: jefe 4 caminando_7
       rect:
         serializedVersion: 2
-        x: 719
-        y: 10
-        width: 71
-        height: 85
+        x: 700
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,10 +288,10 @@ TextureImporter:
       name: jefe 4 caminando_8
       rect:
         serializedVersion: 2
-        x: 819
-        y: 10
-        width: 70
-        height: 88
+        x: 800
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,10 +309,10 @@ TextureImporter:
       name: jefe 4 caminando_9
       rect:
         serializedVersion: 2
-        x: 918
-        y: 4
-        width: 70
-        height: 90
+        x: 900
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -330,10 +330,10 @@ TextureImporter:
       name: jefe 4 caminando_10
       rect:
         serializedVersion: 2
-        x: 1015
-        y: 7
-        width: 72
-        height: 89
+        x: 1000
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -351,10 +351,10 @@ TextureImporter:
       name: jefe 4 caminando_11
       rect:
         serializedVersion: 2
-        x: 1119
-        y: 10
-        width: 68
-        height: 83
+        x: 1100
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -372,10 +372,10 @@ TextureImporter:
       name: jefe 4 caminando_12
       rect:
         serializedVersion: 2
-        x: 1216
-        y: 8
-        width: 58
-        height: 85
+        x: 1200
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -393,10 +393,10 @@ TextureImporter:
       name: jefe 4 caminando_13
       rect:
         serializedVersion: 2
-        x: 1316
-        y: 8
-        width: 60
-        height: 86
+        x: 1300
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -414,10 +414,10 @@ TextureImporter:
       name: jefe 4 caminando_14
       rect:
         serializedVersion: 2
-        x: 1418
-        y: 8
-        width: 57
-        height: 88
+        x: 1400
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -435,10 +435,10 @@ TextureImporter:
       name: jefe 4 caminando_15
       rect:
         serializedVersion: 2
-        x: 1516
-        y: 8
-        width: 60
-        height: 86
+        x: 1500
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -456,10 +456,10 @@ TextureImporter:
       name: jefe 4 caminando_16
       rect:
         serializedVersion: 2
-        x: 1617
-        y: 8
-        width: 67
-        height: 82
+        x: 1600
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -477,10 +477,10 @@ TextureImporter:
       name: jefe 4 caminando_17
       rect:
         serializedVersion: 2
-        x: 1715
-        y: 8
-        width: 69
-        height: 83
+        x: 1700
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -498,10 +498,10 @@ TextureImporter:
       name: jefe 4 caminando_18
       rect:
         serializedVersion: 2
-        x: 1816
-        y: 8
-        width: 66
-        height: 81
+        x: 1800
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -519,10 +519,10 @@ TextureImporter:
       name: jefe 4 caminando_19
       rect:
         serializedVersion: 2
-        x: 1916
-        y: 8
-        width: 68
-        height: 83
+        x: 1900
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -22,7 +22,7 @@ public class JefeSelva : MonoBehaviour
     private float returnToLanzaTime = 5.0f;
     private float detachStartTime = -1f;
     private bool isLanzaGoPlaying = false;
-    private bool hasJumped = false; // Nuevo flag para verificar si ya hizo el salto
+    private bool hasJumped = false; 
 
     [Header("AtaqueLanza")]
     private Transform lanza;
@@ -45,7 +45,7 @@ public class JefeSelva : MonoBehaviour
     private TipoAtaque listaAtaque;
     private bool isLanzaGoResetting = false;
 
-    [SerializeField] private GameObject sombra; // Agregado para referenciar el GameObject "Sombra"
+    [SerializeField] private GameObject sombra; 
 
     void Start()
     {
@@ -169,10 +169,9 @@ public class JefeSelva : MonoBehaviour
 
         hasJumped = true;
 
-        // Espera un tiempo antes de subir la posición Y
         yield return new WaitForSeconds(0.2f);
 
-        StartCoroutine(MoveToPositionY(transform, transform.position.y + 16f, 0.85f)); // Ajusta el valor de timeToMove aquí
+        StartCoroutine(MoveToPositionY(transform, transform.position.y + 16f, 0.85f)); 
     }
 
     private IEnumerator PlayLanzaGoAnimation()
@@ -180,29 +179,29 @@ public class JefeSelva : MonoBehaviour
         // Verificar si la animación ya está en curso
         if (isLanzaGoPlaying || anim.GetBool("lanzaGo"))
         {
-            yield break; // Salir si la animación ya está activa
+            yield break; 
         }
 
         isLanzaGoPlaying = true;
 
-        // Espera un tiempo antes de comenzar la animación
-        yield return null;  // Ajusta este valor según tus necesidades
+        
+        yield return null;  
 
         anim.SetBool("lanzaGo", true);
 
-        // Espera hasta que la animación haya terminado completamente
-        yield return new WaitForSeconds(0f); // Ajusta este valor según tus necesidades
+        
+        yield return new WaitForSeconds(0f); //Valor Modificable a mis necesidades
 
         float animationLength = anim.GetCurrentAnimatorClipInfo(0)[0].clip.length;
 
-        // Espera hasta que haya pasado el tiempo de duración de la animación
+        //Puedo medir la espera hasta que haya pasado el tiempo de duración de la animación
         yield return new WaitForSeconds(animationLength);
 
         anim.SetBool("lanzaGo", false);
         hasLanzaGoAnimationPlayed = true;
         isLanzaGoPlaying = false;
 
-        // Realiza la desvinculación y aumento de velocidad
+        //Seccion donde me perdite ver donde se realiza la desvinculación y aumento de velocidad
         GetComponent<SpriteRenderer>().color = Color.red;
         lanza.parent = null;
         isLanzaDetached = true;
@@ -248,7 +247,7 @@ public class JefeSelva : MonoBehaviour
     {
         while (true)
         {
-            // Activa la sombra solo cuando el ataque de salto está seleccionado
+            //Activa la sombra solo cuando el ataque de salto está seleccionado
             if (listaAtaque == TipoAtaque.SaltoAttack)
             {
                 sombra.SetActive(true);
@@ -260,6 +259,8 @@ public class JefeSelva : MonoBehaviour
                 // Desactiva la sombra
                 sombra.SetActive(false);
             }
+            yield return new WaitForSeconds(1.0f);
+
         }
     }
 }
