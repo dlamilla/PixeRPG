@@ -120,10 +120,10 @@ TextureImporter:
       name: jefe4caida_0
       rect:
         serializedVersion: 2
-        x: 60
-        y: 62
-        width: 75
-        height: 136
+        x: 0
+        y: 0
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,10 +141,10 @@ TextureImporter:
       name: jefe4caida_1
       rect:
         serializedVersion: 2
-        x: 253
-        y: 63
-        width: 89
-        height: 135
+        x: 200
+        y: 0
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,10 +162,10 @@ TextureImporter:
       name: jefe4caida_2
       rect:
         serializedVersion: 2
-        x: 460
-        y: 54
-        width: 79
-        height: 108
+        x: 400
+        y: 0
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,10 +183,10 @@ TextureImporter:
       name: jefe4caida_3
       rect:
         serializedVersion: 2
-        x: 660
-        y: 47
-        width: 81
-        height: 103
+        x: 600
+        y: 0
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,10 +204,10 @@ TextureImporter:
       name: jefe4caida_4
       rect:
         serializedVersion: 2
-        x: 860
-        y: 53
-        width: 76
-        height: 95
+        x: 800
+        y: 0
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,27 +217,6 @@ TextureImporter:
       bones: []
       spriteID: 7e834856d20fa724a866681f35dce90d
       internalID: 873924311
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jefe4caida_7
-      rect:
-        serializedVersion: 2
-        x: 655
-        y: 57
-        width: 14
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9cbdf4d2500c039428e451a8bb1938a8
-      internalID: -1083768463
       vertices: []
       indices: 
       edges: []
@@ -258,9 +237,6 @@ TextureImporter:
       jefe4caida_2: 2030456240
       jefe4caida_3: -1471249882
       jefe4caida_4: 873924311
-      jefe4caida_5: 387675302
-      jefe4caida_6: -845970372
-      jefe4caida_7: -1083768463
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -120,10 +120,10 @@ TextureImporter:
       name: jefe 4 idlet_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 308
-        width: 58
-        height: 82
+        x: 0
+        y: 300
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,10 +141,10 @@ TextureImporter:
       name: jefe 4 idlet_1
       rect:
         serializedVersion: 2
-        x: 115
-        y: 308
-        width: 59
-        height: 82
+        x: 100
+        y: 300
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,10 +162,10 @@ TextureImporter:
       name: jefe 4 idlet_2
       rect:
         serializedVersion: 2
-        x: 216
-        y: 308
-        width: 58
-        height: 83
+        x: 200
+        y: 300
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,10 +183,10 @@ TextureImporter:
       name: jefe 4 idlet_3
       rect:
         serializedVersion: 2
-        x: 316
-        y: 308
-        width: 58
-        height: 83
+        x: 300
+        y: 300
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,10 +204,10 @@ TextureImporter:
       name: jefe 4 idlet_4
       rect:
         serializedVersion: 2
-        x: 415
-        y: 308
-        width: 59
-        height: 82
+        x: 400
+        y: 300
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,10 +225,10 @@ TextureImporter:
       name: jefe 4 idlet_5
       rect:
         serializedVersion: 2
-        x: 16
-        y: 208
-        width: 58
-        height: 85
+        x: 0
+        y: 200
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,10 +246,10 @@ TextureImporter:
       name: jefe 4 idlet_6
       rect:
         serializedVersion: 2
-        x: 116
-        y: 208
-        width: 59
-        height: 84
+        x: 100
+        y: 200
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -267,10 +267,10 @@ TextureImporter:
       name: jefe 4 idlet_7
       rect:
         serializedVersion: 2
-        x: 217
-        y: 208
-        width: 58
-        height: 83
+        x: 200
+        y: 200
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,10 +288,10 @@ TextureImporter:
       name: jefe 4 idlet_8
       rect:
         serializedVersion: 2
-        x: 317
-        y: 208
-        width: 58
-        height: 83
+        x: 300
+        y: 200
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,10 +309,10 @@ TextureImporter:
       name: jefe 4 idlet_9
       rect:
         serializedVersion: 2
-        x: 416
-        y: 208
-        width: 59
-        height: 84
+        x: 400
+        y: 200
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -330,10 +330,10 @@ TextureImporter:
       name: jefe 4 idlet_10
       rect:
         serializedVersion: 2
-        x: 10
-        y: 110
-        width: 76
-        height: 84
+        x: 0
+        y: 100
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -351,10 +351,10 @@ TextureImporter:
       name: jefe 4 idlet_11
       rect:
         serializedVersion: 2
-        x: 110
-        y: 110
-        width: 76
-        height: 84
+        x: 100
+        y: 100
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -372,10 +372,10 @@ TextureImporter:
       name: jefe 4 idlet_12
       rect:
         serializedVersion: 2
-        x: 210
-        y: 110
-        width: 76
-        height: 86
+        x: 200
+        y: 100
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -393,10 +393,10 @@ TextureImporter:
       name: jefe 4 idlet_13
       rect:
         serializedVersion: 2
-        x: 310
-        y: 110
-        width: 76
-        height: 88
+        x: 300
+        y: 100
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -414,10 +414,10 @@ TextureImporter:
       name: jefe 4 idlet_14
       rect:
         serializedVersion: 2
-        x: 410
-        y: 110
-        width: 76
-        height: 84
+        x: 400
+        y: 100
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -435,10 +435,10 @@ TextureImporter:
       name: jefe 4 idlet_15
       rect:
         serializedVersion: 2
-        x: 14
-        y: 9
-        width: 76
-        height: 85
+        x: 0
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -456,10 +456,10 @@ TextureImporter:
       name: jefe 4 idlet_16
       rect:
         serializedVersion: 2
-        x: 114
-        y: 9
-        width: 75
-        height: 86
+        x: 100
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -477,10 +477,10 @@ TextureImporter:
       name: jefe 4 idlet_17
       rect:
         serializedVersion: 2
-        x: 214
-        y: 9
-        width: 76
-        height: 88
+        x: 200
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -498,10 +498,10 @@ TextureImporter:
       name: jefe 4 idlet_18
       rect:
         serializedVersion: 2
-        x: 314
-        y: 9
-        width: 76
-        height: 88
+        x: 300
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -519,10 +519,10 @@ TextureImporter:
       name: jefe 4 idlet_19
       rect:
         serializedVersion: 2
-        x: 414
-        y: 9
-        width: 76
-        height: 86
+        x: 400
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -16,17 +16,24 @@ public class JefeSelva : MonoBehaviour
     private Transform player;
     private BoxCollider2D player1;
     private bool hasLanzaGoAnimationPlayed = false;
-    private bool isLanzaGoResetting = false;
-
-    [Header("AtaqueLanza")]
-    private Transform lanza;
     private bool isFollowingPlayer = true;
     private bool isLanzaDetached = false;
     private float detachTime = 5.0f;
     private float returnToLanzaTime = 5.0f;
     private float detachStartTime = -1f;
+    private bool isLanzaGoPlaying = false;
+    private bool hasJumped = false; // Nuevo flag para verificar si ya hizo el salto
+
+    [Header("AtaqueLanza")]
+    private Transform lanza;
     private Vector2 lanzaPosition;
     private Transform jefeSelva;
+
+    [Header("Ataque Configuración")]
+    [SerializeField] private float probabilidadActivacionLanza = 0.5f;
+    private float tiempoEsperaInicial = 5.0f;
+    private float tiempoInicioEspera;
+    private bool haIniciadoEspera = false;
 
     public enum TipoAtaque
     {
@@ -36,6 +43,9 @@ public class JefeSelva : MonoBehaviour
 
     [SerializeField]
     private TipoAtaque listaAtaque;
+    private bool isLanzaGoResetting = false;
+
+    [SerializeField] private GameObject sombra; // Agregado para referenciar el GameObject "Sombra"
 
     void Start()
     {
@@ -48,20 +58,38 @@ public class JefeSelva : MonoBehaviour
         jefeSelva = GameObject.FindWithTag("JefeSelva").transform;
         currentSpeed = normalSpeed;
         listaAtaque = TipoAtaque.LanzaAttack;
+        tiempoInicioEspera = Time.time;
+
+        StartCoroutine(ActivarDesactivarSombra());
     }
 
     void Update()
     {
-        switch (listaAtaque)
+        if (!haIniciadoEspera && Time.time >= tiempoInicioEspera + tiempoEsperaInicial)
         {
-            case TipoAtaque.LanzaAttack:
-                UpdateLanzaAttack();
-            break;
+            haIniciadoEspera = true;
 
-            case TipoAtaque.SaltoAttack:
+            float randomValue = Random.Range(0f, 1f);
 
-            break;
+            if (randomValue <= probabilidadActivacionLanza)
+            {
+                listaAtaque = TipoAtaque.LanzaAttack;
+                Debug.Log("Ataque de la lanza activado");
+            }
+            else
+            {
+                listaAtaque = TipoAtaque.SaltoAttack;
+                Debug.Log("Ataque de salto activado");
+            }
+        }
 
+        if (listaAtaque == TipoAtaque.LanzaAttack)
+        {
+            UpdateLanzaAttack();
+        }
+        else if (listaAtaque == TipoAtaque.SaltoAttack)
+        {
+            UpdateSaltoAttack();
         }
     }
 
@@ -71,18 +99,17 @@ public class JefeSelva : MonoBehaviour
         {
             case TipoAtaque.LanzaAttack:
                 LateUpdateLanzaAttack();
-            break;
+                break;
 
             case TipoAtaque.SaltoAttack:
-
-            break;
-
+                // Lógica para el ataque de salto
+                break;
         }
     }
 
     private void UpdateLanzaAttack()
     {
-        if (isFollowingPlayer)
+        if (isFollowingPlayer && !anim.GetBool("lanzaGo"))
         {
             Vector2 moveDirection = (player.position - transform.position).normalized;
 
@@ -102,7 +129,7 @@ public class JefeSelva : MonoBehaviour
                 Debug.Log("SeguirPlayer");
                 lanza.parent = jefeSelva;
                 currentSpeed = normalSpeed;
-                listaAtaque= TipoAtaque.LanzaAttack;
+                listaAtaque = TipoAtaque.LanzaAttack;
             }
         }
     }
@@ -113,18 +140,8 @@ public class JefeSelva : MonoBehaviour
         {
             if (!hasLanzaGoAnimationPlayed)
             {
-                anim.SetBool("lanzaGo", true);
-                hasLanzaGoAnimationPlayed = true;
-                StartCoroutine(ResetLanzaGoAfterDelay());
+                StartCoroutine(PlayLanzaGoAnimation());
             }
-
-            GetComponent<SpriteRenderer>().color = Color.red;
-            lanza.parent = null;
-            isLanzaDetached = true;
-            lanzaPosition = lanza.position;
-            detachStartTime = Time.time;
-            currentSpeed = increasedSpeed;
-            listaAtaque= TipoAtaque.LanzaAttack;
         }
         else if (isLanzaDetached && isFollowingPlayer && Time.time >= detachStartTime + returnToLanzaTime)
         {
@@ -134,17 +151,74 @@ public class JefeSelva : MonoBehaviour
         if (lanza.parent == jefeSelva)
         {
             isFollowingPlayer = true;
-            listaAtaque= TipoAtaque.LanzaAttack;
+            listaAtaque = TipoAtaque.LanzaAttack;
         }
+    }
+
+    private void UpdateSaltoAttack()
+    {
+        if (!hasJumped)
+        {
+            StartCoroutine(PlaySaltoAttackAnimation());
+        }
+    }
+
+    private IEnumerator PlaySaltoAttackAnimation()
+    {
+        anim.SetTrigger("inJump");
+
+        hasJumped = true;
+
+        // Espera un tiempo antes de subir la posición Y
+        yield return new WaitForSeconds(0.2f);
+
+        StartCoroutine(MoveToPositionY(transform, transform.position.y + 16f, 0.85f)); // Ajusta el valor de timeToMove aquí
+    }
+
+    private IEnumerator PlayLanzaGoAnimation()
+    {
+        // Verificar si la animación ya está en curso
+        if (isLanzaGoPlaying || anim.GetBool("lanzaGo"))
+        {
+            yield break; // Salir si la animación ya está activa
+        }
+
+        isLanzaGoPlaying = true;
+
+        // Espera un tiempo antes de comenzar la animación
+        yield return null;  // Ajusta este valor según tus necesidades
+
+        anim.SetBool("lanzaGo", true);
+
+        // Espera hasta que la animación haya terminado completamente
+        yield return new WaitForSeconds(0f); // Ajusta este valor según tus necesidades
+
+        float animationLength = anim.GetCurrentAnimatorClipInfo(0)[0].clip.length;
+
+        // Espera hasta que haya pasado el tiempo de duración de la animación
+        yield return new WaitForSeconds(animationLength);
+
+        anim.SetBool("lanzaGo", false);
+        hasLanzaGoAnimationPlayed = true;
+        isLanzaGoPlaying = false;
+
+        // Realiza la desvinculación y aumento de velocidad
+        GetComponent<SpriteRenderer>().color = Color.red;
+        lanza.parent = null;
+        isLanzaDetached = true;
+        lanzaPosition = lanza.position;
+        detachStartTime = Time.time;
+        currentSpeed = increasedSpeed;
+
+        StartCoroutine(ResetLanzaGoAfterDelay());
     }
 
     private IEnumerator ResetLanzaGoAfterDelay()
     {
-        yield return new WaitForSeconds(0.85f);
+        yield return new WaitForSeconds(0f);
 
         if (!isLanzaGoResetting)
         {
-            anim.SetBool("lanzaGo", false);
             hasLanzaGoAnimationPlayed = false;
         }
     }
@@ -152,5 +226,40 @@ public class JefeSelva : MonoBehaviour
     public void CancelResetLanzaGo()
     {
         isLanzaGoResetting = true;
+    }
+
+    private IEnumerator MoveToPositionY(Transform transform, float targetY, float timeToMove)
+    {
+        float elapsedTime = 0;
+        Vector3 startingPos = transform.position;
+        Vector3 targetPos = new Vector3(transform.position.x, targetY, transform.position.z);
+
+        while (elapsedTime < timeToMove)
+        {
+            transform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime / timeToMove);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = targetPos;
+    }
+
+    IEnumerator ActivarDesactivarSombra()
+    {
+        while (true)
+        {
+            // Activa la sombra solo cuando el ataque de salto está seleccionado
+            if (listaAtaque == TipoAtaque.SaltoAttack)
+            {
+                sombra.SetActive(true);
+
+                // Espera 5 segundos
+                yield return new WaitForSeconds(5.0f);
+
+                Debug.Log("Desactivar sombra");
+                // Desactiva la sombra
+                sombra.SetActive(false);
+            }
+        }
     }
 }
