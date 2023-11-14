@@ -6,7 +6,9 @@ using UnityEngine.AI;
 public enum AllEnemys_IA
 {
     ENEMY_PATROL,  //Spider, Snake
-    ENEMY_SHOOT   //Plant
+    ENEMY_SHOOT,   //Plant
+    ENEMY_FOLLOW,  //Bat
+    ENEMY_STATIC   //Tree
 }
 
 [RequireComponent(typeof(ChangeAnimation))]
@@ -119,6 +121,41 @@ public class AllEnemysIA : MonoBehaviour
                     else
                     {
                         anim.SetBool("Attack", false);
+                    }
+                    break;
+                //Enemigo que te sige y regresa a su posicion
+                case AllEnemys_IA.ENEMY_FOLLOW:
+                    if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch)
+                    {
+                        navMeshAgent.SetDestination(player.transform.position);
+                        Vector2 temp = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                        changeDirections.changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
+
+                        anim.SetBool("isRunning", true);
+                    }
+                    else
+                    {
+                        navMeshAgent.SetDestination(waypoints[currentPoint].transform.position);
+                        if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.5f)
+                        {
+                            anim.SetBool("isRunning", false);
+                        }
+                    }
+                    break;
+                case AllEnemys_IA.ENEMY_STATIC:
+                    if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch)
+                    {
+                        navMeshAgent.SetDestination(player.transform.position);
+                        Vector2 temp = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                        changeDirections.changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
+
+                        navMeshAgent.speed = speed;
+                        anim.SetBool("isRunning", true);
+                    }
+                    else
+                    {
+                        navMeshAgent.speed = 0f;
+                        anim.SetBool("isRunning", false);
                     }
                     break;
             }
