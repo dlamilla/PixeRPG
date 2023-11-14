@@ -33,7 +33,6 @@ public class Player : MonoBehaviour
     [SerializeField] public float exp;
     [SerializeField] private float expMax;
     [SerializeField] public float level;
-    [SerializeField] private float damageExtra;
 
     [Header("HealthBar1")]
     [SerializeField] private HealthBar healthBar;
@@ -63,7 +62,12 @@ public class Player : MonoBehaviour
     [SerializeField] private TMP_Text textUI;
     [SerializeField] private GameObject UI_Panel;
 
-    
+    [Header("Message")]
+    [SerializeField] private GameObject message1;
+    [SerializeField] private GameObject message2;
+    [SerializeField] private GameObject message3;
+    //[SerializeField] private GameObject message4;
+
     private bool isDashing;
     private bool canDash = true;
     
@@ -153,22 +157,31 @@ public class Player : MonoBehaviour
             {
                 //Desactiva pase luego de eliminar al boss
                 doorBoss1.SetActive(false);
-                //Activa barra de vida v2
-                bar1.SetActive(false);
-                bar2.SetActive(true);
+                //Indicacion al acabar con el boss1
+                message1.SetActive(true);
             }
             if (level == 2)
             {
                 //Desactiva pase luego de eliminar al boss
                 doorBoss2.SetActive(false);
+                //Activa barra de vida v2
+                bar1.SetActive(false);
+                bar2.SetActive(true);
+                //Indicacion al acabar con el boss2
+                message2.SetActive(true);
             }
             if (level == 3)
             {
                 //Desactiva pase luego de eliminar al boss
                 doorBoss3.SetActive(false);
+                //Indicacion al acabar con el boss3
+                message3.SetActive(true);
             }
-
-            
+            if (level == 4)
+            {   
+                //Indicacion al acabar con el boss4
+                //message4.SetActive(true);
+            }
         }
     }
 
@@ -338,7 +351,7 @@ public class Player : MonoBehaviour
         moveSpeed = resetSpeed;
     }
 
-    //Metodo sin usar
+    //Metodo usado cuando acabas con cualquier boss
     public void GiveMoreDamage(float moreDamage)
     {
         dañoGolpe += moreDamage;
@@ -419,7 +432,7 @@ public class Player : MonoBehaviour
     }
 
     //Despues de morir su vida baja 1
-    private void ChangeLife()
+    public void ChangeLife()
     {
         life--;
         lifeBar.UpdateLifeBar(lifeMax, life);

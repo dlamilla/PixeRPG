@@ -24,8 +24,9 @@ public class FuncaBoss : MonoBehaviour
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private GameObject healthBarBoss;
 
-    [Header("Stadistics")]
+    [Header("Rewards")]
     [SerializeField] private float expEnemy;
+    [SerializeField] private float extraDamage;
 
     private float tiempoPorDisparo;
     public float tiempoEntreDisparo;
@@ -152,6 +153,7 @@ public class FuncaBoss : MonoBehaviour
             target.GetComponent<Player>().ExpUp(expEnemy);
             target.GetComponent<Player>().LevelUp(1);
             healthBarBoss.SetActive(false);
+            target.GetComponent<Player>().GiveMoreDamage(extraDamage);
             gameObject.SetActive(false);
         }
     }

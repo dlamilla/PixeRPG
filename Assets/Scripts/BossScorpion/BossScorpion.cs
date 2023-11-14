@@ -22,8 +22,9 @@ public class BossScorpion : MonoBehaviour
     [Header("Projectile")]
     public GameObject projectilePrefab;
 
-    [Header("Stadistics")]
+    [Header("Rewards")]
     [SerializeField] private float expEnemy;
+    [SerializeField] private float extraDamage;
 
     private bool hasFiredProjectile = false;
 
@@ -100,6 +101,7 @@ public class BossScorpion : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
             player.GetComponent<Player>().ExpUp(expEnemy);
             player.GetComponent<Player>().LevelUp(1);
+            player.GetComponent<Player>().GiveMoreDamage(extraDamage);
             healthBarBoss.SetActive(false);
             gameObject.SetActive(false);
         }

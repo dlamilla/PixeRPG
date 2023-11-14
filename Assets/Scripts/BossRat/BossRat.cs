@@ -18,8 +18,9 @@ public class BossRat : MonoBehaviour
     [SerializeField] private float timeCurrent;
     [SerializeField] private float changeAttack;
 
-    [Header("Exp")]
+    [Header("Rewards")]
     [SerializeField] private float exp;
+    [SerializeField] private float extraDamage;
 
     [Header("HealthBar")]
     [SerializeField] private HealthBar healthBar;
@@ -72,6 +73,7 @@ public class BossRat : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
             player.GetComponent<Player>().ExpUp(exp);
             player.GetComponent<Player>().LevelUp(1);
+            player.GetComponent<Player>().GiveMoreDamage(extraDamage);
             healthBarBoss.SetActive(false);
             //gameObject.SetActive(false);          
         }
