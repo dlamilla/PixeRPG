@@ -43,7 +43,7 @@ public class JefeSelva : MonoBehaviour
     private bool haIniciadoEspera = false;
 
     [Header("Radio de Ataque")]
-    [SerializeField] private GameObject radioNormal;
+    [SerializeField] private float hitDamage;
 
     public enum TipoAtaque
     {
@@ -253,7 +253,7 @@ public class JefeSelva : MonoBehaviour
 
         anim.SetBool("inFall", true);
 
-        radioNormal.SetActive(false);
+        //radioNormal.SetActive(false);
 
         yield return new WaitForSeconds(0.2f);
 
@@ -370,7 +370,7 @@ public class JefeSelva : MonoBehaviour
         float targetY = player.position.y;
         float targetX = player.position.x;
 
-        radioNormal.SetActive(true);
+        //radioNormal.SetActive(true);
 
 
         yield return MoveToPosition(new Vector3(targetX, transform.position.y, transform.position.z), 2.0f);
@@ -387,5 +387,21 @@ public class JefeSelva : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radiusAttack);
+    }
+
+    public void AttackPlayer()
+    {
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(transform.position, radiusAttack);
+        foreach (Collider2D collision in objetos)
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                float playerLife = collision.GetComponent<Player>().health;
+                if (playerLife > 4f)
+                {
+                    collision.GetComponent<Player>().ReceiveDamage(hitDamage);
+                }
+            }
+        }
     }
 }
