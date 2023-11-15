@@ -265,6 +265,10 @@ public class Player : MonoBehaviour
             {
                 collision.GetComponent<SpawnCustom>().ReceiveDamage(dañoGolpe);
             }
+            if (collision.gameObject.tag == "JefeSelva")
+            {
+                collision.GetComponent<JefeSelva>().RecieveDamage(dañoGolpe);
+            }
         }
     }
 

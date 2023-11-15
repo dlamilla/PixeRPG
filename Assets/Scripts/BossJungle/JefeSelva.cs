@@ -10,6 +10,7 @@ public class JefeSelva : MonoBehaviour
     [SerializeField] private float normalSpeed;
     [SerializeField] private float increasedSpeed;
     [SerializeField] private float fallSpeed = 16.0f;
+    [SerializeField] private float radiusAttack;
     private ChangeAnimation changeDirections;
     private Animator anim;
     private float currentSpeed;
@@ -25,6 +26,11 @@ public class JefeSelva : MonoBehaviour
     private bool isLanzaGoPlaying = false;
     private bool hasJumped = false;
 
+    [Header("HealthBar")]
+    [SerializeField] private HealthBar healthBar;
+    private float hpCurrent;
+    [SerializeField] private GameObject healthBarBoss;
+
     [Header("AtaqueLanza")]
     private Transform lanza;
     private Vector2 lanzaPosition;
@@ -35,6 +41,9 @@ public class JefeSelva : MonoBehaviour
     private float tiempoEsperaInicial = 5.0f;
     private float tiempoInicioEspera;
     private bool haIniciadoEspera = false;
+
+    [Header("Radio de Ataque")]
+    [SerializeField] private GameObject radioNormal;
 
     public enum TipoAtaque
     {
@@ -50,6 +59,8 @@ public class JefeSelva : MonoBehaviour
 
     [SerializeField] private GameObject sombra;
     private bool sombraActivada = false;
+    private bool ataqueSeleccionado = false;
+
 
     void Start()
     {
@@ -63,6 +74,8 @@ public class JefeSelva : MonoBehaviour
         currentSpeed = normalSpeed;
         listaAtaque = TipoAtaque.LanzaAttack;
         tiempoInicioEspera = Time.time;
+        hpCurrent = hpEnemy;
+        healthBar.UpdateHealthBar(hpEnemy, hpCurrent);
     }
 
     void Update()
@@ -112,7 +125,21 @@ public class JefeSelva : MonoBehaviour
             case TipoAtaque.Correteo:
                 HacerCorrer();
                 StartCoroutine(DecidirProximoAtaque());
+                ataqueSeleccionado = false;
                 break;
+        }
+    }
+
+    public void RecieveDamage(float damage)
+    {
+        hpCurrent -= damage;
+        healthBar.UpdateHealthBar(hpEnemy, hpCurrent);
+
+        if (hpCurrent <= 5f)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
+            healthBarBoss.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 
@@ -128,7 +155,7 @@ public class JefeSelva : MonoBehaviour
 
     private IEnumerator DecidirProximoAtaque()
     {
-        if (estaEligiendoAtaque)
+        if (estaEligiendoAtaque || ataqueSeleccionado)
         {
             yield break;
         }
@@ -156,11 +183,9 @@ public class JefeSelva : MonoBehaviour
             StartCoroutine(ActivarDesactivarSombra());
         }
 
-        haIniciadoEspera = false;
+        ataqueSeleccionado = true; // Marcar que se ha seleccionado un ataque
         estaEligiendoAtaque = false;
 
-        hasLanzaGoAnimationPlayed = false;
-        hasJumped = false;
     }
 
     private void UpdateLanzaAttack()
@@ -178,8 +203,9 @@ public class JefeSelva : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, lanzaPosition, increasedSpeed * Time.deltaTime);
 
-            if (Vector2.Distance(transform.position, lanzaPosition) < 0.1f)
+            if (Vector2.Distance(transform.position, lanzaPosition) < 2f)
             {
+                anim.SetBool("enMarcha", false);
                 GetComponent<SpriteRenderer>().color = Color.white;
                 isFollowingPlayer = true;
                 Debug.Log("SeguirPlayer");
@@ -227,6 +253,8 @@ public class JefeSelva : MonoBehaviour
 
         anim.SetBool("inFall", true);
 
+        radioNormal.SetActive(false);
+
         yield return new WaitForSeconds(0.2f);
 
         StartCoroutine(MoveToPositionY(transform, transform.position.y + 16f, 0.85f));
@@ -272,6 +300,12 @@ public class JefeSelva : MonoBehaviour
         if (!isLanzaGoResetting)
         {
             hasLanzaGoAnimationPlayed = false;
+        }
+        if (!anim.GetBool("lanzaGo"))
+        {
+            // Cambiar valores de animaciones de movimiento
+            anim.SetBool("enMarcha", true);
+            anim.SetBool("enCamino", false);
         }
     }
 
@@ -336,13 +370,22 @@ public class JefeSelva : MonoBehaviour
         float targetY = player.position.y;
         float targetX = player.position.x;
 
-        yield return MoveToPosition(new Vector3(targetX, targetY, transform.position.z), 2.0f);
+        radioNormal.SetActive(true);
 
-        transform.position = new Vector3(targetX, targetY, transform.position.z);
+
+        yield return MoveToPosition(new Vector3(targetX, transform.position.y, transform.position.z), 2.0f);
+
+        //transform.position = new Vector3(targetX, targetY, transform.position.z);
+        yield return MoveToPosition(new Vector3(targetX, targetY, transform.position.z), 2.0f);
 
         isFollowingPlayer = true;
         anim.SetBool("inFall", false);
 
         listaAtaque = TipoAtaque.Correteo;
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radiusAttack);
     }
 }
