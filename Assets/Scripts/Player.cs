@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [Header("Basic")]
     [SerializeField] private float moveSpeed;
     [SerializeField] public float hpPlayerMax;
-    [SerializeField] private float lifeMax;
+    [SerializeField] public float lifeMax;
     [SerializeField] private float timeAfterDied;
 
     [Header("Hit")]
@@ -61,6 +61,13 @@ public class Player : MonoBehaviour
     [Header("TextUI")]
     [SerializeField] private TMP_Text textUI;
     [SerializeField] private GameObject UI_Panel;
+    [SerializeField] private GameObject canvasPause;
+    [SerializeField] private GameObject textCargar;
+    [SerializeField] private GameObject buttonSi;
+    [SerializeField] private GameObject buttonNo;
+    [SerializeField] private GameObject buttonReanudar;
+    [SerializeField] private GameObject buttonSaveExit;
+    [SerializeField] private GameObject buttonExit;
 
     [Header("Message")]
     [SerializeField] private GameObject message1;
@@ -160,7 +167,7 @@ public class Player : MonoBehaviour
                 //Indicacion al acabar con el boss1
                 message1.SetActive(true);
             }
-            if (level == 2)
+            if (level >= 2)
             {
                 //Desactiva pase luego de eliminar al boss
                 doorBoss2.SetActive(false);
@@ -267,7 +274,7 @@ public class Player : MonoBehaviour
             }
             if (collision.gameObject.tag == "JefeSelva")
             {
-                collision.GetComponent<JefeSelva>().RecieveDamage(dañoGolpe);
+                collision.GetComponent<ForestBoss>().ReceiveDamage(dañoGolpe);
             }
         }
     }
@@ -317,6 +324,22 @@ public class Player : MonoBehaviour
         {
             string typeController = playerInput.currentControlScheme;
             GameObject.Find("Sign").GetComponent<DialogueNPC>().StartTalking(typeController);
+        }
+    }
+
+    //Con la tecla ESC en teclado y Start en mando para interactuar con los letreros
+    public void PauseGame(InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.performed)
+        {
+            canvasPause.SetActive(true);
+            Time.timeScale = 0f;
+            textCargar.SetActive(false);
+            buttonSi.SetActive(false);
+            buttonNo.SetActive(false);
+            buttonReanudar.SetActive(true);
+            buttonSaveExit.SetActive(true);
+            buttonExit.SetActive(true);
         }
     }
 

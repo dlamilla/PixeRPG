@@ -128,6 +128,7 @@ public class AllEnemysIA : MonoBehaviour
                     if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch)
                     {
                         navMeshAgent.SetDestination(player.transform.position);
+                        //transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
                         Vector2 temp = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
                         changeDirections.changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
 

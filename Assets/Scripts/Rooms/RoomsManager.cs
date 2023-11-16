@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoomsManager : MonoBehaviour
 {
     [SerializeField] public int currentRoom = 0;
-    [SerializeField] private List<GameObject> Rooms;
+    [SerializeField] public List<GameObject> Rooms;
     [SerializeField] private Transform cameraGlobal;
 
     public void OnRoom(int newRoom)
