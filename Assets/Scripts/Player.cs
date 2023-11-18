@@ -267,7 +267,6 @@ public class Player : MonoBehaviour
     private void Golpe()
     {
         Collider2D[] objetos = Physics2D.OverlapCircleAll(controladorGolpe.position, radioGolpe);
-        Debug.Log("Sonido de hcha");
         sfx.clip = axeSound;
         sfx.Play();
         foreach (Collider2D collision in objetos)

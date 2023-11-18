@@ -24,7 +24,6 @@ public class MusicController : MonoBehaviour
 
         if ((room >= 0 && room <= 8) || (room >= 10 && room <= 18) || (room >= 20 && room <= 23))
         {
-            Debug.Log("Room primera parte");
             caveMusic.SetActive(true);
             desertMusic.SetActive(false);
             forestMusic.SetActive(false);
@@ -37,7 +36,6 @@ public class MusicController : MonoBehaviour
         }
         else if (room == 9)
         {
-            Debug.Log("Room Boss 1");
             caveMusic.SetActive(false);
             desertMusic.SetActive(false);
             forestMusic.SetActive(false);
@@ -50,7 +48,6 @@ public class MusicController : MonoBehaviour
         }
         else if (room == 19)
         {
-            Debug.Log("Room Boss 2");
             caveMusic.SetActive(false);
             desertMusic.SetActive(false);
             forestMusic.SetActive(false);
@@ -63,7 +60,6 @@ public class MusicController : MonoBehaviour
         }
         else if (room >= 24 && room <= 48)
         {
-            Debug.Log("Room segunda parte");
             caveMusic.SetActive(false);
             desertMusic.SetActive(true);
             forestMusic.SetActive(false);
@@ -76,7 +72,6 @@ public class MusicController : MonoBehaviour
         }
         else if (room == 49)
         {
-            Debug.Log("Room Boss 3");
             caveMusic.SetActive(false);
             desertMusic.SetActive(false);
             forestMusic.SetActive(false);
@@ -89,7 +84,6 @@ public class MusicController : MonoBehaviour
         }
         else if (room >= 50 && room <= 74)
         {
-            Debug.Log("Room tercera parte");
             caveMusic.SetActive(false);
             desertMusic.SetActive(false);
             forestMusic.SetActive(true);
@@ -102,7 +96,6 @@ public class MusicController : MonoBehaviour
         }
         else if (room >= 75 && room <= 98)
         {
-            Debug.Log("Room cuarta parte");
             caveMusic.SetActive(false);
             desertMusic.SetActive(false);
             forestMusic.SetActive(false);
@@ -115,7 +108,6 @@ public class MusicController : MonoBehaviour
         }
         else if (room == 99)
         {
-            Debug.Log("Room Boss 4");
             caveMusic.SetActive(false);
             desertMusic.SetActive(false);
             forestMusic.SetActive(false);
