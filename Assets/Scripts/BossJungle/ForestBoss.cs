@@ -170,7 +170,7 @@ public class ForestBoss : MonoBehaviour
         hpCurrent -= damage;
         //anim.SetTrigger("Hit");
         healthBar.UpdateHealthBar(hpBoss, hpCurrent);
-        if (hpCurrent <= 5f)
+        if (hpCurrent <= 15f)
         {
             //anim.SetBool("Died", true);
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;

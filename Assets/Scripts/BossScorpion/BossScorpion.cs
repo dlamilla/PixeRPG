@@ -41,7 +41,7 @@ public class BossScorpion : MonoBehaviour
 
     void Update()
     {
-        if (hpCurrent > 5f)
+        if (hpCurrent > 14f)
         {
             if (anim.GetBool("Agarre") || isGrabbing)
             {
@@ -100,7 +100,7 @@ public class BossScorpion : MonoBehaviour
         hpCurrent -= damage;
         anim.SetTrigger("Hit");
         healthBar.UpdateHealthBar(hpEnemy, hpCurrent);
-        if (hpCurrent <= 5f)
+        if (hpCurrent <= 14f)
         {
             anim.SetTrigger("Died");
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;

@@ -65,7 +65,7 @@ public class FuncaBoss : MonoBehaviour
 
     void Update()
     {
-        if (isAlive && hpEnemy > 4f)
+        if (isAlive && hpEnemy > 8f)
         {
             Vector2 directionToPlayer = (target.position - transform.position).normalized;
             float distanceToPlayer = Vector2.Distance(transform.position, target.position);
@@ -155,7 +155,7 @@ public class FuncaBoss : MonoBehaviour
             animator.SetTrigger("Hit");
             healthBar.UpdateHealthBar(hpEnemyInicial, hpEnemy);
 
-            if (hpEnemy <= 5f)
+            if (hpEnemy <= 8f)
             {
                 isAlive = false; 
              
