@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 {
     [Header("Basic")]
     [SerializeField] private float moveSpeed;
+    [SerializeField] private ParticleSystem particles;
     [SerializeField] public float hpPlayerMax;
     [SerializeField] public float lifeMax;
     [SerializeField] private float timeAfterDied;
@@ -75,6 +76,10 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject message1;
     [SerializeField] private GameObject message2;
     [SerializeField] private GameObject message3;
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip axeSound;
+    [SerializeField] private AudioClip dashSound;
     //[SerializeField] private GameObject message4;
 
     private bool isDashing;
@@ -91,6 +96,7 @@ public class Player : MonoBehaviour
     private PlayerInput playerInput;
     private Vector2 inputMov;
     private Vector2 normalInput;
+    private AudioSource sfx;
 
     private void Start()
     {
@@ -99,6 +105,7 @@ public class Player : MonoBehaviour
         bx = GetComponent<BoxCollider2D>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
         playerInput = GetComponent<PlayerInput>();
+        sfx = GetComponent<AudioSource>();
 
         health = hpPlayerMax;
         healthBar.UpdateHealthBar(hpPlayerMax, health);
@@ -132,6 +139,7 @@ public class Player : MonoBehaviour
                 {
                     isWalking = true;
                     animator.SetBool("IsMoving", isWalking);
+                    
                 }
             }else
             {
@@ -156,6 +164,7 @@ public class Player : MonoBehaviour
             if (!isDashing)
             {
                 rb.MovePosition(rb.position + inputMov.normalized * moveSpeed * Time.fixedDeltaTime);
+                
             }
             
 
@@ -205,6 +214,9 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector2(normalInput.x * dashSpeed, normalInput.y * dashSpeed);
         animator.SetBool("Dash", true);
         healthBar2.UpdateDashBar(0f);
+        particles.Play();
+        sfx.clip = dashSound;
+        sfx.Play();
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         rb.velocity = Vector2.zero;
@@ -255,7 +267,9 @@ public class Player : MonoBehaviour
     private void Golpe()
     {
         Collider2D[] objetos = Physics2D.OverlapCircleAll(controladorGolpe.position, radioGolpe);
-
+        Debug.Log("Sonido de hcha");
+        sfx.clip = axeSound;
+        sfx.Play();
         foreach (Collider2D collision in objetos)
         {
             if (collision.gameObject.tag == "Enemy")

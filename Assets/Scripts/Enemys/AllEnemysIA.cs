@@ -153,6 +153,14 @@ public class AllEnemysIA : MonoBehaviour
                         navMeshAgent.speed = speed;
                         anim.SetBool("isRunning", true);
                     }
+                    else if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch && Vector2.Distance(transform.position, player.transform.position) <= radiusAttack)
+                    {
+
+                        if (player1.enabled)
+                        {
+                            StartCoroutine(Attack());
+                        }
+                    }
                     else
                     {
                         navMeshAgent.speed = 0f;
