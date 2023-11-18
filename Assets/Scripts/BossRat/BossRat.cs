@@ -21,6 +21,7 @@ public class BossRat : MonoBehaviour
     [Header("Rewards")]
     [SerializeField] private float exp;
     [SerializeField] private float extraDamage;
+    [SerializeField] private float moreHealthPlayer;
 
     [Header("HealthBar")]
     [SerializeField] private HealthBar healthBar;
@@ -74,6 +75,7 @@ public class BossRat : MonoBehaviour
             player.GetComponent<Player>().ExpUp(exp);
             player.GetComponent<Player>().LevelUp(1);
             player.GetComponent<Player>().GiveMoreDamage(extraDamage);
+            player.GetComponent<Player>().GiveMoreHealth(moreHealthPlayer);
             healthBarBoss.SetActive(false);
             //gameObject.SetActive(false);          
         }
@@ -204,5 +206,18 @@ public class BossRat : MonoBehaviour
             }
         }
         
+    }
+
+    IEnumerator AfterPlayerDied()
+    {
+        
+        
+        this.gameObject.SetActive(false);
+        healthBarBoss.SetActive(false);
+        Debug.Log("Uno");
+        yield return new WaitForSeconds(0.1f);
+        Debug.Log("Dos");
+        this.gameObject.SetActive(true);
+        healthBarBoss.SetActive(true);
     }
 }

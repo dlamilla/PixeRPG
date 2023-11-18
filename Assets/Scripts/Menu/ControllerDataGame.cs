@@ -49,17 +49,7 @@ public class ControllerDataGame : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.C))
-        {
-            Debug.Log("Cargar datos");
-            LoadData();
-
-        }
-        if (Input.GetKey(KeyCode.F))
-        {
-            Debug.Log("Guardar datos");
-            SaveData();
-        }
+        
     }
 
     //Metodo para cargar los datos del Player
@@ -72,13 +62,17 @@ public class ControllerDataGame : MonoBehaviour
 
             
             player.GetComponent<Player>().health = dataPlayer.healthPlayer;
+            player.GetComponent<Player>().hpPlayerMax = dataPlayer.healthMaxPlayer;
             player.GetComponent<Player>().exp = dataPlayer.expPlayer;
             player.GetComponent<Player>().level = dataPlayer.levelPlayer;
             cameraGlobal.transform.position = dataPlayer.posicionCamera;
             ChangeRoom(dataPlayer.roomCurrent);
             healthBar.GetComponent<HealthBar>().UpdateHealthBar(dataPlayer.healthMaxPlayer, dataPlayer.healthPlayer);
             healthBar1.GetComponent<HealthBar2>().UpdateHealthBar(dataPlayer.healthMaxPlayer, dataPlayer.healthPlayer);
+            player.GetComponent<Player>().life = dataPlayer.lifePlayer;
+            player.GetComponent<Player>().lifeMax = dataPlayer.lifeMax;
             lifeBar.GetComponent<LifeBar>().UpdateLifeBar(dataPlayer.lifeMax, dataPlayer.lifePlayer);
+            player.GetComponent<Player>().dañoGolpe = dataPlayer.damage;
         }
         else
         {
@@ -99,7 +93,8 @@ public class ControllerDataGame : MonoBehaviour
             roomCurrent = room.GetComponent<RoomsManager>().currentRoom,
             posicionCamera = cameraGlobal.transform.position,
             lifePlayer = player.GetComponent<Player>().life,
-            lifeMax = player.GetComponent<Player>().lifeMax
+            lifeMax = player.GetComponent<Player>().lifeMax,
+            damage = player.GetComponent<Player>().dañoGolpe
         };
 
         string charJSON = JsonUtility.ToJson(newData);
@@ -150,5 +145,15 @@ public class ControllerDataGame : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         Time.timeScale = 0f;
+    }
+
+    public void SalirYReiniciar()
+    {
+        if (File.Exists(saveFile))
+        {
+            File.Delete(saveFile);
+        }
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(2);
     }
 }

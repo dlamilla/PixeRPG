@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     [Header("Hit")]
     [SerializeField] private Transform controladorGolpe;
     [SerializeField] private float radioGolpe;
-    [SerializeField] private float dañoGolpe;
+    [SerializeField] public float dañoGolpe;
     [SerializeField] private float timeForAttack;
     [SerializeField] public bool isReceiveDamage;
 
@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject buttonReanudar;
     [SerializeField] private GameObject buttonSaveExit;
     [SerializeField] private GameObject buttonExit;
+    [SerializeField] private GameObject diedCanvas;
 
     [Header("Message")]
     [SerializeField] private GameObject message1;
@@ -292,19 +293,10 @@ public class Player : MonoBehaviour
     //Con la tecla Q en teclado y X en mando para dashear
     public void DashPlayer(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.started && canDash && level >= 1)
+        if (callbackContext.started && canDash && level >= 1 && (x != 0 || y != 0))
         {
 
             StartCoroutine(Dash());
-        }
-    }
-
-    //Tecla espacio para testear reiniciar el juego
-    public void RestartGame(InputAction.CallbackContext callbackContext)
-    {
-        if (callbackContext.performed)
-        {
-            SceneManager.LoadScene(0);
         }
     }
 
@@ -320,10 +312,18 @@ public class Player : MonoBehaviour
     //Con la tecla F en teclado y Circulo en mando para interactuar con los letreros
     public void Talking(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed)
+        if (callbackContext.started)
         {
-            string typeController = playerInput.currentControlScheme;
-            GameObject.Find("Sign").GetComponent<DialogueNPC>().StartTalking(typeController);
+            if (GameObject.Find("Sign").activeInHierarchy == true)
+            {
+                string typeController = playerInput.currentControlScheme;
+                GameObject.Find("Sign").GetComponent<DialogueNPC>().StartTalking(typeController);
+            }
+            else
+            {
+                Debug.Log("No hay cartel cerca");
+            }
+            
         }
     }
 
@@ -382,6 +382,11 @@ public class Player : MonoBehaviour
     public void GiveMoreDamage(float moreDamage)
     {
         dañoGolpe += moreDamage;
+    }
+
+    public void GiveMoreHealth(float moreHealth)
+    {
+        hpPlayerMax += moreHealth;
     }
 
     //Recibe daño el player
@@ -465,7 +470,9 @@ public class Player : MonoBehaviour
         lifeBar.UpdateLifeBar(lifeMax, life);
         if (life <= 0)
         {
-            SceneManager.LoadScene(2);
+            //SceneManager.LoadScene(2);
+            diedCanvas.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 
@@ -548,5 +555,12 @@ public class Player : MonoBehaviour
         textUI.text = "Mando reconectado. Modo de juego configurado para mando.";
         yield return new WaitForSeconds(1.5f);
         UI_Panel.SetActive(false);
+    }
+
+    public void SalirYGuardarAfterDied()
+    {
+        diedCanvas.SetActive(false);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
     }
 }

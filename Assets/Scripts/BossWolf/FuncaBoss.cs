@@ -145,16 +145,18 @@ public class FuncaBoss : MonoBehaviour
     public void ReceiveDamage(float damage)
     {
         hpEnemy -= damage;
-        healthBar.UpdateHealthBar(hpEnemyInicial, hpEnemy);
+        animator.SetTrigger("Hit");
+        healthBar.UpdateHealthBar(hpEnemyInicial, hpEnemy);       
         if (hpEnemy <= 5f)
         {
+            animator.SetTrigger("Died");
             StopAllCoroutines();
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
             target.GetComponent<Player>().ExpUp(expEnemy);
             target.GetComponent<Player>().LevelUp(1);
             healthBarBoss.SetActive(false);
             target.GetComponent<Player>().GiveMoreDamage(extraDamage);
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
     }
 

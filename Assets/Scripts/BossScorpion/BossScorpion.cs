@@ -41,37 +41,40 @@ public class BossScorpion : MonoBehaviour
 
     void Update()
     {
-        if (anim.GetBool("Agarre") || isGrabbing)
+        if (hpCurrent > 5f)
         {
-            // Verifica si el trigger "Agarre" o el booleano "Agarrando" están activos
-            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Catch_Scorpion"))
+            if (anim.GetBool("Agarre") || isGrabbing)
             {
-                isGrabbing = false;
-                anim.SetBool("Agarrando", false);
-                anim.ResetTrigger("Agarre");
-            }
-            rb.velocity = Vector2.zero;
-            anim.SetBool("isWalking", false);
-        }
-        else
-        {
-            Vector2 moveDirection = (player.position - transform.position).normalized;
-            rb.velocity = moveDirection * speed;
-
-            changeDirections.changeAnim(moveDirection);
-
-            anim.SetBool("isWalking", true);
-
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Shoot_Scorpion"))
-            {
-                if (!hasFiredProjectile)
+                // Verifica si el trigger "Agarre" o el booleano "Agarrando" están activos
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Catch_Scorpion"))
                 {
-                    ShootProjectile();
+                    isGrabbing = false;
+                    anim.SetBool("Agarrando", false);
+                    anim.ResetTrigger("Agarre");
                 }
+                rb.velocity = Vector2.zero;
+                anim.SetBool("isWalking", false);
             }
             else
             {
-                hasFiredProjectile = false;
+                Vector2 moveDirection = (player.position - transform.position).normalized;
+                rb.velocity = moveDirection * speed;
+
+                changeDirections.changeAnim(moveDirection);
+
+                anim.SetBool("isWalking", true);
+
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("Shoot_Scorpion"))
+                {
+                    if (!hasFiredProjectile)
+                    {
+                        ShootProjectile();
+                    }
+                }
+                else
+                {
+                    hasFiredProjectile = false;
+                }
             }
         }
     }
@@ -95,15 +98,17 @@ public class BossScorpion : MonoBehaviour
     public void ReceiveDamage(float damage)
     {
         hpCurrent -= damage;
+        anim.SetTrigger("Hit");
         healthBar.UpdateHealthBar(hpEnemy, hpCurrent);
         if (hpCurrent <= 5f)
         {
+            anim.SetTrigger("Died");
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
             player.GetComponent<Player>().ExpUp(expEnemy);
             player.GetComponent<Player>().LevelUp(1);
             player.GetComponent<Player>().GiveMoreDamage(extraDamage);
             healthBarBoss.SetActive(false);
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
     }
 

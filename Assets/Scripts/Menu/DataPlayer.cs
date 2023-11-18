@@ -12,6 +12,6 @@ public class DataPlayer
     public int roomCurrent;
     public float lifePlayer;
     public float lifeMax;
-    //public Vector3 posicionPlayer;
+    public float damage;
     public Vector3 posicionCamera;
 }
