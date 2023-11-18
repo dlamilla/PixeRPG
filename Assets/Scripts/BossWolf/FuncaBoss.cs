@@ -44,6 +44,8 @@ public class FuncaBoss : MonoBehaviour
     private float attackDuration = 1.3f;
     private float currentAttackTime = 0.0f;
 
+    private bool isAlive = true; //Variable para saber si mi enemigo anda vivo o nop
+
     private AudioSource attackSource;
 
     [SerializeField] private GameObject[] attackObjects; // Debe contener los 4 gameObjects que se activaran cuando el enemigo tenga la mitad de la vida
@@ -63,7 +65,7 @@ public class FuncaBoss : MonoBehaviour
 
     void Update()
     {
-        if (hpEnemy > 4f)
+        if (isAlive && hpEnemy > 4f)
         {
             Vector2 directionToPlayer = (target.position - transform.position).normalized;
             float distanceToPlayer = Vector2.Distance(transform.position, target.position);
@@ -97,7 +99,7 @@ public class FuncaBoss : MonoBehaviour
 
             if (tiempoPorDisparo <= 0)
             {
-               StartCoroutine(Disparo());
+                StartCoroutine(Disparo());
                 tiempoPorDisparo = tiempoEntreDisparo;
             }
             else
@@ -120,13 +122,13 @@ public class FuncaBoss : MonoBehaviour
                 }
             }
         }
-
     }
 
     public void RestartLife()
     {
         hpEnemy = hpEnemyInicial;
         healthBar.UpdateHealthBar(hpEnemyInicial, hpEnemy);
+        isAlive = true; 
     }
 
     private IEnumerator Disparo()
@@ -138,26 +140,45 @@ public class FuncaBoss : MonoBehaviour
 
     void Teleport()
     {
-        animator.SetBool("isTeleport", true);
-        StartCoroutine(CompleteTeleportAnimation());
+        if (isAlive)
+        {
+            animator.SetBool("isTeleport", true);
+            StartCoroutine(CompleteTeleportAnimation());
+        }
     }
 
     public void ReceiveDamage(float damage)
     {
-        hpEnemy -= damage;
-        animator.SetTrigger("Hit");
-        healthBar.UpdateHealthBar(hpEnemyInicial, hpEnemy);       
-        if (hpEnemy <= 5f)
+        if (isAlive)
         {
-            animator.SetTrigger("Died");
-            StopAllCoroutines();
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
-            target.GetComponent<Player>().ExpUp(expEnemy);
-            target.GetComponent<Player>().LevelUp(1);
-            healthBarBoss.SetActive(false);
-            target.GetComponent<Player>().GiveMoreDamage(extraDamage);
-            //gameObject.SetActive(false);
+            hpEnemy -= damage;
+            animator.SetTrigger("Hit");
+            healthBar.UpdateHealthBar(hpEnemyInicial, hpEnemy);
+
+            if (hpEnemy <= 5f)
+            {
+                isAlive = false; 
+             
+                StopAllCoroutines();
+                isFollowingPlayer = false;
+
+                StartCoroutine(ActivateDiedTrigger());
+            }
         }
+    }
+
+    IEnumerator ActivateDiedTrigger()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        // Activar el trigger "Died" y otras acciones
+        animator.SetTrigger("Died");
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
+        target.GetComponent<Player>().ExpUp(expEnemy);
+        target.GetComponent<Player>().LevelUp(1);
+        healthBarBoss.SetActive(false);
+        target.GetComponent<Player>().GiveMoreDamage(extraDamage);
+        //gameObject.SetActive(false);
     }
 
     void StartAttackAnimation()
@@ -187,20 +208,23 @@ public class FuncaBoss : MonoBehaviour
 
     IEnumerator CompleteTeleportAnimation()
     {
-        yield return new WaitForSeconds(1.5f);
+        if (isAlive)
+        {
+            yield return new WaitForSeconds(1.5f);
 
-        int randomIndex = Random.Range(0, teleportPoints.Length);
-        Vector2 teleportPosition = (Vector2)teleportPoints[randomIndex].position;
+            int randomIndex = Random.Range(0, teleportPoints.Length);
+            Vector2 teleportPosition = (Vector2)teleportPoints[randomIndex].position;
 
-        transform.position = teleportPosition;
+            transform.position = teleportPosition;
 
-        animator.SetBool("isTeleport", false);
-        animator.SetBool("isBacking", true);
-        isFollowingPlayer = false;
+            animator.SetBool("isTeleport", false);
+            animator.SetBool("isBacking", true);
+            isFollowingPlayer = false;
 
-        yield return new WaitForSeconds(1.15f);
+            yield return new WaitForSeconds(1.15f);
 
-        animator.SetBool("isBacking", false);
-        isFollowingPlayer = true;
+            animator.SetBool("isBacking", false);
+            isFollowingPlayer = true;
+        }
     }
 }
