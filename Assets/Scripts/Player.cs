@@ -69,6 +69,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject buttonSaveExit;
     [SerializeField] private GameObject buttonExit;
     [SerializeField] private GameObject diedCanvas;
+    [SerializeField] private GameObject canvasFinal;
 
     [Header("Message")]
     [SerializeField] private GameObject message1;
@@ -189,6 +190,10 @@ public class Player : MonoBehaviour
             {   
                 //Indicacion al acabar con el boss4
                 //message4.SetActive(true);
+            }
+            if (level == 5)
+            {
+                canvasFinal.SetActive(true);
             }
         }
     }
@@ -560,6 +565,13 @@ public class Player : MonoBehaviour
     public void SalirYGuardarAfterDied()
     {
         diedCanvas.SetActive(false);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
+    }
+
+    public void FinalBoton()
+    {
+        canvasFinal.SetActive(false);
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }

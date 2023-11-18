@@ -174,6 +174,7 @@ public class ForestBoss : MonoBehaviour
         {
             //anim.SetBool("Died", true);
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
+            player.GetComponent<Player>().LevelUp(1);
             healthBarBoss.SetActive(false);
             gameObject.SetActive(false);          
         }

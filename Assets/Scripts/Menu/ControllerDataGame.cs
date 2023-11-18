@@ -22,6 +22,7 @@ public class ControllerDataGame : MonoBehaviour
     [SerializeField] private GameObject buttonReanudar;
     [SerializeField] private GameObject buttonSaveExit;
     [SerializeField] private GameObject buttonExit;
+    
     //private bool isPlayerInRange;
 
     private void Awake()
@@ -156,4 +157,6 @@ public class ControllerDataGame : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(2);
     }
+
+    
 }
