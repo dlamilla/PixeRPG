@@ -9,6 +9,7 @@ public enum AllEnemys_IA
     ENEMY_PATROL,  //Spider, Snake
     ENEMY_SHOOT,   //Plant
     ENEMY_FOLLOW,  //Bat
+    ENEMY_PATSHOTT, 
     ENEMY_STATIC   //Tree
 }
 
@@ -209,6 +210,68 @@ public class AllEnemysIA : MonoBehaviour
                     {
                         navMeshAgent.speed = 0f;
                         anim.SetBool("isRunning", false);
+                    }
+                    break;
+                case AllEnemys_IA.ENEMY_PATSHOTT:
+                    if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch && Vector2.Distance(transform.position, player.transform.position) > radiusAttack)
+                    {
+                        navMeshAgent.SetDestination(player.transform.position);
+                        Vector2 temp = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                        changeDirections.changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
+
+                        anim.SetBool("isRunning", true);
+
+                    }
+                    else if (Vector2.Distance(transform.position, player.transform.position) > radiusSearch)
+                    {
+                        anim.SetBool("isRunning", true);
+
+
+                        navMeshAgent.SetDestination(waypoints[currentPoint].transform.position);
+                        Vector2 temp = Vector2.MoveTowards(transform.position, waypoints[currentPoint].transform.position, speed * Time.deltaTime);
+                        changeDirections.changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
+
+                        if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.5f)
+                        {
+                            ChangeGoal();
+                        }
+                    }
+                    else if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch && Vector2.Distance(transform.position, player.transform.position) <= radiusAttack)
+                    {
+
+                        if (player1.enabled)
+                        {
+                            anim.SetBool("Attack", true);
+
+                            timeNext += Time.deltaTime;
+                            if (timeNext >= timeSpwan)
+                            {
+                                timeNext = 0;
+                                switch (sfxCategory)
+                                {
+                                    case SFX_Enemys.SPIDER:
+                                        break;
+                                    case SFX_Enemys.SNAKE:
+                                        break;
+                                    case SFX_Enemys.PLANT:
+                                        sfxSound2.clip = plantShooting;
+                                        sfxSound2.loop = false;
+                                        sfxSound2.Play();
+                                        break;
+                                    case SFX_Enemys.BAT:
+                                        break;
+                                    case SFX_Enemys.TREE:
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                Instantiate(plantShoot, transform.position, Quaternion.identity);
+                            }
+                            else
+                            {
+                                anim.SetBool("Attack", false);
+                            }
+                        }
                     }
                     break;
             }
