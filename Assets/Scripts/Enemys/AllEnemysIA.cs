@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 
 public enum AllEnemys_IA
 {
@@ -9,6 +10,15 @@ public enum AllEnemys_IA
     ENEMY_SHOOT,   //Plant
     ENEMY_FOLLOW,  //Bat
     ENEMY_STATIC   //Tree
+}
+
+public enum SFX_Enemys
+{
+    SPIDER,
+    SNAKE,
+    PLANT,
+    BAT,
+    TREE
 }
 
 [RequireComponent(typeof(ChangeAnimation))]
@@ -31,6 +41,7 @@ public class AllEnemysIA : MonoBehaviour
     [SerializeField] private float expEnemy;
 
     [SerializeField] private AllEnemys_IA category;
+    [SerializeField] private SFX_Enemys sfxCategory;
     [SerializeField] private float radiusAttack; //Attack
     [SerializeField] private float radiusSearch; //Find Player
 
@@ -38,12 +49,26 @@ public class AllEnemysIA : MonoBehaviour
     [SerializeField] private GameObject plantShoot;
     [SerializeField] private float timeNext;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip spiderHit;
+    [SerializeField] private AudioClip plantShooting;
+    [SerializeField] private AudioClip snakeHit;
+    [SerializeField] private AudioClip batHit;
+    [SerializeField] private AudioClip treeHit;
+
     private NavMeshAgent navMeshAgent;
     private ChangeAnimation changeDirections;
     private Animator anim;
     private Rigidbody2D rb;
     private Transform player;
     private BoxCollider2D player1;
+    private AudioSource sfxSound1;
+    private AudioSource sfxSound2;
+    private void Awake()
+    {
+        sfxSound1 = gameObject.AddComponent<AudioSource>();
+        sfxSound2 = gameObject.AddComponent<AudioSource>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +77,7 @@ public class AllEnemysIA : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform;
         player1 = GameObject.FindWithTag("Player").GetComponent<BoxCollider2D>();
         changeDirections = GetComponent<ChangeAnimation>();
-
+        
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
@@ -109,11 +134,30 @@ public class AllEnemysIA : MonoBehaviour
                     {
                         if (player1.enabled)
                         {
-                            anim.SetBool("Attack", true);
+                            anim.SetBool("Attack", true);                         
+                            
                             timeNext += Time.deltaTime;
                             if (timeNext >= timeSpwan)
                             {
                                 timeNext = 0;
+                                switch (sfxCategory)
+                                {
+                                    case SFX_Enemys.SPIDER:
+                                        break;
+                                    case SFX_Enemys.SNAKE:
+                                        break;
+                                    case SFX_Enemys.PLANT:
+                                        sfxSound2.clip = plantShooting;
+                                        sfxSound2.loop = false;
+                                        sfxSound2.Play();
+                                        break;
+                                    case SFX_Enemys.BAT:
+                                        break;
+                                    case SFX_Enemys.TREE:
+                                        break;
+                                    default:
+                                        break;
+                                }
                                 Instantiate(plantShoot, transform.position, Quaternion.identity);
                             }
                         }
@@ -193,6 +237,32 @@ public class AllEnemysIA : MonoBehaviour
     {
         hpEnemy -= damage;
         anim.SetTrigger("Hit");
+        switch (sfxCategory)
+        {
+            case SFX_Enemys.SPIDER:
+                sfxSound1.clip = spiderHit;
+                sfxSound1.loop = false;
+                sfxSound1.Play();
+                break;
+            case SFX_Enemys.SNAKE:
+                sfxSound1.clip = snakeHit;
+                sfxSound1.loop = false;
+                sfxSound1.Play();
+                break;
+            case SFX_Enemys.BAT:
+                sfxSound1.clip = batHit;
+                sfxSound1.loop = false;
+                sfxSound1.Play();
+                break;
+            case SFX_Enemys.TREE:
+                sfxSound1.clip = treeHit;
+                sfxSound1.loop = false;
+                sfxSound1.volume = 0.7f;
+                sfxSound1.Play();
+                break;
+            default:
+                break;
+        }
         StartCoroutine(SpeedHit());
         if (hpEnemy <= 4f)
         {

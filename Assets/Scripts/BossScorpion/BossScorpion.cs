@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class BossScorpion : MonoBehaviour
 {
@@ -26,8 +27,16 @@ public class BossScorpion : MonoBehaviour
     [SerializeField] private float expEnemy;
     [SerializeField] private float extraDamage;
 
-    private bool hasFiredProjectile = false;
+    [Header("SFX")]
+    [SerializeField] private AudioClip soundHit;
+    [SerializeField] private AudioClip soundDied;
 
+    private bool hasFiredProjectile = false;
+    private AudioSource sfxSound;
+    private void Awake()
+    {
+        sfxSound = gameObject.AddComponent<AudioSource>();
+    }
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -99,10 +108,18 @@ public class BossScorpion : MonoBehaviour
     {
         hpCurrent -= damage;
         anim.SetTrigger("Hit");
+        sfxSound.clip = soundHit;
+        sfxSound.loop = false;
+        sfxSound.volume = 0.7f;
+        sfxSound.Play();
         healthBar.UpdateHealthBar(hpEnemy, hpCurrent);
         if (hpCurrent <= 14f)
         {
             anim.SetTrigger("Died");
+            sfxSound.clip = soundDied;
+            sfxSound.loop = false;
+            sfxSound.volume = 0.7f;
+            sfxSound.Play();
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
             player.GetComponent<Player>().ExpUp(expEnemy);
             player.GetComponent<Player>().LevelUp(1);

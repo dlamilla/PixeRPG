@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class FuncaBoss : MonoBehaviour
 {
@@ -28,6 +29,10 @@ public class FuncaBoss : MonoBehaviour
     [SerializeField] private float expEnemy;
     [SerializeField] private float extraDamage;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip soundHit;
+    [SerializeField] private AudioClip soundDied;
+
     private float tiempoPorDisparo;
     public float tiempoEntreDisparo;
 
@@ -47,11 +52,16 @@ public class FuncaBoss : MonoBehaviour
     private bool isAlive = true; //Variable para saber si mi enemigo anda vivo o nop
 
     private AudioSource attackSource;
+    private AudioSource sfxSound;
 
     [SerializeField] private GameObject[] attackObjects; // Debe contener los 4 gameObjects que se activaran cuando el enemigo tenga la mitad de la vida
 
     private bool hasActivatedObjects = false; // Para rastrear si los objetos ya se han activado
 
+    private void Awake()
+    {
+        sfxSound = gameObject.AddComponent<AudioSource>();
+    }
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -153,12 +163,17 @@ public class FuncaBoss : MonoBehaviour
         {
             hpEnemy -= damage;
             animator.SetTrigger("Hit");
+            sfxSound.clip = soundHit;
+            sfxSound.loop = false;
+            sfxSound.Play();
             healthBar.UpdateHealthBar(hpEnemyInicial, hpEnemy);
 
             if (hpEnemy <= 8f)
             {
-                isAlive = false; 
-             
+                isAlive = false;
+                sfxSound.clip = soundDied;
+                sfxSound.loop = false;
+                sfxSound.Play();
                 StopAllCoroutines();
                 isFollowingPlayer = false;
 

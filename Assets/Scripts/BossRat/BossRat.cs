@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(ChangeAnimation))]
 public class BossRat : MonoBehaviour
@@ -34,13 +35,25 @@ public class BossRat : MonoBehaviour
     [SerializeField] private GameObject babyRat;
     [SerializeField] private float timeNext;
 
-    
+    [Header("SFX")]
+    [SerializeField] private AudioClip soundHit;
+    [SerializeField] private AudioClip soundDied;
+    [SerializeField] private AudioClip soundAngry;
+    [SerializeField] private AudioClip soundAttack;
+
     private Vector2 posBossInitial;
     private ChangeAnimation changeDirections;
     private Animator anim;
     private Transform player;
     private BoxCollider2D bx;
     private NavMeshAgent navMeshAgent;
+    private AudioSource sfxRat;
+
+    private void Awake()
+    {
+        sfxRat = gameObject.AddComponent<AudioSource>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,9 +80,15 @@ public class BossRat : MonoBehaviour
     {
         hpCurrent -= damage;
         anim.SetTrigger("Hit");
-        healthBar.UpdateHealthBar(hpBoss, hpCurrent);        
+        sfxRat.clip = soundHit;
+        sfxRat.loop = false;
+        sfxRat.Play();
+        healthBar.UpdateHealthBar(hpBoss, hpCurrent);
         if (hpCurrent <= 5f)
         {
+            sfxRat.clip = soundDied;
+            sfxRat.loop = false;
+            sfxRat.Play();
             anim.SetBool("Died", true);
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
             player.GetComponent<Player>().ExpUp(exp);
@@ -85,6 +104,9 @@ public class BossRat : MonoBehaviour
     {
         anim.SetBool("attackBoss", true);
         navMeshAgent.speed = 0f;
+        sfxRat.clip = soundAttack;
+        sfxRat.loop = false;
+        sfxRat.Play();
         yield return new WaitForSeconds(timeForHit);
         navMeshAgent.speed = speed;
         anim.SetBool("attackBoss", false);
@@ -109,6 +131,7 @@ public class BossRat : MonoBehaviour
 
     public void Attack2()
     {
+        
         bx.enabled = false;
         navMeshAgent.SetDestination(posBossInitial);
         //transform.position = Vector2.MoveTowards(transform.position, posBossInitial, speed * Time.deltaTime);
@@ -120,6 +143,7 @@ public class BossRat : MonoBehaviour
             
             anim.SetBool("isRunning", false);
             anim.SetBool("attack2", true);
+            
             Shoot();
         }
         
@@ -133,6 +157,7 @@ public class BossRat : MonoBehaviour
 
     public void Shoot()
     {
+        
         timeNext += Time.deltaTime;
         if (timeNext >= timeSpwan)
         {
@@ -193,6 +218,7 @@ public class BossRat : MonoBehaviour
                 timeCurrent += Time.deltaTime;
                 if (timeCurrent >= 0 && timeCurrent <= timeFinalAttack)
                 {
+                    
                     Attack2();
                 }
 

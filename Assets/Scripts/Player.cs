@@ -80,6 +80,9 @@ public class Player : MonoBehaviour
     [Header("SFX")]
     [SerializeField] private AudioClip axeSound;
     [SerializeField] private AudioClip dashSound;
+    [SerializeField] private AudioClip hitSound;
+    [SerializeField] private AudioClip soundAttack;
+    [SerializeField] private AudioClip soundHeal;
     //[SerializeField] private GameObject message4;
 
     private bool isDashing;
@@ -96,8 +99,13 @@ public class Player : MonoBehaviour
     private PlayerInput playerInput;
     private Vector2 inputMov;
     private Vector2 normalInput;
-    private AudioSource sfx;
+    private AudioSource sfxSound1;
+    private AudioSource sfxSound2;
 
+    private void Awake()
+    {
+        sfxSound2 = gameObject.AddComponent<AudioSource>();
+    }
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -105,7 +113,7 @@ public class Player : MonoBehaviour
         bx = GetComponent<BoxCollider2D>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
         playerInput = GetComponent<PlayerInput>();
-        sfx = GetComponent<AudioSource>();
+        sfxSound1 = GetComponent<AudioSource>();
 
         health = hpPlayerMax;
         healthBar.UpdateHealthBar(hpPlayerMax, health);
@@ -202,9 +210,16 @@ public class Player : MonoBehaviour
             }
             if (level == 5)
             {
-                canvasFinal.SetActive(true);
+                StartCoroutine(FinalCanvas());
             }
         }
+    }
+
+    IEnumerator FinalCanvas()
+    {
+        yield return new WaitForSeconds(5f);
+        canvasFinal.SetActive(true);
+        level = -1;
     }
 
     private IEnumerator Dash()
@@ -215,8 +230,8 @@ public class Player : MonoBehaviour
         animator.SetBool("Dash", true);
         healthBar2.UpdateDashBar(0f);
         particles.Play();
-        sfx.clip = dashSound;
-        sfx.Play();
+        sfxSound1.clip = dashSound;
+        sfxSound1.Play();
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         rb.velocity = Vector2.zero;
@@ -267,8 +282,12 @@ public class Player : MonoBehaviour
     private void Golpe()
     {
         Collider2D[] objetos = Physics2D.OverlapCircleAll(controladorGolpe.position, radioGolpe);
-        sfx.clip = axeSound;
-        sfx.Play();
+        sfxSound1.clip = axeSound;
+        sfxSound1.Play();
+
+        sfxSound2.clip = soundAttack;
+        sfxSound2.loop = false;
+        sfxSound2.Play();
         foreach (Collider2D collision in objetos)
         {
             if (collision.gameObject.tag == "Enemy")
@@ -311,7 +330,7 @@ public class Player : MonoBehaviour
     //Con la tecla Q en teclado y X en mando para dashear
     public void DashPlayer(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.started && canDash && level >= 1 && (x != 0 || y != 0))
+        if (callbackContext.started && canDash && level >= 2 && (x != 0 || y != 0))
         {
 
             StartCoroutine(Dash());
@@ -379,6 +398,8 @@ public class Player : MonoBehaviour
     {
         if (health < 10 && health > 0)
         {
+            sfxSound1.clip = soundHeal;
+            sfxSound1.Play();
             animator.SetTrigger("Health");
             health = life;
             healthBar.UpdateHealthBar(hpPlayerMax, health);
@@ -414,6 +435,9 @@ public class Player : MonoBehaviour
         health -= damage;
         StartCoroutine(StopMoving());
         animator.SetTrigger("Hit");
+        sfxSound2.clip = hitSound;
+        sfxSound2.loop = false;
+        sfxSound2.Play();
         healthBar.UpdateHealthBar(hpPlayerMax, health);
         healthBar2.UpdateHealthBar(hpPlayerMax, health);
         if (health <= 4f)

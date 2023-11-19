@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public enum STATE_BOSS
 {
@@ -9,7 +10,7 @@ public enum STATE_BOSS
     JUMP,
     ATTACK,
     FALL,
-    WALK2
+    DIED
 }
 
 [RequireComponent(typeof(ChangeAnimation))]
@@ -51,8 +52,16 @@ public class ForestBoss : MonoBehaviour
     [SerializeField] private float timeFall;
     [SerializeField] private float timeAttack;
     [SerializeField] private float timeToMove;
-    private float timeInitial;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip soundDied;
+    [SerializeField] private AudioClip soundHit;
+    [SerializeField] private AudioClip soundAttack;
+    [SerializeField] private AudioClip soundUP;
+    [SerializeField] private AudioClip soundDOWN;
+
+    private float timeInitial;
+    private bool tipoHit;
     private ChangeAnimation changeDirections;
     private Animator anim;
     private Transform player;
@@ -61,6 +70,12 @@ public class ForestBoss : MonoBehaviour
     private Transform lanza;
     private Vector2 lanzaPosition;
     private Transform jefeSelva;
+    private AudioSource sfxSound;
+    private void Awake()
+    {
+        sfxSound = gameObject.AddComponent<AudioSource>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,31 +95,48 @@ public class ForestBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (hpCurrent > 15f)
+        //{
         if (currentState == STATE_BOSS.IDLE)
         {
             speed = resetSpeed;
         }
         if (currentState == STATE_BOSS.WALK)
         {
+            tipoHit = true;
             Mechanic1();
         }
         if (currentState == STATE_BOSS.JUMP)
         {
+            sfxSound.clip = soundUP;
+            sfxSound.loop = false;
+            sfxSound.Play();
             StartCoroutine(Mechanic2());
         }
 
         if (currentState == STATE_BOSS.FALL)
         {
+            sfxSound.clip = soundDOWN;
+            sfxSound.loop = false;
+            sfxSound.Play();
             StartCoroutine(Mechanic3());
         }
         if (currentState == STATE_BOSS.ATTACK)
         {
+            tipoHit = false;
             StartCoroutine(Mechanic4());
         }
-        //if (currentState == STATE_BOSS.WALK2)
-        //{
-        //    StartCoroutine(Mechanic5());
+        if (currentState == STATE_BOSS.DIED)
+        {
+            sfxSound.clip = soundDied;
+            sfxSound.loop = false;
+            sfxSound.Play();
+            Debug.Log("Murio");
+            anim.SetTrigger("Died");
+        }
         //}
+
+
     }
 
     //IEnumerator Mechanic5()
@@ -168,21 +200,36 @@ public class ForestBoss : MonoBehaviour
     public void ReceiveDamage(float damage)
     {
         hpCurrent -= damage;
-        //anim.SetTrigger("Hit");
+        if (tipoHit)
+        {
+            anim.SetTrigger("Hit1");
+        }
+        else
+        {
+            anim.SetTrigger("Hit2");
+        }
+
+        sfxSound.clip = soundHit;
+        sfxSound.loop = false;
+        sfxSound.Play();
+        
         healthBar.UpdateHealthBar(hpBoss, hpCurrent);
         if (hpCurrent <= 15f)
         {
-            //anim.SetBool("Died", true);
+            transitions(STATE_BOSS.DIED);
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
             player.GetComponent<Player>().LevelUp(1);
             healthBarBoss.SetActive(false);
-            gameObject.SetActive(false);          
+            //gameObject.SetActive(false);          
         }
     }
 
     IEnumerator AttackBoss()
     {
         anim.SetBool("atqNormal", true);
+        sfxSound.clip = soundAttack;
+        sfxSound.loop = false;
+        sfxSound.Play();
         //navMeshAgent.speed = 0f;
         yield return new WaitForSeconds(timeForHit);
         //navMeshAgent.speed = speed;
@@ -193,6 +240,9 @@ public class ForestBoss : MonoBehaviour
     IEnumerator AttackBoss2()
     {
         anim.SetBool("atqNo", true);
+        sfxSound.clip = soundAttack;
+        sfxSound.loop = false;
+        sfxSound.Play();
         //navMeshAgent.speed = 0f;
         yield return new WaitForSeconds(timeForHit);
         //navMeshAgent.speed = speed;
@@ -257,19 +307,15 @@ public class ForestBoss : MonoBehaviour
                 StartCoroutine(TimeState(timeJump, STATE_BOSS.FALL));
                 break;
             case STATE_BOSS.ATTACK:
-                Debug.Log("Ataque con lanza");
                 StartCoroutine(TimeState(timeAttack, STATE_BOSS.IDLE));
                 break;
             case STATE_BOSS.FALL:
                 StartCoroutine(TimeState(timeFall, STATE_BOSS.ATTACK));
                 break;
-            //case STATE_BOSS.WALK2:
+            case STATE_BOSS.DIED:
+                StartCoroutine(TimeState(1f, STATE_BOSS.DIED));
                 
-            //    //if (lanza.parent == jefeSelva)
-            //    //{
-            //    //    StartCoroutine(TimeState(timeIdle, STATE_BOSS.IDLE));
-            //    //}
-            //    break;
+                break;
         }
     }
 
