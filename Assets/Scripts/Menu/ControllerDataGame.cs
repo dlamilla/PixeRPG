@@ -42,7 +42,7 @@ public class ControllerDataGame : MonoBehaviour
             buttonSi.SetActive(true);
             buttonNo.SetActive(true);
             buttonReanudar.SetActive(false);
-            buttonSaveExit.SetActive(false);
+            //buttonSaveExit.SetActive(false);
             buttonExit.SetActive(false);
             StartCoroutine(TimeWait());
         }
@@ -155,7 +155,7 @@ public class ControllerDataGame : MonoBehaviour
             File.Delete(saveFile);
         }
         Time.timeScale = 1f;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 
     

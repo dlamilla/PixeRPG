@@ -375,7 +375,7 @@ public class Player : MonoBehaviour
             buttonSi.SetActive(false);
             buttonNo.SetActive(false);
             buttonReanudar.SetActive(true);
-            buttonSaveExit.SetActive(true);
+            //buttonSaveExit.SetActive(true);
             buttonExit.SetActive(true);
         }
     }
@@ -611,5 +611,31 @@ public class Player : MonoBehaviour
         canvasFinal.SetActive(false);
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
+    }
+
+    public void ReiniciarGame()
+    {
+        int roomCurrent = GameObject.Find("RoomsManager").GetComponent<RoomsManager>().currentRoom;
+        Debug.Log("" + roomCurrent);
+        GameObject[] roomGame = GameObject.FindGameObjectsWithTag("Respawn");
+        foreach (GameObject obj in roomGame)
+        {
+            obj.gameObject.SetActive(false);
+        }
+        GameObject.Find("RoomsManager").GetComponent<RoomsManager>().Rooms[roomCurrent].SetActive(true);
+        GameObject.Find("RoomsManager").GetComponent<RoomsManager>().currentRoom = roomCurrent;
+
+        health = hpPlayerMax;
+        healthBar.UpdateHealthBar(hpPlayerMax, health);
+
+        health = hpPlayerMax;
+        healthBar2.UpdateHealthBar(hpPlayerMax, health);
+        healthBar2.UpdateDashBar(1f);
+
+        life = lifeMax;
+        lifeBar.UpdateLifeBar(lifeMax, life);
+
+        diedCanvas.SetActive(false);
+        Time.timeScale = 1f;
     }
 }
