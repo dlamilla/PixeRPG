@@ -132,6 +132,9 @@ public class ForestBoss : MonoBehaviour
             sfxSound.loop = false;
             sfxSound.Play();
             Debug.Log("Murio");
+            GetComponent<SpriteRenderer>().color = Color.white;
+            speed = 0f;
+            speedIncrease = 0f;
             anim.SetTrigger("Died");
         }
         //}
@@ -152,6 +155,7 @@ public class ForestBoss : MonoBehaviour
 
     IEnumerator Mechanic4()
     {
+        anim.SetBool("inFall", false);
         anim.SetBool("lanzaGo", true);
         yield return new WaitForSeconds(1.5f);
         anim.SetBool("enMarcha", true);
@@ -194,6 +198,7 @@ public class ForestBoss : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         speed = 0f;
         anim.SetBool("inFall", false);
+        anim.SetBool("lanzaGo", false);
 
     }
 
@@ -284,6 +289,7 @@ public class ForestBoss : MonoBehaviour
             Vector2 temp = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             changeDirections.changeAnim(temp - new Vector2(transform.position.x, transform.position.y));
             anim.SetBool("enCamino", true);
+            tipoHit = true;
         }
         else
         {
