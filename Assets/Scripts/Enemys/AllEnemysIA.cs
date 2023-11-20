@@ -198,18 +198,24 @@ public class AllEnemysIA : MonoBehaviour
                         navMeshAgent.speed = speed;
                         anim.SetBool("isRunning", true);
                     }
-                    else if (Vector2.Distance(transform.position, player.transform.position) <= radiusSearch && Vector2.Distance(transform.position, player.transform.position) <= radiusAttack)
+                    else if(Vector2.Distance(transform.position, player.transform.position) > radiusSearch)
                     {
-
-                        if (player1.enabled)
-                        {
-                            StartCoroutine(Attack());
-                        }
-                    }
-                    else
-                    {
+                        Debug.Log("ataca1111");
                         navMeshAgent.speed = 0f;
                         anim.SetBool("isRunning", false);
+                    }
+
+                    if (Vector2.Distance(transform.position, player.transform.position) <= radiusAttack)
+                    {
+
+                        Debug.Log("ataca");
+                        
+                        if (player1.enabled)
+                        {
+                            //anim.SetTrigger("isAttacking");
+                            StartCoroutine(Attack());
+                        }
+
                     }
                     break;
                 case AllEnemys_IA.ENEMY_PATSHOTT:
