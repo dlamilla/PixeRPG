@@ -101,6 +101,7 @@ public class Player : MonoBehaviour
     private Vector2 normalInput;
     private AudioSource sfxSound1;
     private AudioSource sfxSound2;
+    private int cont;
 
     private void Awake()
     {
@@ -369,14 +370,25 @@ public class Player : MonoBehaviour
     {
         if (callbackContext.performed)
         {
-            canvasPause.SetActive(true);
-            Time.timeScale = 0f;
-            textCargar.SetActive(false);
-            buttonSi.SetActive(false);
-            buttonNo.SetActive(false);
-            buttonReanudar.SetActive(true);
-            buttonSaveExit.SetActive(true);
-            buttonExit.SetActive(true);
+            cont += 1;
+            if (cont == 1)
+            {
+                canvasPause.SetActive(true);
+                Time.timeScale = 0f;
+                textCargar.SetActive(false);
+                buttonSi.SetActive(false);
+                buttonNo.SetActive(false);
+                buttonReanudar.SetActive(true);
+                buttonSaveExit.SetActive(true);
+                buttonExit.SetActive(true);
+            }
+            else
+            {
+                cont = 0;
+                canvasPause.SetActive(false);
+                Time.timeScale = 1f;
+            }
+            
         }
     }
 
@@ -655,5 +667,10 @@ public class Player : MonoBehaviour
 
         canvasPause.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    public void Bug()
+    {
+        isReceiveDamage = false;
     }
 }

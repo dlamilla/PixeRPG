@@ -13,7 +13,14 @@ public class MusicManager : MonoBehaviour
     {
         musicSource = gameObject.AddComponent<AudioSource>();
 
-        musicSource.clip = musicGame;
+        
     }
 
+    private void Start()
+    {
+        musicSource.clip = musicGame;
+        musicSource.volume = 0.8f;
+        musicSource.loop = true;
+        musicSource.Play();
+    }
 }
