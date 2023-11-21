@@ -16,6 +16,10 @@ TagManager:
   - Rock
   - Snake
   - Box
+  - Lanza
+  - JefeSelva
+  - UI
+  - RadioNormal
   layers:
   - Default
   - TransparentFX
@@ -26,7 +30,7 @@ TagManager:
   - Enemy
   - Boxes
   - Npc
-  - 
+  - EnemyBat
   - 
   - 
   - 

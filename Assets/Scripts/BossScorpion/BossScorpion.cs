@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class BossScorpion : MonoBehaviour
 {
@@ -22,11 +23,20 @@ public class BossScorpion : MonoBehaviour
     [Header("Projectile")]
     public GameObject projectilePrefab;
 
-    [Header("Stadistics")]
+    [Header("Rewards")]
     [SerializeField] private float expEnemy;
+    [SerializeField] private float extraDamage;
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip soundHit;
+    [SerializeField] private AudioClip soundDied;
 
     private bool hasFiredProjectile = false;
-
+    private AudioSource sfxSound;
+    private void Awake()
+    {
+        sfxSound = gameObject.AddComponent<AudioSource>();
+    }
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -40,37 +50,40 @@ public class BossScorpion : MonoBehaviour
 
     void Update()
     {
-        if (anim.GetBool("Agarre") || isGrabbing)
+        if (hpCurrent > 14f)
         {
-            // Verifica si el trigger "Agarre" o el booleano "Agarrando" están activos
-            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Catch_Scorpion"))
+            if (anim.GetBool("Agarre") || isGrabbing)
             {
-                isGrabbing = false;
-                anim.SetBool("Agarrando", false);
-                anim.ResetTrigger("Agarre");
-            }
-            rb.velocity = Vector2.zero;
-            anim.SetBool("isWalking", false);
-        }
-        else
-        {
-            Vector2 moveDirection = (player.position - transform.position).normalized;
-            rb.velocity = moveDirection * speed;
-
-            changeDirections.changeAnim(moveDirection);
-
-            anim.SetBool("isWalking", true);
-
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Shoot_Scorpion"))
-            {
-                if (!hasFiredProjectile)
+                // Verifica si el trigger "Agarre" o el booleano "Agarrando" están activos
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Catch_Scorpion"))
                 {
-                    ShootProjectile();
+                    isGrabbing = false;
+                    anim.SetBool("Agarrando", false);
+                    anim.ResetTrigger("Agarre");
                 }
+                rb.velocity = Vector2.zero;
+                anim.SetBool("isWalking", false);
             }
             else
             {
-                hasFiredProjectile = false;
+                Vector2 moveDirection = (player.position - transform.position).normalized;
+                rb.velocity = moveDirection * speed;
+
+                changeDirections.changeAnim(moveDirection);
+
+                anim.SetBool("isWalking", true);
+
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("Shoot_Scorpion"))
+                {
+                    if (!hasFiredProjectile)
+                    {
+                        ShootProjectile();
+                    }
+                }
+                else
+                {
+                    hasFiredProjectile = false;
+                }
             }
         }
     }
@@ -94,14 +107,25 @@ public class BossScorpion : MonoBehaviour
     public void ReceiveDamage(float damage)
     {
         hpCurrent -= damage;
+        anim.SetTrigger("Hit");
+        sfxSound.clip = soundHit;
+        sfxSound.loop = false;
+        sfxSound.volume = 0.7f;
+        sfxSound.Play();
         healthBar.UpdateHealthBar(hpEnemy, hpCurrent);
-        if (hpCurrent <= 5f)
+        if (hpCurrent <= 14f)
         {
+            anim.SetTrigger("Died");
+            sfxSound.clip = soundDied;
+            sfxSound.loop = false;
+            sfxSound.volume = 0.7f;
+            sfxSound.Play();
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
             player.GetComponent<Player>().ExpUp(expEnemy);
             player.GetComponent<Player>().LevelUp(1);
+            player.GetComponent<Player>().GiveMoreDamage(extraDamage);
             healthBarBoss.SetActive(false);
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
     }
 

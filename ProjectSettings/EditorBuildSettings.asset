@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 367bde46b0158134db62c0f4020ab58a
+  - enabled: 1
     path: Assets/Scenes/PixelRPG.unity
     guid: d799fdf8b4e643a4ba3b7b9c06e7fc42
   m_configObjects: {}

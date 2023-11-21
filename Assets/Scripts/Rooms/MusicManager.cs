@@ -1,23 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class MusicManager : MonoBehaviour
 {
-
     [SerializeField] private AudioClip musicGame;
 
-    private AudioSource audioSource;
+    AudioSource musicSource;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = musicGame;
+        musicSource = gameObject.AddComponent<AudioSource>();
+
+        
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        musicSource.clip = musicGame;
+        musicSource.volume = 0.8f;
+        musicSource.loop = true;
+        musicSource.Play();
     }
 }

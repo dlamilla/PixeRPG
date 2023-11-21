@@ -21,7 +21,6 @@ public class DamegeAcidBoss : MonoBehaviour
         }
         yield return new WaitForSeconds(0.5f);
         damage = 0;
-        Debug.Log(damage + " " + damage1);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

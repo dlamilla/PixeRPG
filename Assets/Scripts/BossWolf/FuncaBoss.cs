@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class FuncaBoss : MonoBehaviour
 {
@@ -24,8 +25,13 @@ public class FuncaBoss : MonoBehaviour
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private GameObject healthBarBoss;
 
-    [Header("Stadistics")]
+    [Header("Rewards")]
     [SerializeField] private float expEnemy;
+    [SerializeField] private float extraDamage;
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip soundHit;
+    [SerializeField] private AudioClip soundDied;
 
     private float tiempoPorDisparo;
     public float tiempoEntreDisparo;
@@ -43,12 +49,19 @@ public class FuncaBoss : MonoBehaviour
     private float attackDuration = 1.3f;
     private float currentAttackTime = 0.0f;
 
+    private bool isAlive = true; //Variable para saber si mi enemigo anda vivo o nop
+
     private AudioSource attackSource;
+    private AudioSource sfxSound;
 
     [SerializeField] private GameObject[] attackObjects; // Debe contener los 4 gameObjects que se activaran cuando el enemigo tenga la mitad de la vida
 
     private bool hasActivatedObjects = false; // Para rastrear si los objetos ya se han activado
 
+    private void Awake()
+    {
+        sfxSound = gameObject.AddComponent<AudioSource>();
+    }
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -62,7 +75,7 @@ public class FuncaBoss : MonoBehaviour
 
     void Update()
     {
-        if (hpEnemy > 4f)
+        if (isAlive && hpEnemy > 8f)
         {
             Vector2 directionToPlayer = (target.position - transform.position).normalized;
             float distanceToPlayer = Vector2.Distance(transform.position, target.position);
@@ -96,7 +109,7 @@ public class FuncaBoss : MonoBehaviour
 
             if (tiempoPorDisparo <= 0)
             {
-               StartCoroutine(Disparo());
+                StartCoroutine(Disparo());
                 tiempoPorDisparo = tiempoEntreDisparo;
             }
             else
@@ -119,13 +132,13 @@ public class FuncaBoss : MonoBehaviour
                 }
             }
         }
-
     }
 
     public void RestartLife()
     {
         hpEnemy = hpEnemyInicial;
         healthBar.UpdateHealthBar(hpEnemyInicial, hpEnemy);
+        isAlive = true; 
     }
 
     private IEnumerator Disparo()
@@ -137,23 +150,50 @@ public class FuncaBoss : MonoBehaviour
 
     void Teleport()
     {
-        animator.SetBool("isTeleport", true);
-        StartCoroutine(CompleteTeleportAnimation());
+        if (isAlive)
+        {
+            animator.SetBool("isTeleport", true);
+            StartCoroutine(CompleteTeleportAnimation());
+        }
     }
 
     public void ReceiveDamage(float damage)
     {
-        hpEnemy -= damage;
-        healthBar.UpdateHealthBar(hpEnemyInicial, hpEnemy);
-        if (hpEnemy <= 5f)
+        if (isAlive)
         {
-            StopAllCoroutines();
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
-            target.GetComponent<Player>().ExpUp(expEnemy);
-            target.GetComponent<Player>().LevelUp(1);
-            healthBarBoss.SetActive(false);
-            gameObject.SetActive(false);
+            hpEnemy -= damage;
+            animator.SetTrigger("Hit");
+            sfxSound.clip = soundHit;
+            sfxSound.loop = false;
+            sfxSound.Play();
+            healthBar.UpdateHealthBar(hpEnemyInicial, hpEnemy);
+
+            if (hpEnemy <= 8f)
+            {
+                isAlive = false;
+                sfxSound.clip = soundDied;
+                sfxSound.loop = false;
+                sfxSound.Play();
+                StopAllCoroutines();
+                isFollowingPlayer = false;
+
+                StartCoroutine(ActivateDiedTrigger());
+            }
         }
+    }
+
+    IEnumerator ActivateDiedTrigger()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        // Activar el trigger "Died" y otras acciones
+        animator.SetTrigger("Died");
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().isReceiveDamage = false;
+        target.GetComponent<Player>().ExpUp(expEnemy);
+        target.GetComponent<Player>().LevelUp(1);
+        healthBarBoss.SetActive(false);
+        target.GetComponent<Player>().GiveMoreDamage(extraDamage);
+        //gameObject.SetActive(false);
     }
 
     void StartAttackAnimation()
@@ -183,20 +223,23 @@ public class FuncaBoss : MonoBehaviour
 
     IEnumerator CompleteTeleportAnimation()
     {
-        yield return new WaitForSeconds(1.5f);
+        if (isAlive)
+        {
+            yield return new WaitForSeconds(1.5f);
 
-        int randomIndex = Random.Range(0, teleportPoints.Length);
-        Vector2 teleportPosition = (Vector2)teleportPoints[randomIndex].position;
+            int randomIndex = Random.Range(0, teleportPoints.Length);
+            Vector2 teleportPosition = (Vector2)teleportPoints[randomIndex].position;
 
-        transform.position = teleportPosition;
+            transform.position = teleportPosition;
 
-        animator.SetBool("isTeleport", false);
-        animator.SetBool("isBacking", true);
-        isFollowingPlayer = false;
+            animator.SetBool("isTeleport", false);
+            animator.SetBool("isBacking", true);
+            isFollowingPlayer = false;
 
-        yield return new WaitForSeconds(1.15f);
+            yield return new WaitForSeconds(1.15f);
 
-        animator.SetBool("isBacking", false);
-        isFollowingPlayer = true;
+            animator.SetBool("isBacking", false);
+            isFollowingPlayer = true;
+        }
     }
 }
