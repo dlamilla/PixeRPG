@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
@@ -71,6 +72,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject buttonExit;
     [SerializeField] private GameObject diedCanvas;
     [SerializeField] private GameObject canvasFinal;
+    [SerializeField] private GameObject diedYes;
+    [SerializeField] private GameObject exitGame;
 
     [Header("Message")]
     [SerializeField] private GameObject message1;
@@ -219,6 +222,8 @@ public class Player : MonoBehaviour
     IEnumerator FinalCanvas()
     {
         yield return new WaitForSeconds(5f);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(exitGame);
         canvasFinal.SetActive(true);
         level = -1;
     }
@@ -373,6 +378,8 @@ public class Player : MonoBehaviour
             cont += 1;
             if (cont == 1)
             {
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(buttonReanudar);
                 canvasPause.SetActive(true);
                 Time.timeScale = 0f;
                 textCargar.SetActive(false);
@@ -525,6 +532,8 @@ public class Player : MonoBehaviour
         if (life <= 0)
         {
             //SceneManager.LoadScene(2);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(diedYes);
             diedCanvas.SetActive(true);
             Time.timeScale = 0f;
         }

@@ -11,7 +11,7 @@ public class MusicManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        musicSource = gameObject.AddComponent<AudioSource>();
+        musicSource = GetComponent<AudioSource>();
 
         
     }
