@@ -186,9 +186,10 @@ public class Player : MonoBehaviour
             if (level == 1)
             {
                 //Desactiva pase luego de eliminar al boss
-                doorBoss1.SetActive(false);
+                //doorBoss1.SetActive(false);
                 //Indicacion al acabar con el boss1
-                message1.SetActive(true);
+                //message1.SetActive(true);
+                StartCoroutine(FinalCanvas());
             }
             if (level >= 2)
             {
@@ -386,7 +387,7 @@ public class Player : MonoBehaviour
                 buttonSi.SetActive(false);
                 buttonNo.SetActive(false);
                 buttonReanudar.SetActive(true);
-                buttonSaveExit.SetActive(true);
+                buttonSaveExit.SetActive(false);
                 buttonExit.SetActive(true);
             }
             else
