@@ -222,7 +222,7 @@ public class Player : MonoBehaviour
 
     IEnumerator FinalCanvas()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(exitGame);
         canvasFinal.SetActive(true);
