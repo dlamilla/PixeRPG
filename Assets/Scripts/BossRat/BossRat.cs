@@ -94,7 +94,7 @@ public class BossRat : MonoBehaviour
             player.GetComponent<Player>().ExpUp(exp);
             player.GetComponent<Player>().LevelUp(1);
             player.GetComponent<Player>().GiveMoreDamage(extraDamage);
-            player.GetComponent<Player>().GiveMoreHealth(moreHealthPlayer);
+            //player.GetComponent<Player>().GiveMoreHealth(moreHealthPlayer);
             healthBarBoss.SetActive(false);
             //gameObject.SetActive(false);          
         }

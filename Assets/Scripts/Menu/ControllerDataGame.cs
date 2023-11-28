@@ -132,7 +132,6 @@ public class ControllerDataGame : MonoBehaviour
     {
         canvasCargar.SetActive(false);
         Time.timeScale = 1f;
-
     }
 
     public void Cargar()

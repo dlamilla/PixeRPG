@@ -105,6 +105,7 @@ public class Player : MonoBehaviour
     private AudioSource sfxSound1;
     private AudioSource sfxSound2;
     private int cont;
+    private bool isPause;
 
     private void Awake()
     {
@@ -136,7 +137,7 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal)
+        if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal && !isPause)
         {
             inputMov = playerInput.actions["Move"].ReadValue<Vector2>();
             normalInput = inputMov.normalized;
@@ -167,7 +168,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal)
+        if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal && !isPause)
         {
             //Ataque del 3er boss
             Supresion();
@@ -183,23 +184,29 @@ public class Player : MonoBehaviour
             //Hitbox del area del daño
             CheckHitBox();
 
-            if (level == 1)
+            if (level >= 1)
             {
                 //Desactiva pase luego de eliminar al boss
-                //doorBoss1.SetActive(false);
+                doorBoss1.SetActive(false);
                 //Indicacion al acabar con el boss1
-                //message1.SetActive(true);
-                StartCoroutine(FinalCanvas());
-            }
-            if (level >= 2)
-            {
-                //Desactiva pase luego de eliminar al boss
-                doorBoss2.SetActive(false);
-                //Activa barra de vida v2
+                message1.SetActive(true);
+                //Barra nueva
                 bar1.SetActive(false);
                 bar2.SetActive(true);
+
+            }
+            if (level == 2)
+            {
+                //Desactiva pase luego de eliminar al boss
+                //doorBoss2.SetActive(false);
+                //Activa barra de vida v2
+                //bar1.SetActive(false);
+                //bar2.SetActive(true);
                 //Indicacion al acabar con el boss2
                 message2.SetActive(true);
+
+                //Fin Demo
+                StartCoroutine(FinalCanvas());
             }
             if (level == 3)
             {
@@ -379,6 +386,7 @@ public class Player : MonoBehaviour
             cont += 1;
             if (cont == 1)
             {
+                isPause = true;
                 EventSystem.current.SetSelectedGameObject(null);
                 EventSystem.current.SetSelectedGameObject(buttonReanudar);
                 canvasPause.SetActive(true);
@@ -393,6 +401,7 @@ public class Player : MonoBehaviour
             else
             {
                 cont = 0;
+                isPause = false;
                 canvasPause.SetActive(false);
                 Time.timeScale = 1f;
             }
@@ -660,21 +669,10 @@ public class Player : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void ReiniciarGameXBug()
+    public void Salir()
     {
-        int roomCurrent = GameObject.Find("RoomsManager").GetComponent<RoomsManager>().currentRoom;
-
-        GameObject[] roomGame = GameObject.FindGameObjectsWithTag("Respawn");
-        foreach (GameObject obj in roomGame)
-        {
-            obj.gameObject.SetActive(false);
-        }
-
-        isReceiveDamage = false;
-
-        GameObject.Find("RoomsManager").GetComponent<RoomsManager>().Rooms[roomCurrent].SetActive(true);
-        GameObject.Find("RoomsManager").GetComponent<RoomsManager>().currentRoom = roomCurrent;
-
+        cont = 0;
+        isPause = false;
         canvasPause.SetActive(false);
         Time.timeScale = 1f;
     }
