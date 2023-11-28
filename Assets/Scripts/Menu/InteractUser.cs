@@ -33,7 +33,7 @@ public class InteractUser : MonoBehaviour
 
     public void InteractUI(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed)
+        if (callbackContext.started)
         {
             SceneManager.LoadScene(idScene);
         }

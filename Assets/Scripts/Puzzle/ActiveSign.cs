@@ -7,6 +7,7 @@ public class ActiveSign : MonoBehaviour
     [SerializeField] private float levelPlayer;
     [SerializeField] private GameObject sign;
     [SerializeField] private GameObject signOrObject;
+    [SerializeField] private GameObject tree;
     // Start is called before the first frame update
 
     // Update is called once per frame
@@ -17,6 +18,7 @@ public class ActiveSign : MonoBehaviour
         {
             sign.SetActive(true);
             signOrObject.SetActive(false);
+            tree.SetActive(false);
         }
         else
         {

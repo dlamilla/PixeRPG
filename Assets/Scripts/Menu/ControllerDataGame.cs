@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class ControllerDataGame : MonoBehaviour
 {
@@ -37,6 +38,9 @@ public class ControllerDataGame : MonoBehaviour
     {
         if (File.Exists(saveFile))
         {
+            player.GetComponent<Player>().isPause = true;
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(buttonSi);
             canvasCargar.SetActive(true);
             textCargar.SetActive(true);
             buttonSi.SetActive(true);
@@ -132,7 +136,7 @@ public class ControllerDataGame : MonoBehaviour
     {
         canvasCargar.SetActive(false);
         Time.timeScale = 1f;
-
+        player.GetComponent<Player>().isPause = false;
     }
 
     public void Cargar()
@@ -140,6 +144,7 @@ public class ControllerDataGame : MonoBehaviour
         canvasCargar.SetActive(false);
         LoadData();
         Time.timeScale = 1f;
+        player.GetComponent<Player>().isPause = false;
     }
 
     IEnumerator TimeWait()

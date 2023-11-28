@@ -105,6 +105,8 @@ public class Player : MonoBehaviour
     private AudioSource sfxSound1;
     private AudioSource sfxSound2;
     private int cont;
+    public bool isPause;
+    public bool isESCOpen;
 
     private void Awake()
     {
@@ -136,7 +138,7 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal)
+        if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal && !isPause)
         {
             inputMov = playerInput.actions["Move"].ReadValue<Vector2>();
             normalInput = inputMov.normalized;
@@ -167,7 +169,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal)
+        if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal && !isPause)
         {
             //Ataque del 3er boss
             Supresion();
@@ -373,11 +375,12 @@ public class Player : MonoBehaviour
     //Con la tecla ESC en teclado y Start en mando para interactuar con los letreros
     public void PauseGame(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed)
+        if (callbackContext.performed  && !isESCOpen)
         {
             cont += 1;
             if (cont == 1)
             {
+                isPause = true;
                 EventSystem.current.SetSelectedGameObject(null);
                 EventSystem.current.SetSelectedGameObject(buttonReanudar);
                 canvasPause.SetActive(true);
@@ -391,6 +394,7 @@ public class Player : MonoBehaviour
             }
             else
             {
+                isPause = false;
                 cont = 0;
                 canvasPause.SetActive(false);
                 Time.timeScale = 1f;
