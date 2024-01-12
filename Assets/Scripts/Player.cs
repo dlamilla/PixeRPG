@@ -138,7 +138,7 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal && !isPause)
+        if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal && !isPause && !isESCOpen)
         {
             inputMov = playerInput.actions["Move"].ReadValue<Vector2>();
             normalInput = inputMov.normalized;
@@ -169,7 +169,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal && !isPause)
+        if (health > 4f && !isReceiveDamage && moveSpeed > 0 && !isReceiveReal && !isPause && !isESCOpen)
         {
             //Ataque del 3er boss
             Supresion();
