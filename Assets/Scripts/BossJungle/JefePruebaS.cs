@@ -47,8 +47,9 @@ public class JefePruebaS : MonoBehaviour
     private bool isLanzaGoResetting = false;
     private bool estaEligiendoAtaque = false;
 
+    [Header("Sombra")]
     [SerializeField] private GameObject sombra;
-    private bool sombraActivada = false;
+    private bool sombraSiguiendo = false;
 
     void Start()
     {
@@ -60,7 +61,7 @@ public class JefePruebaS : MonoBehaviour
         changeDirections = GetComponent<ChangeAnimation>();
         jefeSelva = GameObject.FindWithTag("JefeSelva").transform;
         currentSpeed = normalSpeed;
-        listaAtaque = TipoAtaque.LanzaAttack;
+        listaAtaque = TipoAtaque.Correteo;
         tiempoInicioEspera = Time.time;
     }
 
@@ -92,7 +93,14 @@ public class JefePruebaS : MonoBehaviour
         }
         else if (listaAtaque == TipoAtaque.SaltoAttack)
         {
-            UpdateSaltoAttack();
+            if (Vector2.Distance(transform.position, player.position) < 2.0f)
+            {
+                listaAtaque = TipoAtaque.Correteo;
+            }
+            else
+            {
+                UpdateSaltoAttack();
+            }
         }
     }
 
@@ -282,21 +290,17 @@ public class JefePruebaS : MonoBehaviour
     private IEnumerator MoveToPositionY(Transform transform, float targetY, float timeToMove)
     {
         float elapsedTime = 0;
-        Vector3 startingPos = transform.position;
-        Vector3 targetPos = new Vector3(transform.position.x, targetY, transform.position.z);
+        float initialY = transform.position.y;
 
         while (elapsedTime < timeToMove)
         {
-            transform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime / timeToMove);
+            float newY = Mathf.Lerp(initialY, targetY, elapsedTime / timeToMove);
+            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
             elapsedTime += Time.deltaTime;
-
-            targetPos = new Vector3(transform.position.x, targetY, transform.position.z);
-            targetPos.y -= fallSpeed * Time.deltaTime;
-
             yield return null;
         }
 
-        transform.position = targetPos;
+        transform.position = new Vector3(transform.position.x, targetY, transform.position.z);
     }
 
     private IEnumerator MoveToPosition(Vector3 targetPosition, float timeToMove)
@@ -314,20 +318,35 @@ public class JefePruebaS : MonoBehaviour
         transform.position = targetPosition;
     }
 
-    IEnumerator ActivarDesactivarSombra()
+    private IEnumerator ActivarDesactivarSombra()
     {
-        if (listaAtaque == TipoAtaque.SaltoAttack && !sombraActivada)
+        if (listaAtaque == TipoAtaque.SaltoAttack && !sombraSiguiendo)
         {
-            sombra.SetActive(true);
-            sombraActivada = true;
-
-            yield return new WaitForSeconds(5.0f);
-
-            Debug.Log("Desactivar sombra");
-            sombra.SetActive(false);
-
-            StartCoroutine(DescenderEnemigoAlJugador());
+            yield return StartCoroutine(SeguirJugadorConSombra());
         }
+    }
+
+    private IEnumerator SeguirJugadorConSombra()
+    {
+        sombra.SetActive(true);
+        sombraSiguiendo = true;
+
+        float tiempoSombra = 3.0f;
+        float tiempoInicio = Time.time;
+
+        while (Time.time < tiempoInicio + tiempoSombra)
+        {
+            if (listaAtaque != TipoAtaque.SaltoAttack)
+            {
+                break;  // Salir del bucle si el ataque cambia antes de que se cumplan los 3 segundos
+            }
+
+            sombra.transform.position = new Vector3(player.position.x, player.position.y, sombra.transform.position.z);
+            yield return null;
+        }
+
+        sombra.SetActive(false);
+        sombraSiguiendo = false;
     }
 
     private IEnumerator DescenderEnemigoAlJugador()
