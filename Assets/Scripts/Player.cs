@@ -549,14 +549,14 @@ public class Player : MonoBehaviour
         Gizmos.DrawWireSphere(controladorGolpe.position, radioGolpe);
     }
 
-    //Luego de pasar la primera habitacion se establece su nivel a 0
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Door")
-        {
-            LevelUp(1);
-        }
-    }
+    ////Luego de pasar la primera habitacion se establece su nivel a 0
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.tag == "Door")
+    //    {
+    //        LevelUp(0);
+    //    }
+    //}
 
     //Detecta que dispositivo esta usando Teclado o Mando
     public void ControlsChanged(PlayerInput a)
