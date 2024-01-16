@@ -34,6 +34,7 @@ public class JefePruebaS : MonoBehaviour
     private float tiempoEsperaInicial = 5.0f;
     private float tiempoInicioEspera;
     private bool haIniciadoEspera = false;
+    private bool isSaltoAttackInProgress;
 
     public enum TipoAtaque
     {
@@ -61,8 +62,10 @@ public class JefePruebaS : MonoBehaviour
         changeDirections = GetComponent<ChangeAnimation>();
         jefeSelva = GameObject.FindWithTag("JefeSelva").transform;
         currentSpeed = normalSpeed;
+
         listaAtaque = TipoAtaque.Correteo;
-        tiempoInicioEspera = Time.time;
+
+        tiempoInicioEspera = Time.time + Random.Range(0f, tiempoEsperaInicial);
     }
 
     void Update()
@@ -84,6 +87,8 @@ public class JefePruebaS : MonoBehaviour
                 Debug.Log("Ataque de salto activado");
 
                 StartCoroutine(ActivarDesactivarSombra());
+                isSaltoAttackInProgress = true;
+                StartCoroutine(EsperarYCambiarAtaque(4.0f, TipoAtaque.Correteo));
             }
         }
 
@@ -102,6 +107,15 @@ public class JefePruebaS : MonoBehaviour
                 UpdateSaltoAttack();
             }
         }
+    }
+    private IEnumerator EsperarYCambiarAtaque(float tiempoEspera, TipoAtaque nuevoAtaque)
+    {
+        yield return new WaitForSeconds(tiempoEspera);
+
+        // Nueva línea: Reiniciar el estado después de esperar
+        isSaltoAttackInProgress = false;
+        listaAtaque = nuevoAtaque;
+        Debug.Log("Pasando a " + nuevoAtaque.ToString());
     }
 
     void LateUpdate()
@@ -290,17 +304,21 @@ public class JefePruebaS : MonoBehaviour
     private IEnumerator MoveToPositionY(Transform transform, float targetY, float timeToMove)
     {
         float elapsedTime = 0;
-        float initialY = transform.position.y;
+        Vector3 startingPos = transform.position;
+        Vector3 targetPos = new Vector3(transform.position.x, targetY, transform.position.z);
 
         while (elapsedTime < timeToMove)
         {
-            float newY = Mathf.Lerp(initialY, targetY, elapsedTime / timeToMove);
-            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+            transform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime / timeToMove);
             elapsedTime += Time.deltaTime;
+
+            targetPos = new Vector3(transform.position.x, targetY, transform.position.z);
+            targetPos.y -= fallSpeed * Time.deltaTime;
+
             yield return null;
         }
 
-        transform.position = new Vector3(transform.position.x, targetY, transform.position.z);
+        transform.position = targetPos;
     }
 
     private IEnumerator MoveToPosition(Vector3 targetPosition, float timeToMove)
