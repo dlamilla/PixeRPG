@@ -23,7 +23,7 @@ public class EnableAnimation : MonoBehaviour
 
     IEnumerator TimeAnimation()
     {
-        gameObject.SetActive(true);
+        //gameObject.SetActive(true);
         yield return new WaitForSeconds(_clipAnim.length);
         gameObject.SetActive(false);
 
