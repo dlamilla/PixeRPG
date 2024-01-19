@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
 
     [Header("Give Health")]
     [SerializeField] private float timeNextHealth;
-    [SerializeField] private float giveHealth;
+    [SerializeField] public float giveHealth;
 
     [Header("Statistics")]
     [SerializeField] public float exp;
@@ -60,16 +60,16 @@ public class Player : MonoBehaviour
     [SerializeField] private float danoAgarre;
     [SerializeField] public Animator enemyAnimator;
 
-    [Header("TextUI")]
-    [SerializeField] private TMP_Text textUI;
-    [SerializeField] private GameObject UI_Panel;
-    [SerializeField] private GameObject canvasPause;
-    [SerializeField] private GameObject textCargar;
-    [SerializeField] private GameObject buttonSi;
-    [SerializeField] private GameObject buttonNo;
-    [SerializeField] private GameObject buttonReanudar;
-    [SerializeField] private GameObject buttonSaveExit;
-    [SerializeField] private GameObject buttonExit;
+    //[Header("TextUI")]
+    //[SerializeField] private TMP_Text textUI;
+    //[SerializeField] private GameObject UI_Panel;
+    //[SerializeField] private GameObject canvasPause;
+    //[SerializeField] private GameObject textCargar;
+    //[SerializeField] private GameObject buttonSi;
+    //[SerializeField] private GameObject buttonNo;
+    //[SerializeField] private GameObject buttonReanudar;
+    //[SerializeField] private GameObject buttonSaveExit;
+    //[SerializeField] private GameObject buttonExit;
     [SerializeField] private GameObject diedCanvas;
     [SerializeField] private GameObject canvasFinal;
     [SerializeField] private GameObject diedYes;
@@ -88,11 +88,13 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioClip soundHeal;
     //[SerializeField] private GameObject message4;
 
+    [Header("---Don't Edit this values---")]
+    [SerializeField] public bool canDash = true;
     private bool isDashing;
-    private bool canDash = true;
+    
     
     private float resetSpeed;
-    private float x, y;
+    [SerializeField] public float x, y;
     private bool isWalking;
     private bool isReceiveReal;
     private Rigidbody2D rb;
@@ -104,9 +106,9 @@ public class Player : MonoBehaviour
     private Vector2 normalInput;
     private AudioSource sfxSound1;
     private AudioSource sfxSound2;
-    private int cont;
-    public bool isPause;
-    public bool isESCOpen;
+
+    [SerializeField] public bool isPause;
+    [SerializeField] public bool isESCOpen;
 
     private void Awake()
     {
@@ -230,7 +232,7 @@ public class Player : MonoBehaviour
         level = -1;
     }
 
-    private IEnumerator Dash()
+    public IEnumerator Dash()
     {
         canDash = false;
         isDashing = true;
@@ -325,97 +327,14 @@ public class Player : MonoBehaviour
         }
     }
 
-    //Con la tecla K en teclado y Cuadrado en mando para atacar
-    public void DamagePlayer(InputAction.CallbackContext callbackContext)
+    //El player ataca
+    public void Damage()
     {
-        if (callbackContext.started && level >= 0 && !isReceiveDamage)
-        {
-            animator.SetTrigger("Golpe");
-            StartCoroutine(StopMoving());
-        }
+        animator.SetTrigger("Golpe");
+        StartCoroutine(StopMoving());
     }
 
-    //Con la tecla Q en teclado y X en mando para dashear
-    public void DashPlayer(InputAction.CallbackContext callbackContext)
-    {
-        if (callbackContext.started && canDash && level >= 2 && (x != 0 || y != 0))
-        {
-
-            StartCoroutine(Dash());
-        }
-    }
-
-    //Con la tecla E en teclado y triangulo en mando para curarse
-    public void HealthPlayer(InputAction.CallbackContext callbackContext)
-    {
-        if (callbackContext.started && level >= 0)
-        {
-            GiveHeath(giveHealth);
-        }
-    }
-
-    //Con la tecla F en teclado y Circulo en mando para interactuar con los letreros
-    public void Talking(InputAction.CallbackContext callbackContext)
-    {
-        if (callbackContext.started)
-        {
-            if (GameObject.Find("Sign").activeInHierarchy == true)
-            {
-                string typeController = playerInput.currentControlScheme;
-                GameObject.Find("Sign").GetComponent<DialogueNPC>().StartTalking(typeController);
-            }
-            else
-            {
-                Debug.Log("No hay cartel cerca");
-            }
-            
-        }
-    }
-
-    //Con la tecla ESC en teclado y Start en mando para interactuar con los letreros
-    public void PauseGame(InputAction.CallbackContext callbackContext)
-    {
-        if (callbackContext.performed  && !isESCOpen)
-        {
-            cont += 1;
-            if (cont == 1)
-            {
-                isPause = true;
-                EventSystem.current.SetSelectedGameObject(null);
-                EventSystem.current.SetSelectedGameObject(buttonReanudar);
-                canvasPause.SetActive(true);
-                Time.timeScale = 0f;
-                textCargar.SetActive(false);
-                buttonSi.SetActive(false);
-                buttonNo.SetActive(false);
-                buttonReanudar.SetActive(true);
-                buttonSaveExit.SetActive(true);
-                buttonExit.SetActive(true);
-            }
-            else
-            {
-                isPause = false;
-                cont = 0;
-                canvasPause.SetActive(false);
-                Time.timeScale = 1f;
-            }
-            
-        }
-    }
-
-    //Con la R en teclado y L1 en mando las cajas regresan a su sitio
-    public void RestartLevel(InputAction.CallbackContext callbackContext)
-    {
-        if (callbackContext.started)
-        {
-            GameObject[] obj = GameObject.FindGameObjectsWithTag("Box");
-            foreach (GameObject item in obj)
-            {
-                item.GetComponent<RespawnBox>().RestartBox();
-            }
-        }
-    }
-
+   
     //Aumentar vida
     public void GiveHeath(float life)
     {
@@ -558,71 +477,6 @@ public class Player : MonoBehaviour
     //    }
     //}
 
-    //Detecta que dispositivo esta usando Teclado o Mando
-    public void ControlsChanged(PlayerInput a)
-    {
-        string b = a.currentControlScheme;
-        if (b == "Gamepad")
-        {
-            StartCoroutine(ChangeControllerGamepad());
-        }
-        else if (b == "Keyboard")
-        {
-            StartCoroutine(ChangeControllerKeyboard());
-        }
-    }
-
-    IEnumerator ChangeControllerGamepad()
-    {
-        UI_Panel.SetActive(true);
-        textUI.text = "Modo de juego configurado para mando.";
-        yield return new WaitForSeconds(1.5f);
-        UI_Panel.SetActive(false);
-    }
-
-    IEnumerator ChangeControllerKeyboard()
-    {
-        UI_Panel.SetActive(true);
-        textUI.text = "Modo de juego configurado para teclado.";
-        yield return new WaitForSeconds(1.5f);
-        UI_Panel.SetActive(false);
-    }
-
-    //Detecta cuando mando se desconectad y cambia a teclado por defecto
-    public void ControlsLost(PlayerInput a)
-    {
-        string b = a.currentControlScheme;
-        if (b == "Gamepad")
-        {
-            StartCoroutine(ChangeControllerLost());
-        }
-    }
-
-    IEnumerator ChangeControllerLost()
-    {
-        UI_Panel.SetActive(true);
-        textUI.text = "Mando desconectado. Modo de juego configurado para teclado.";
-        yield return new WaitForSeconds(1.5f);
-        UI_Panel.SetActive(false);
-    }
-
-    //Detecta la reconexion del mando
-    public void ControlsReconneted(PlayerInput a)
-    {
-        string b = a.currentControlScheme;
-        if (b == "Gamepad")
-        {
-            StartCoroutine(ChangeControllerReconected());
-        }
-    }
-
-    IEnumerator ChangeControllerReconected()
-    {
-        UI_Panel.SetActive(true);
-        textUI.text = "Mando reconectado. Modo de juego configurado para mando.";
-        yield return new WaitForSeconds(1.5f);
-        UI_Panel.SetActive(false);
-    }
 
     public void SalirYGuardarAfterDied()
     {
@@ -638,49 +492,49 @@ public class Player : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void ReiniciarGame()
-    {
-        int roomCurrent = GameObject.Find("RoomsManager").GetComponent<RoomsManager>().currentRoom;
-        GameObject[] roomGame = GameObject.FindGameObjectsWithTag("Respawn");
-        foreach (GameObject obj in roomGame)
-        {
-            obj.gameObject.SetActive(false);
-        }
-        GameObject.Find("RoomsManager").GetComponent<RoomsManager>().Rooms[roomCurrent].SetActive(true);
-        GameObject.Find("RoomsManager").GetComponent<RoomsManager>().currentRoom = roomCurrent;
+    //public void ReiniciarGame()
+    //{
+    //    int roomCurrent = GameObject.Find("RoomsManager").GetComponent<RoomsManager>().currentRoom;
+    //    GameObject[] roomGame = GameObject.FindGameObjectsWithTag("Respawn");
+    //    foreach (GameObject obj in roomGame)
+    //    {
+    //        obj.gameObject.SetActive(false);
+    //    }
+    //    GameObject.Find("RoomsManager").GetComponent<RoomsManager>().Rooms[roomCurrent].SetActive(true);
+    //    GameObject.Find("RoomsManager").GetComponent<RoomsManager>().currentRoom = roomCurrent;
 
-        health = hpPlayerMax;
-        healthBar.UpdateHealthBar(hpPlayerMax, health);
+    //    health = hpPlayerMax;
+    //    healthBar.UpdateHealthBar(hpPlayerMax, health);
 
-        health = hpPlayerMax;
-        healthBar2.UpdateHealthBar(hpPlayerMax, health);
-        healthBar2.UpdateDashBar(1f);
+    //    health = hpPlayerMax;
+    //    healthBar2.UpdateHealthBar(hpPlayerMax, health);
+    //    healthBar2.UpdateDashBar(1f);
 
-        life = lifeMax;
-        lifeBar.UpdateLifeBar(lifeMax, life);
+    //    life = lifeMax;
+    //    lifeBar.UpdateLifeBar(lifeMax, life);
 
-        diedCanvas.SetActive(false);
-        Time.timeScale = 1f;
-    }
+    //    diedCanvas.SetActive(false);
+    //    Time.timeScale = 1f;
+    //}
 
-    public void ReiniciarGameXBug()
-    {
-        int roomCurrent = GameObject.Find("RoomsManager").GetComponent<RoomsManager>().currentRoom;
+    //public void ReiniciarGameXBug()
+    //{
+    //    int roomCurrent = GameObject.Find("RoomsManager").GetComponent<RoomsManager>().currentRoom;
 
-        GameObject[] roomGame = GameObject.FindGameObjectsWithTag("Respawn");
-        foreach (GameObject obj in roomGame)
-        {
-            obj.gameObject.SetActive(false);
-        }
+    //    GameObject[] roomGame = GameObject.FindGameObjectsWithTag("Respawn");
+    //    foreach (GameObject obj in roomGame)
+    //    {
+    //        obj.gameObject.SetActive(false);
+    //    }
 
-        isReceiveDamage = false;
+    //    isReceiveDamage = false;
 
-        GameObject.Find("RoomsManager").GetComponent<RoomsManager>().Rooms[roomCurrent].SetActive(true);
-        GameObject.Find("RoomsManager").GetComponent<RoomsManager>().currentRoom = roomCurrent;
+    //    GameObject.Find("RoomsManager").GetComponent<RoomsManager>().Rooms[roomCurrent].SetActive(true);
+    //    GameObject.Find("RoomsManager").GetComponent<RoomsManager>().currentRoom = roomCurrent;
 
-        canvasPause.SetActive(false);
-        Time.timeScale = 1f;
-    }
+    //    canvasPause.SetActive(false);
+    //    Time.timeScale = 1f;
+    //}
 
     public void Bug()
     {
